@@ -5,6 +5,7 @@ import { companyFormData } from "./schema/company-schema";
 import { filesQuerySchema, transactionLogsData, transactionQueryData } from "./schema/transactions/query-schema";
 import { companyQuerySchema } from "./schema/companies/query-schema";
 import { filesMutationSchema, transactionMutationSchema } from "./schema/transactions/mutation-schema";
+import { dashboardDataSchema, PerApplication, PrioritySchema } from "./schema/dashboard/query-schema";
 
 const contract = initContract();
 
@@ -142,12 +143,26 @@ export const transactionContract = contract.router({
       }),
     }
   },
+
   
 })
 
+const dashboardContract = contract.router({
+  getDashboardData :{
+    method:"GET",
+    path:"/transactions/dashboardData",
+    responses: {
+      200: dashboardDataSchema.nullable(),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  }
+})
 
 const contracts = contract.router({
   company: companyContract,
+  dashboard: dashboardContract,
   transaction: transactionContract
 })
 export {
@@ -157,5 +172,9 @@ export {
   transactionLogsData,
   contracts,
   filesQuerySchema,
-  filesMutationSchema
+  filesMutationSchema,
+  dashboardDataSchema,
+  PerApplication,
+  PrioritySchema,
+
 }
