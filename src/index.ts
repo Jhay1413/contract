@@ -17,8 +17,53 @@ import {
 } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
+import { ticketingMutationSchema, ticketingTableSchema } from "./schema/ticketing/mutation-schema";
+import { ticketingQuerySchema } from "./schema/ticketing/query-schema";
 
 const contract = initContract();
+
+export const ticketContract = contract.router({
+  getTickets: {
+    method: "GET",
+    path: "/tickets",
+    query: ticketingQuerySchema,
+    responses: {
+      200: z.array(ticketingTableSchema),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  createTickets: {
+    method: "POST",
+    path: "/tickets/create",
+    body: ticketingMutationSchema,
+    responses: {
+      200: z.object({
+        message: z.string(),
+        ticket: ticketingMutationSchema,
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  editTickets: {
+    method: "PUT",
+    path: "/tickets/edit/:ticketId",
+    body: ticketingMutationSchema.partial(), // Allow partial updates
+    responses: {
+      200: z.object({
+        message: z.string(),
+        ticket: ticketingMutationSchema,
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+});
+
 export const dashboardContract = contract.router({
   getDashboardData: {
     method: "GET",
