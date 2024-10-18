@@ -19,3 +19,15 @@ export const ticketingMutationSchema = z.object({
     transactionId: z.string().nullable(),
     attachments: z.string().nullable(),
 });
+
+export const ticketingTableSchema = z.object({
+    ticketId: z.string(),
+    subject: z.string(),
+    status: z.enum(["OPEN", "CLOSED", "PENDING", "ARCHIVED"]),
+    priority: z.enum(["LOW", "MEDIUM", "HIGH"]),
+    dueDate: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    receiver: z.string().nullable(),
+    sender: z.string().nullable(),
+  });
