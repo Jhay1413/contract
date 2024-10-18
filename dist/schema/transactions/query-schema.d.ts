@@ -56,12 +56,13 @@ export declare const transactionLogsData: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
     transactionId: z.ZodString;
     documentType: z.ZodString;
+    percentage: z.ZodNumber;
     subject: z.ZodString;
     dueDate: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     documentSubType: z.ZodString;
     createdAt: z.ZodOptional<z.ZodString>;
     updatedAt: z.ZodOptional<z.ZodString>;
-    team: z.ZodOptional<z.ZodString>;
+    team: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     status: z.ZodString;
     priority: z.ZodString;
     company: z.ZodString;
@@ -107,6 +108,7 @@ export declare const transactionLogsData: z.ZodObject<{
     remarks: string;
     transactionId: string;
     documentType: string;
+    percentage: number;
     subject: string;
     documentSubType: string;
     company: string;
@@ -120,7 +122,7 @@ export declare const transactionLogsData: z.ZodObject<{
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
     dueDate?: string | null | undefined;
-    team?: string | undefined;
+    team?: string | null | undefined;
     dateReceived?: string | null | undefined;
     attachments?: {
         remarks: string | null;
@@ -138,6 +140,7 @@ export declare const transactionLogsData: z.ZodObject<{
     remarks: string;
     transactionId: string;
     documentType: string;
+    percentage: number;
     subject: string;
     documentSubType: string;
     company: string;
@@ -151,7 +154,7 @@ export declare const transactionLogsData: z.ZodObject<{
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
     dueDate?: string | null | undefined;
-    team?: string | undefined;
+    team?: string | null | undefined;
     dateReceived?: string | null | undefined;
     attachments?: {
         remarks: string | null;
@@ -174,6 +177,8 @@ export declare const transactionQueryData: z.ZodObject<{
     team: z.ZodString;
     status: z.ZodString;
     priority: z.ZodString;
+    percentage: z.ZodNumber;
+    category: z.ZodString;
     originDepartment: z.ZodOptional<z.ZodString>;
     targetDepartment: z.ZodOptional<z.ZodString>;
     remarks: z.ZodString;
@@ -212,61 +217,179 @@ export declare const transactionQueryData: z.ZodObject<{
         email: z.ZodString;
         accountRole: z.ZodString;
         password: z.ZodString;
+        userInfo: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+            email: z.ZodString;
+            employeeId: z.ZodString;
+            firstName: z.ZodString;
+            lastName: z.ZodString;
+            assignedDivision: z.ZodString;
+            assignedSection: z.ZodNullable<z.ZodString>;
+            dateStarted: z.ZodString;
+            jobStatus: z.ZodString;
+            contactNumber: z.ZodString;
+            birthDate: z.ZodString;
+            middleName: z.ZodNullable<z.ZodString>;
+            imageUrl: z.ZodNullable<z.ZodString>;
+            accountId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        }, {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        }>>>;
     }, "strip", z.ZodTypeAny, {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     }, {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     }>>;
     receiver: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         id: z.ZodString;
         email: z.ZodString;
         accountRole: z.ZodString;
         password: z.ZodString;
+        userInfo: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+            email: z.ZodString;
+            employeeId: z.ZodString;
+            firstName: z.ZodString;
+            lastName: z.ZodString;
+            assignedDivision: z.ZodString;
+            assignedSection: z.ZodNullable<z.ZodString>;
+            dateStarted: z.ZodString;
+            jobStatus: z.ZodString;
+            contactNumber: z.ZodString;
+            birthDate: z.ZodString;
+            middleName: z.ZodNullable<z.ZodString>;
+            imageUrl: z.ZodNullable<z.ZodString>;
+            accountId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        }, {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        }>>>;
     }, "strip", z.ZodTypeAny, {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     }, {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     }>>>;
-    attachment: z.ZodOptional<z.ZodNullable<z.ZodArray<z.ZodObject<{
-        id: z.ZodOptional<z.ZodString>;
-        remarks: z.ZodNullable<z.ZodString>;
-        createdAt: z.ZodOptional<z.ZodString>;
-        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
-        fileName: z.ZodString;
-        fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        fileOriginalName: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    }, "strip", z.ZodTypeAny, {
-        remarks: string | null;
-        fileName: string;
-        id?: string | undefined;
-        createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
-        fileStatus?: string | null | undefined;
-        fileUrl?: string | null | undefined;
-        fileOriginalName?: string | null | undefined;
-    }, {
-        remarks: string | null;
-        fileName: string;
-        id?: string | undefined;
-        createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
-        fileStatus?: string | null | undefined;
-        fileUrl?: string | null | undefined;
-        fileOriginalName?: string | null | undefined;
-    }>, "many">>>;
     company: z.ZodOptional<z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         companyId: z.ZodString;
@@ -454,12 +577,13 @@ export declare const transactionQueryData: z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         transactionId: z.ZodString;
         documentType: z.ZodString;
+        percentage: z.ZodNumber;
         subject: z.ZodString;
         dueDate: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         documentSubType: z.ZodString;
         createdAt: z.ZodOptional<z.ZodString>;
         updatedAt: z.ZodOptional<z.ZodString>;
-        team: z.ZodOptional<z.ZodString>;
+        team: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         status: z.ZodString;
         priority: z.ZodString;
         company: z.ZodString;
@@ -505,6 +629,7 @@ export declare const transactionQueryData: z.ZodObject<{
         remarks: string;
         transactionId: string;
         documentType: string;
+        percentage: number;
         subject: string;
         documentSubType: string;
         company: string;
@@ -518,7 +643,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         dueDate?: string | null | undefined;
-        team?: string | undefined;
+        team?: string | null | undefined;
         dateReceived?: string | null | undefined;
         attachments?: {
             remarks: string | null;
@@ -536,6 +661,7 @@ export declare const transactionQueryData: z.ZodObject<{
         remarks: string;
         transactionId: string;
         documentType: string;
+        percentage: number;
         subject: string;
         documentSubType: string;
         company: string;
@@ -549,7 +675,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         dueDate?: string | null | undefined;
-        team?: string | undefined;
+        team?: string | null | undefined;
         dateReceived?: string | null | undefined;
         attachments?: {
             remarks: string | null;
@@ -587,7 +713,6 @@ export declare const transactionQueryData: z.ZodObject<{
         transactionId?: string | undefined;
         attachmentUrl?: string | undefined;
     }>, "many">>;
-    percentage: z.ZodOptional<z.ZodString>;
     projectName: z.ZodOptional<z.ZodString>;
     receiverName: z.ZodOptional<z.ZodString>;
     forwarderName: z.ZodOptional<z.ZodString>;
@@ -603,28 +728,35 @@ export declare const transactionQueryData: z.ZodObject<{
     remarks: string;
     transactionId: string;
     documentType: string;
+    percentage: number;
     subject: string;
     dueDate: string;
     documentSubType: string;
     team: string;
     dateForwarded: string | null;
+    category: string;
     forwarderId: string;
-    attachment?: {
-        remarks: string | null;
-        fileName: string;
-        id?: string | undefined;
-        createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
-        fileStatus?: string | null | undefined;
-        fileUrl?: string | null | undefined;
-        fileOriginalName?: string | null | undefined;
-    }[] | null | undefined;
     id?: string | undefined;
     receiver?: {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     } | null | undefined;
     projectName?: string | undefined;
     company?: {
@@ -675,6 +807,21 @@ export declare const transactionQueryData: z.ZodObject<{
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     } | undefined;
     dateReceived?: string | null | undefined;
     originDepartment?: string | undefined;
@@ -695,6 +842,7 @@ export declare const transactionQueryData: z.ZodObject<{
         remarks: string;
         transactionId: string;
         documentType: string;
+        percentage: number;
         subject: string;
         documentSubType: string;
         company: string;
@@ -708,7 +856,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         dueDate?: string | null | undefined;
-        team?: string | undefined;
+        team?: string | null | undefined;
         dateReceived?: string | null | undefined;
         attachments?: {
             remarks: string | null;
@@ -730,7 +878,6 @@ export declare const transactionQueryData: z.ZodObject<{
         transactionId?: string | undefined;
         attachmentUrl?: string | undefined;
     }[] | undefined;
-    percentage?: string | undefined;
     receiverName?: string | undefined;
     forwarderName?: string | undefined;
     receiverId?: string | null | undefined;
@@ -742,28 +889,35 @@ export declare const transactionQueryData: z.ZodObject<{
     remarks: string;
     transactionId: string;
     documentType: string;
+    percentage: number;
     subject: string;
     dueDate: string;
     documentSubType: string;
     team: string;
     dateForwarded: string | null;
+    category: string;
     forwarderId: string;
-    attachment?: {
-        remarks: string | null;
-        fileName: string;
-        id?: string | undefined;
-        createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
-        fileStatus?: string | null | undefined;
-        fileUrl?: string | null | undefined;
-        fileOriginalName?: string | null | undefined;
-    }[] | null | undefined;
     id?: string | undefined;
     receiver?: {
         id: string;
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     } | null | undefined;
     projectName?: string | undefined;
     company?: {
@@ -814,6 +968,21 @@ export declare const transactionQueryData: z.ZodObject<{
         email: string;
         password: string;
         accountRole: string;
+        userInfo?: {
+            email: string;
+            contactNumber: string;
+            employeeId: string;
+            firstName: string;
+            lastName: string;
+            assignedDivision: string;
+            assignedSection: string | null;
+            dateStarted: string;
+            jobStatus: string;
+            birthDate: string;
+            middleName: string | null;
+            imageUrl: string | null;
+            accountId?: string | null | undefined;
+        } | null | undefined;
     } | undefined;
     dateReceived?: string | null | undefined;
     originDepartment?: string | undefined;
@@ -834,6 +1003,7 @@ export declare const transactionQueryData: z.ZodObject<{
         remarks: string;
         transactionId: string;
         documentType: string;
+        percentage: number;
         subject: string;
         documentSubType: string;
         company: string;
@@ -847,7 +1017,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         dueDate?: string | null | undefined;
-        team?: string | undefined;
+        team?: string | null | undefined;
         dateReceived?: string | null | undefined;
         attachments?: {
             remarks: string | null;
@@ -869,8 +1039,70 @@ export declare const transactionQueryData: z.ZodObject<{
         transactionId?: string | undefined;
         attachmentUrl?: string | undefined;
     }[] | undefined;
-    percentage?: string | undefined;
     receiverName?: string | undefined;
     forwarderName?: string | undefined;
     receiverId?: string | null | undefined;
+}>;
+export declare const transactionTable: z.ZodObject<{
+    id: z.ZodString;
+    transactionId: z.ZodString;
+    documentSubType: z.ZodString;
+    documentType: z.ZodString;
+    subject: z.ZodString;
+    status: z.ZodString;
+    priority: z.ZodString;
+    dueDate: z.ZodString;
+    project: z.ZodObject<{
+        projectName: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        projectName: string;
+    }, {
+        projectName: string;
+    }>;
+    company: z.ZodObject<{
+        companyName: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        companyName: string;
+    }, {
+        companyName: string;
+    }>;
+    percentage: z.ZodNumber;
+    receiver: z.ZodNullable<z.ZodString>;
+    forwarder: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    priority: string;
+    receiver: string | null;
+    status: string;
+    transactionId: string;
+    documentType: string;
+    percentage: number;
+    subject: string;
+    dueDate: string;
+    documentSubType: string;
+    company: {
+        companyName: string;
+    };
+    project: {
+        projectName: string;
+    };
+    forwarder: string | null;
+}, {
+    id: string;
+    priority: string;
+    receiver: string | null;
+    status: string;
+    transactionId: string;
+    documentType: string;
+    percentage: number;
+    subject: string;
+    dueDate: string;
+    documentSubType: string;
+    company: {
+        companyName: string;
+    };
+    project: {
+        projectName: string;
+    };
+    forwarder: string | null;
 }>;

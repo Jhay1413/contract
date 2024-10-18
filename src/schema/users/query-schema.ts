@@ -1,6 +1,6 @@
 import { object, string, TypeOf, optional, nullable, z } from "zod";
 
-export const userInfoMutationSchema = z.object({
+export const userInfoQuerySchema = z.object({
   email: z.string(),
   employeeId: z.string(),
   firstName: z.string(),
@@ -13,9 +13,10 @@ export const userInfoMutationSchema = z.object({
   birthDate: z.string(),
   middleName: z.nullable(z.string()),
   imageUrl: z.nullable(z.string()),
+  accountId: z.nullable(z.string()).optional(),
 });
 
-export const userRegisterSchema = userInfoMutationSchema.extend({
+export const userRegisterSchema = userInfoQuerySchema.extend({
   password: z.string(),
   accountRole: z.string(),
 });
@@ -26,9 +27,10 @@ export const userLoginSchema = z.object({
 });
 
 //User Accounts
-export const AccountSchema = z.object({
+export const AccountQuerySchema = z.object({
   id: z.string(),
   email: z.string(),
   accountRole: z.string(),
   password: z.string(),
+  userInfo: z.nullable(userInfoQuerySchema).optional(),
 });

@@ -41,6 +41,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
     subject: z.ZodString;
     dueDate: z.ZodString;
     team: z.ZodString;
+    category: z.ZodString;
     status: z.ZodString;
     priority: z.ZodString;
     companyId: z.ZodString;
@@ -109,6 +110,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
     }[];
+    category: string;
     forwarderId: string;
     id?: string | undefined;
     transactionId?: string | undefined;
@@ -140,6 +142,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
     }[];
+    category: string;
     forwarderId: string;
     id?: string | undefined;
     transactionId?: string | undefined;

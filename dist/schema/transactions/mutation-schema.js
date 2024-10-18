@@ -47,6 +47,7 @@ exports.transactionMutationSchema = zod_1.z.object({
     subject: zod_1.z.string(),
     dueDate: zod_1.z.string().datetime(),
     team: zod_1.z.string(),
+    category: zod_1.z.string(),
     status: zod_1.z.string(),
     priority: zod_1.z.string(),
     companyId: zod_1.z.string(),
