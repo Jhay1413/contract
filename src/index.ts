@@ -17,17 +17,8 @@ import {
 } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
-<<<<<<< Updated upstream
-import { ticketEditSchema, ticketingMutationSchema } from "./schema/ticketing/mutation-schema";
-import { ticketingTableSchema } from "./schema/ticketing/query-schema";
-=======
-import {
-  ticketingMutationSchema,
-  ticketingTableSchema,
-} from "./schema/ticketing/mutation-schema";
-import { ticketingQuerySchema } from "./schema/ticketing/query-schema";
->>>>>>> Stashed changes
-
+import { ticketingTableSchema, ticketFullDetailsSchema } from "./schema/ticketing/query-schema";
+import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
 const contract = initContract();
 
 export const ticketContract = contract.router({
@@ -423,4 +414,8 @@ export {
   userInfoQuerySchema,
   transactionTable,
   dashboardData,
+  ticketingMutationSchema,
+  ticketingTableSchema,
+  ticketEditSchema,
+  ticketFullDetailsSchema,
 };
