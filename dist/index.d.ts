@@ -5,6 +5,341 @@ import { companyQuerySchema } from "./schema/companies/query-schema";
 import { filesMutationSchema, transactionMutationSchema } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
+import { ticketingTableSchema, ticketFullDetailsSchema } from "./schema/ticketing/query-schema";
+import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
+export declare const ticketContract: {
+    getTickets: {
+        method: "GET";
+        query: z.ZodObject<{
+            id: z.ZodString;
+            ticketId: z.ZodString;
+            subject: z.ZodString;
+            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+            dueDate: z.ZodString;
+            createdAt: z.ZodOptional<z.ZodString>;
+            updatedAt: z.ZodOptional<z.ZodString>;
+            receiver: z.ZodObject<{
+                firstName: z.ZodString;
+                lastName: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                firstName: string;
+                lastName: string;
+            }, {
+                firstName: string;
+                lastName: string;
+            }>;
+            sender: z.ZodObject<{
+                firstName: z.ZodString;
+                lastName: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                firstName: string;
+                lastName: string;
+            }, {
+                firstName: string;
+                lastName: string;
+            }>;
+            project: z.ZodNullable<z.ZodObject<{
+                projectName: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                projectName: string;
+            }, {
+                projectName: string;
+            }>>;
+            transactionId: z.ZodNullable<z.ZodString>;
+            remarks: z.ZodNullable<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            id: string;
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            receiver: {
+                firstName: string;
+                lastName: string;
+            };
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            project: {
+                projectName: string;
+            } | null;
+            ticketId: string;
+            sender: {
+                firstName: string;
+                lastName: string;
+            };
+            createdAt?: string | undefined;
+            updatedAt?: string | undefined;
+        }, {
+            id: string;
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            receiver: {
+                firstName: string;
+                lastName: string;
+            };
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            project: {
+                projectName: string;
+            } | null;
+            ticketId: string;
+            sender: {
+                firstName: string;
+                lastName: string;
+            };
+            createdAt?: string | undefined;
+            updatedAt?: string | undefined;
+        }>;
+        path: "/tickets";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                ticketId: z.ZodString;
+                subject: z.ZodString;
+                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                dueDate: z.ZodString;
+                createdAt: z.ZodOptional<z.ZodString>;
+                updatedAt: z.ZodOptional<z.ZodString>;
+                receiver: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                sender: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                project: z.ZodNullable<z.ZodObject<{
+                    projectName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    projectName: string;
+                }, {
+                    projectName: string;
+                }>>;
+                transactionId: z.ZodNullable<z.ZodString>;
+                remarks: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                ticketId: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                ticketId: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }>, "many">;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+    createTickets: {
+        body: z.ZodObject<{
+            id: z.ZodOptional<z.ZodString>;
+            ticketId: z.ZodString;
+            subject: z.ZodString;
+            section: z.ZodString;
+            division: z.ZodString;
+            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+            requestType: z.ZodString;
+            requestDetails: z.ZodString;
+            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+            dueDate: z.ZodString;
+            senderId: z.ZodString;
+            receiverId: z.ZodString;
+            requesteeId: z.ZodString;
+            remarks: z.ZodNullable<z.ZodString>;
+            projectId: z.ZodNullable<z.ZodString>;
+            transactionId: z.ZodNullable<z.ZodString>;
+            attachments: z.ZodNullable<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            section: string;
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            projectId: string | null;
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            attachments: string | null;
+            receiverId: string;
+            ticketId: string;
+            division: string;
+            requestType: string;
+            requestDetails: string;
+            senderId: string;
+            requesteeId: string;
+            id?: string | undefined;
+        }, {
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            section: string;
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            projectId: string | null;
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            attachments: string | null;
+            receiverId: string;
+            ticketId: string;
+            division: string;
+            requestType: string;
+            requestDetails: string;
+            senderId: string;
+            requesteeId: string;
+            id?: string | undefined;
+        }>;
+        method: "POST";
+        path: "/tickets/create";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+    editTickets: {
+        body: z.ZodObject<z.objectUtil.extendShape<{
+            id: z.ZodOptional<z.ZodString>;
+            ticketId: z.ZodString;
+            subject: z.ZodString;
+            section: z.ZodString;
+            division: z.ZodString;
+            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+            requestType: z.ZodString;
+            requestDetails: z.ZodString;
+            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+            dueDate: z.ZodString;
+            senderId: z.ZodString;
+            receiverId: z.ZodString;
+            requesteeId: z.ZodString;
+            remarks: z.ZodNullable<z.ZodString>;
+            projectId: z.ZodNullable<z.ZodString>;
+            transactionId: z.ZodNullable<z.ZodString>;
+            attachments: z.ZodNullable<z.ZodString>;
+        }, {
+            id: z.ZodString;
+        }>, "strip", z.ZodTypeAny, {
+            id: string;
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            section: string;
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            projectId: string | null;
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            attachments: string | null;
+            receiverId: string;
+            ticketId: string;
+            division: string;
+            requestType: string;
+            requestDetails: string;
+            senderId: string;
+            requesteeId: string;
+        }, {
+            id: string;
+            priority: "LOW" | "IMPORTANT" | "URGENT";
+            section: string;
+            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            projectId: string | null;
+            remarks: string | null;
+            transactionId: string | null;
+            subject: string;
+            dueDate: string;
+            attachments: string | null;
+            receiverId: string;
+            ticketId: string;
+            division: string;
+            requestType: string;
+            requestDetails: string;
+            senderId: string;
+            requesteeId: string;
+        }>;
+        method: "PUT";
+        path: "/tickets/edit/:ticketId";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+};
 export declare const dashboardContract: {
     getDashboardData: {
         method: "GET";
@@ -13032,5 +13367,338 @@ declare const contracts: {
             };
         };
     };
+    ticketing: {
+        getTickets: {
+            method: "GET";
+            query: z.ZodObject<{
+                id: z.ZodString;
+                ticketId: z.ZodString;
+                subject: z.ZodString;
+                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                dueDate: z.ZodString;
+                createdAt: z.ZodOptional<z.ZodString>;
+                updatedAt: z.ZodOptional<z.ZodString>;
+                receiver: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                sender: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                project: z.ZodNullable<z.ZodObject<{
+                    projectName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    projectName: string;
+                }, {
+                    projectName: string;
+                }>>;
+                transactionId: z.ZodNullable<z.ZodString>;
+                remarks: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                ticketId: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                ticketId: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }>;
+            path: "/tickets";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    ticketId: z.ZodString;
+                    subject: z.ZodString;
+                    status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                    priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                    dueDate: z.ZodString;
+                    createdAt: z.ZodOptional<z.ZodString>;
+                    updatedAt: z.ZodOptional<z.ZodString>;
+                    receiver: z.ZodObject<{
+                        firstName: z.ZodString;
+                        lastName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        firstName: string;
+                        lastName: string;
+                    }, {
+                        firstName: string;
+                        lastName: string;
+                    }>;
+                    sender: z.ZodObject<{
+                        firstName: z.ZodString;
+                        lastName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        firstName: string;
+                        lastName: string;
+                    }, {
+                        firstName: string;
+                        lastName: string;
+                    }>;
+                    project: z.ZodNullable<z.ZodObject<{
+                        projectName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        projectName: string;
+                    }, {
+                        projectName: string;
+                    }>>;
+                    transactionId: z.ZodNullable<z.ZodString>;
+                    remarks: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    priority: "LOW" | "IMPORTANT" | "URGENT";
+                    receiver: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                    remarks: string | null;
+                    transactionId: string | null;
+                    subject: string;
+                    dueDate: string;
+                    project: {
+                        projectName: string;
+                    } | null;
+                    ticketId: string;
+                    sender: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    createdAt?: string | undefined;
+                    updatedAt?: string | undefined;
+                }, {
+                    id: string;
+                    priority: "LOW" | "IMPORTANT" | "URGENT";
+                    receiver: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                    remarks: string | null;
+                    transactionId: string | null;
+                    subject: string;
+                    dueDate: string;
+                    project: {
+                        projectName: string;
+                    } | null;
+                    ticketId: string;
+                    sender: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    createdAt?: string | undefined;
+                    updatedAt?: string | undefined;
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+        createTickets: {
+            body: z.ZodObject<{
+                id: z.ZodOptional<z.ZodString>;
+                ticketId: z.ZodString;
+                subject: z.ZodString;
+                section: z.ZodString;
+                division: z.ZodString;
+                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                requestType: z.ZodString;
+                requestDetails: z.ZodString;
+                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                dueDate: z.ZodString;
+                senderId: z.ZodString;
+                receiverId: z.ZodString;
+                requesteeId: z.ZodString;
+                remarks: z.ZodNullable<z.ZodString>;
+                projectId: z.ZodNullable<z.ZodString>;
+                transactionId: z.ZodNullable<z.ZodString>;
+                attachments: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                section: string;
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                projectId: string | null;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                attachments: string | null;
+                receiverId: string;
+                ticketId: string;
+                division: string;
+                requestType: string;
+                requestDetails: string;
+                senderId: string;
+                requesteeId: string;
+                id?: string | undefined;
+            }, {
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                section: string;
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                projectId: string | null;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                attachments: string | null;
+                receiverId: string;
+                ticketId: string;
+                division: string;
+                requestType: string;
+                requestDetails: string;
+                senderId: string;
+                requesteeId: string;
+                id?: string | undefined;
+            }>;
+            method: "POST";
+            path: "/tickets/create";
+            responses: {
+                200: z.ZodObject<{
+                    message: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+        editTickets: {
+            body: z.ZodObject<z.objectUtil.extendShape<{
+                id: z.ZodOptional<z.ZodString>;
+                ticketId: z.ZodString;
+                subject: z.ZodString;
+                section: z.ZodString;
+                division: z.ZodString;
+                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                requestType: z.ZodString;
+                requestDetails: z.ZodString;
+                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                dueDate: z.ZodString;
+                senderId: z.ZodString;
+                receiverId: z.ZodString;
+                requesteeId: z.ZodString;
+                remarks: z.ZodNullable<z.ZodString>;
+                projectId: z.ZodNullable<z.ZodString>;
+                transactionId: z.ZodNullable<z.ZodString>;
+                attachments: z.ZodNullable<z.ZodString>;
+            }, {
+                id: z.ZodString;
+            }>, "strip", z.ZodTypeAny, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                section: string;
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                projectId: string | null;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                attachments: string | null;
+                receiverId: string;
+                ticketId: string;
+                division: string;
+                requestType: string;
+                requestDetails: string;
+                senderId: string;
+                requesteeId: string;
+            }, {
+                id: string;
+                priority: "LOW" | "IMPORTANT" | "URGENT";
+                section: string;
+                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                projectId: string | null;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                attachments: string | null;
+                receiverId: string;
+                ticketId: string;
+                division: string;
+                requestType: string;
+                requestDetails: string;
+                senderId: string;
+                requesteeId: string;
+            }>;
+            method: "PUT";
+            path: "/tickets/edit/:ticketId";
+            responses: {
+                200: z.ZodObject<{
+                    message: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+    };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, };
