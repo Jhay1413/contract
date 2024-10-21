@@ -18,7 +18,7 @@ import {
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
 import { ticketEditSchema, ticketingMutationSchema } from "./schema/ticketing/mutation-schema";
-import { ticketingTableSchema } from "./schema/ticketing/query-schema";
+import { ticketingTableSchema, ticketFullDetailsSchema } from "./schema/ticketing/query-schema";
 
 const contract = initContract();
 
@@ -415,4 +415,8 @@ export {
   userInfoQuerySchema,
   transactionTable,
   dashboardData,
+  ticketingMutationSchema,
+  ticketingTableSchema,
+  ticketEditSchema,
+  ticketFullDetailsSchema,
 };
