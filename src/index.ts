@@ -401,7 +401,7 @@ const contracts = contract.router({
   userAccounts: userAccountsContract,
   awsContract: awsContract,
   dashboardContract: dashboardContract,
-  ticketingContract: ticketContract,
+  ticketing: ticketContract,
 });
 export {
   companyFormData,
