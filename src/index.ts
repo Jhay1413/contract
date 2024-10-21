@@ -17,9 +17,8 @@ import {
 } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
-import { ticketEditSchema, ticketingMutationSchema } from "./schema/ticketing/mutation-schema";
 import { ticketingTableSchema, ticketFullDetailsSchema } from "./schema/ticketing/query-schema";
-
+import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
 const contract = initContract();
 
 export const ticketContract = contract.router({

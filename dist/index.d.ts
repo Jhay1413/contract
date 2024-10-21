@@ -1868,7 +1868,7 @@ export declare const transactionContract: {
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                         transactionId: z.ZodOptional<z.ZodString>;
-                        attachmentUrl: z.ZodOptional<z.ZodString>;
+                        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         date: string;
                         remarks: string;
@@ -1876,7 +1876,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }, {
                         date: string;
                         remarks: string;
@@ -1884,7 +1884,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }>, "many">>;
                     projectName: z.ZodOptional<z.ZodString>;
                     receiverName: z.ZodOptional<z.ZodString>;
@@ -2049,7 +2049,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -2210,7 +2210,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -2375,7 +2375,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -2540,7 +2540,7 @@ export declare const transactionContract: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -3097,7 +3097,7 @@ export declare const transactionContract: {
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
                     transactionId: z.ZodOptional<z.ZodString>;
-                    attachmentUrl: z.ZodOptional<z.ZodString>;
+                    attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     date: string;
                     remarks: string;
@@ -3105,7 +3105,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }, {
                     date: string;
                     remarks: string;
@@ -3113,7 +3113,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }>, "many">>;
                 projectName: z.ZodOptional<z.ZodString>;
                 receiverName: z.ZodOptional<z.ZodString>;
@@ -3278,7 +3278,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -3439,7 +3439,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -4247,7 +4247,7 @@ export declare const transactionContract: {
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
                     transactionId: z.ZodOptional<z.ZodString>;
-                    attachmentUrl: z.ZodOptional<z.ZodString>;
+                    attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     date: string;
                     remarks: string;
@@ -4255,7 +4255,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }, {
                     date: string;
                     remarks: string;
@@ -4263,7 +4263,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }>, "many">>;
                 projectName: z.ZodOptional<z.ZodString>;
                 receiverName: z.ZodOptional<z.ZodString>;
@@ -4428,7 +4428,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -4589,7 +4589,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -5236,7 +5236,7 @@ export declare const transactionContract: {
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
                     transactionId: z.ZodOptional<z.ZodString>;
-                    attachmentUrl: z.ZodOptional<z.ZodString>;
+                    attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     date: string;
                     remarks: string;
@@ -5244,7 +5244,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }, {
                     date: string;
                     remarks: string;
@@ -5252,7 +5252,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }>, "many">>;
                 projectName: z.ZodOptional<z.ZodString>;
                 receiverName: z.ZodOptional<z.ZodString>;
@@ -5417,7 +5417,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -5578,7 +5578,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -5602,7 +5602,7 @@ export declare const transactionContract: {
             updatedAt: z.ZodOptional<z.ZodString>;
             transactionId: z.ZodOptional<z.ZodString>;
             attachmentFile: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<File, z.ZodTypeDef, File>, File, File>, File, File>>;
-            attachmentUrl: z.ZodOptional<z.ZodString>;
+            attachmentUrl: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         }, "strip", z.ZodTypeAny, {
             date: string;
             remarks: string;
@@ -5610,7 +5610,7 @@ export declare const transactionContract: {
             createdAt?: string | undefined;
             updatedAt?: string | undefined;
             transactionId?: string | undefined;
-            attachmentUrl?: string | undefined;
+            attachmentUrl?: string | null | undefined;
             attachmentFile?: File | undefined;
         }, {
             date: string;
@@ -5619,7 +5619,7 @@ export declare const transactionContract: {
             createdAt?: string | undefined;
             updatedAt?: string | undefined;
             transactionId?: string | undefined;
-            attachmentUrl?: string | undefined;
+            attachmentUrl?: string | null | undefined;
             attachmentFile?: File | undefined;
         }>;
         method: "PUT";
@@ -6160,7 +6160,7 @@ export declare const transactionContract: {
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
                     transactionId: z.ZodOptional<z.ZodString>;
-                    attachmentUrl: z.ZodOptional<z.ZodString>;
+                    attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     date: string;
                     remarks: string;
@@ -6168,7 +6168,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }, {
                     date: string;
                     remarks: string;
@@ -6176,7 +6176,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }>, "many">>;
                 projectName: z.ZodOptional<z.ZodString>;
                 receiverName: z.ZodOptional<z.ZodString>;
@@ -6341,7 +6341,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -6502,7 +6502,7 @@ export declare const transactionContract: {
                     createdAt?: string | undefined;
                     updatedAt?: string | undefined;
                     transactionId?: string | undefined;
-                    attachmentUrl?: string | undefined;
+                    attachmentUrl?: string | null | undefined;
                 }[] | undefined;
                 receiverName?: string | undefined;
                 forwarderName?: string | undefined;
@@ -8124,7 +8124,7 @@ declare const contracts: {
                             createdAt: z.ZodOptional<z.ZodString>;
                             updatedAt: z.ZodOptional<z.ZodString>;
                             transactionId: z.ZodOptional<z.ZodString>;
-                            attachmentUrl: z.ZodOptional<z.ZodString>;
+                            attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                         }, "strip", z.ZodTypeAny, {
                             date: string;
                             remarks: string;
@@ -8132,7 +8132,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }, {
                             date: string;
                             remarks: string;
@@ -8140,7 +8140,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }>, "many">>;
                         projectName: z.ZodOptional<z.ZodString>;
                         receiverName: z.ZodOptional<z.ZodString>;
@@ -8305,7 +8305,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }[] | undefined;
                         receiverName?: string | undefined;
                         forwarderName?: string | undefined;
@@ -8466,7 +8466,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }[] | undefined;
                         receiverName?: string | undefined;
                         forwarderName?: string | undefined;
@@ -8631,7 +8631,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }[] | undefined;
                         receiverName?: string | undefined;
                         forwarderName?: string | undefined;
@@ -8796,7 +8796,7 @@ declare const contracts: {
                             createdAt?: string | undefined;
                             updatedAt?: string | undefined;
                             transactionId?: string | undefined;
-                            attachmentUrl?: string | undefined;
+                            attachmentUrl?: string | null | undefined;
                         }[] | undefined;
                         receiverName?: string | undefined;
                         forwarderName?: string | undefined;
@@ -9353,7 +9353,7 @@ declare const contracts: {
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                         transactionId: z.ZodOptional<z.ZodString>;
-                        attachmentUrl: z.ZodOptional<z.ZodString>;
+                        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         date: string;
                         remarks: string;
@@ -9361,7 +9361,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }, {
                         date: string;
                         remarks: string;
@@ -9369,7 +9369,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }>, "many">>;
                     projectName: z.ZodOptional<z.ZodString>;
                     receiverName: z.ZodOptional<z.ZodString>;
@@ -9534,7 +9534,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -9695,7 +9695,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -10503,7 +10503,7 @@ declare const contracts: {
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                         transactionId: z.ZodOptional<z.ZodString>;
-                        attachmentUrl: z.ZodOptional<z.ZodString>;
+                        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         date: string;
                         remarks: string;
@@ -10511,7 +10511,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }, {
                         date: string;
                         remarks: string;
@@ -10519,7 +10519,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }>, "many">>;
                     projectName: z.ZodOptional<z.ZodString>;
                     receiverName: z.ZodOptional<z.ZodString>;
@@ -10684,7 +10684,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -10845,7 +10845,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -11492,7 +11492,7 @@ declare const contracts: {
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                         transactionId: z.ZodOptional<z.ZodString>;
-                        attachmentUrl: z.ZodOptional<z.ZodString>;
+                        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         date: string;
                         remarks: string;
@@ -11500,7 +11500,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }, {
                         date: string;
                         remarks: string;
@@ -11508,7 +11508,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }>, "many">>;
                     projectName: z.ZodOptional<z.ZodString>;
                     receiverName: z.ZodOptional<z.ZodString>;
@@ -11673,7 +11673,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -11834,7 +11834,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -11858,7 +11858,7 @@ declare const contracts: {
                 updatedAt: z.ZodOptional<z.ZodString>;
                 transactionId: z.ZodOptional<z.ZodString>;
                 attachmentFile: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<File, z.ZodTypeDef, File>, File, File>, File, File>>;
-                attachmentUrl: z.ZodOptional<z.ZodString>;
+                attachmentUrl: z.ZodNullable<z.ZodOptional<z.ZodString>>;
             }, "strip", z.ZodTypeAny, {
                 date: string;
                 remarks: string;
@@ -11866,7 +11866,7 @@ declare const contracts: {
                 createdAt?: string | undefined;
                 updatedAt?: string | undefined;
                 transactionId?: string | undefined;
-                attachmentUrl?: string | undefined;
+                attachmentUrl?: string | null | undefined;
                 attachmentFile?: File | undefined;
             }, {
                 date: string;
@@ -11875,7 +11875,7 @@ declare const contracts: {
                 createdAt?: string | undefined;
                 updatedAt?: string | undefined;
                 transactionId?: string | undefined;
-                attachmentUrl?: string | undefined;
+                attachmentUrl?: string | null | undefined;
                 attachmentFile?: File | undefined;
             }>;
             method: "PUT";
@@ -12416,7 +12416,7 @@ declare const contracts: {
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                         transactionId: z.ZodOptional<z.ZodString>;
-                        attachmentUrl: z.ZodOptional<z.ZodString>;
+                        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         date: string;
                         remarks: string;
@@ -12424,7 +12424,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }, {
                         date: string;
                         remarks: string;
@@ -12432,7 +12432,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }>, "many">>;
                     projectName: z.ZodOptional<z.ZodString>;
                     receiverName: z.ZodOptional<z.ZodString>;
@@ -12597,7 +12597,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
@@ -12758,7 +12758,7 @@ declare const contracts: {
                         createdAt?: string | undefined;
                         updatedAt?: string | undefined;
                         transactionId?: string | undefined;
-                        attachmentUrl?: string | undefined;
+                        attachmentUrl?: string | null | undefined;
                     }[] | undefined;
                     receiverName?: string | undefined;
                     forwarderName?: string | undefined;
