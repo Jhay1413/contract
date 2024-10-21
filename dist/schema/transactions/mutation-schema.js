@@ -81,5 +81,5 @@ exports.completeStaffWorkMutationSchema = zod_1.z.object({
         //   return ACCEPTED_FILE_TYPES.includes(file.type);
         // }, "File type is not supported")
         .optional(),
-    attachmentUrl: zod_1.z.string().optional(),
+    attachmentUrl: zod_1.z.nullable(zod_1.z.string().optional()),
 });

@@ -34,7 +34,7 @@ export declare const completeStaffWorkQuerySchema: z.ZodObject<{
     createdAt: z.ZodOptional<z.ZodString>;
     updatedAt: z.ZodOptional<z.ZodString>;
     transactionId: z.ZodOptional<z.ZodString>;
-    attachmentUrl: z.ZodOptional<z.ZodString>;
+    attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     date: string;
     remarks: string;
@@ -42,7 +42,7 @@ export declare const completeStaffWorkQuerySchema: z.ZodObject<{
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
     transactionId?: string | undefined;
-    attachmentUrl?: string | undefined;
+    attachmentUrl?: string | null | undefined;
 }, {
     date: string;
     remarks: string;
@@ -50,7 +50,7 @@ export declare const completeStaffWorkQuerySchema: z.ZodObject<{
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
     transactionId?: string | undefined;
-    attachmentUrl?: string | undefined;
+    attachmentUrl?: string | null | undefined;
 }>;
 export declare const transactionLogsData: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
@@ -695,7 +695,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt: z.ZodOptional<z.ZodString>;
         updatedAt: z.ZodOptional<z.ZodString>;
         transactionId: z.ZodOptional<z.ZodString>;
-        attachmentUrl: z.ZodOptional<z.ZodString>;
+        attachmentUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     }, "strip", z.ZodTypeAny, {
         date: string;
         remarks: string;
@@ -703,7 +703,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         transactionId?: string | undefined;
-        attachmentUrl?: string | undefined;
+        attachmentUrl?: string | null | undefined;
     }, {
         date: string;
         remarks: string;
@@ -711,7 +711,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         transactionId?: string | undefined;
-        attachmentUrl?: string | undefined;
+        attachmentUrl?: string | null | undefined;
     }>, "many">>;
     projectName: z.ZodOptional<z.ZodString>;
     receiverName: z.ZodOptional<z.ZodString>;
@@ -876,7 +876,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         transactionId?: string | undefined;
-        attachmentUrl?: string | undefined;
+        attachmentUrl?: string | null | undefined;
     }[] | undefined;
     receiverName?: string | undefined;
     forwarderName?: string | undefined;
@@ -1037,7 +1037,7 @@ export declare const transactionQueryData: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
         transactionId?: string | undefined;
-        attachmentUrl?: string | undefined;
+        attachmentUrl?: string | null | undefined;
     }[] | undefined;
     receiverName?: string | undefined;
     forwarderName?: string | undefined;
