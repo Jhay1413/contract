@@ -26,6 +26,7 @@ import {
   ticketingMutationSchema,
   ticketEditSchema,
 } from "./schema/ticketing/mutation-schema";
+import { notification } from "./schema/notification/query-schema";
 const contract = initContract();
 export const notificationContract = contract.router({
   readNotif: {
@@ -41,6 +42,19 @@ export const notificationContract = contract.router({
       200: z.object({
         message: z.string(),
       }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  getNotificationsByUserId: {
+    method: "GET",
+    path: "/notification/:id/userNotif",
+    query: z.object({
+      id: z.string(),
+    }),
+    responses: {
+      200: z.array(notification),
       500: z.object({
         error: z.string(),
       }),
@@ -482,4 +496,5 @@ export {
   ticketEditSchema,
   ticketFullDetailsSchema,
   ticketLogsSchema,
+  notification,
 };
