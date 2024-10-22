@@ -20,6 +20,7 @@ import { dashboardData } from "./schema/dashboard/dashboard-data";
 import {
   ticketingTableSchema,
   ticketFullDetailsSchema,
+  ticketLogsSchema,
 } from "./schema/ticketing/query-schema";
 import {
   ticketingMutationSchema,
@@ -480,4 +481,5 @@ export {
   ticketingTableSchema,
   ticketEditSchema,
   ticketFullDetailsSchema,
+  ticketLogsSchema
 };
