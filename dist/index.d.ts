@@ -7,6 +7,7 @@ import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
 import { ticketingTableSchema, ticketFullDetailsSchema, ticketLogsSchema } from "./schema/ticketing/query-schema";
 import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
+import { notification } from "./schema/notification/query-schema";
 export declare const notificationContract: {
     readNotif: {
         body: z.ZodObject<{
@@ -33,6 +34,54 @@ export declare const notificationContract: {
             }, {
                 message: string;
             }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+    getNotificationsByUserId: {
+        method: "GET";
+        query: z.ZodObject<{
+            id: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            id: string;
+        }, {
+            id: string;
+        }>;
+        path: "/notification/userNotif";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodOptional<z.ZodString>;
+                createdAt: z.ZodString;
+                message: z.ZodString;
+                transactionId: z.ZodString;
+                forwarderId: z.ZodString;
+                receiverId: z.ZodString;
+                isRead: z.ZodBoolean;
+                dateRead: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                createdAt: string;
+                transactionId: string;
+                receiverId: string;
+                forwarderId: string;
+                isRead: boolean;
+                dateRead: string | null;
+                id?: string | undefined;
+            }, {
+                message: string;
+                createdAt: string;
+                transactionId: string;
+                receiverId: string;
+                forwarderId: string;
+                isRead: boolean;
+                dateRead: string | null;
+                id?: string | undefined;
+            }>, "many">;
             500: z.ZodObject<{
                 error: z.ZodString;
             }, "strip", z.ZodTypeAny, {
@@ -15065,6 +15114,54 @@ declare const contracts: {
                 }>;
             };
         };
+        getNotificationsByUserId: {
+            method: "GET";
+            query: z.ZodObject<{
+                id: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+            }, {
+                id: string;
+            }>;
+            path: "/notification/userNotif";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodOptional<z.ZodString>;
+                    createdAt: z.ZodString;
+                    message: z.ZodString;
+                    transactionId: z.ZodString;
+                    forwarderId: z.ZodString;
+                    receiverId: z.ZodString;
+                    isRead: z.ZodBoolean;
+                    dateRead: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    message: string;
+                    createdAt: string;
+                    transactionId: string;
+                    receiverId: string;
+                    forwarderId: string;
+                    isRead: boolean;
+                    dateRead: string | null;
+                    id?: string | undefined;
+                }, {
+                    message: string;
+                    createdAt: string;
+                    transactionId: string;
+                    receiverId: string;
+                    forwarderId: string;
+                    isRead: boolean;
+                    dateRead: string | null;
+                    id?: string | undefined;
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
     };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, };

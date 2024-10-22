@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
+exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
 const core_1 = require("@ts-rest/core");
 const zod_1 = require("zod");
 const company_schema_1 = require("./schema/company-schema");
@@ -26,6 +26,8 @@ Object.defineProperty(exports, "ticketLogsSchema", { enumerable: true, get: func
 const mutation_schema_2 = require("./schema/ticketing/mutation-schema");
 Object.defineProperty(exports, "ticketingMutationSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketingMutationSchema; } });
 Object.defineProperty(exports, "ticketEditSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketEditSchema; } });
+const query_schema_5 = require("./schema/notification/query-schema");
+Object.defineProperty(exports, "notification", { enumerable: true, get: function () { return query_schema_5.notification; } });
 const contract = (0, core_1.initContract)();
 exports.notificationContract = contract.router({
     readNotif: {
@@ -41,6 +43,19 @@ exports.notificationContract = contract.router({
             200: zod_1.z.object({
                 message: zod_1.z.string(),
             }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+    getNotificationsByUserId: {
+        method: "GET",
+        path: "/notification/userNotif",
+        query: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        responses: {
+            200: zod_1.z.array(query_schema_5.notification),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
             }),

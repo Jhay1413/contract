@@ -49,7 +49,7 @@ export const notificationContract = contract.router({
   },
   getNotificationsByUserId: {
     method: "GET",
-    path: "/notification/:id/userNotif",
+    path: "/notification/userNotif",
     query: z.object({
       id: z.string(),
     }),
