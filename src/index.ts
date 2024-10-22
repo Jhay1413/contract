@@ -27,8 +27,8 @@ export const ticketContract = contract.router({
     path: "/tickets",
     query: z.object({
       query: z.string(), 
-      page: z.string(),
-      pageSize: z.string(),
+      page: z.number(),
+      pageSize: z.number(),
     }),
     responses: {
       200: z.array(ticketingTableSchema),
@@ -37,9 +37,22 @@ export const ticketContract = contract.router({
       }),
     },
   },
+  getTicketsById: {
+    method: "GET",
+    path: "/tickets/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    responses: {
+      200: z.array(ticketFullDetailsSchema),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   createTickets: {
     method: "POST",
-    path: "/tickets/create",
+    path: "/tickets",
     body: ticketingMutationSchema,
     responses: {
       200: z.object({
@@ -52,7 +65,26 @@ export const ticketContract = contract.router({
   },
   editTickets: {
     method: "PUT",
-    path: "/tickets/edit/:ticketId",
+    path: "/tickets/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: ticketEditSchema,
+    responses: {
+      200: z.object({
+        message: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  forwardTickets: {
+    method: "PUT",
+    path: "/tickets/:id/forward",
+    pathParams: z.object({
+      id: z.string(),
+    }),
     body: ticketEditSchema,
     responses: {
       200: z.object({
