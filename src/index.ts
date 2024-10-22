@@ -33,8 +33,8 @@ export const ticketContract = contract.router({
     path: "/tickets",
     query: z.object({
       query: z.string(), 
-      page: z.number(),
-      pageSize: z.number(),
+      page: z.string(),
+      pageSize: z.string(),
     }),
     responses: {
       200: z.array(ticketingTableSchema),
