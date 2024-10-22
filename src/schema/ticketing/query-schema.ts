@@ -26,6 +26,20 @@ export const ticketingTableSchema = z.object({
   remarks: z.string().nullable(),
 });
 
+export const ticketLogsSchema = z.object({
+  ticketId: z.string(),
+  status: z.string(),
+  sender: z.string(),
+  receiver: z.string(),
+  priority: z.string(),
+  dateForwarded: z.string().datetime(),
+  dateReceived: z.nullable(z.string().datetime()),
+  remarks: z.string().nullable(),
+  attachments: z.string().nullable(),
+  createdAt: z.string().datetime().optional(),
+  updatedAt: z.string().datetime().optional(),
+});
+
 export const ticketFullDetailsSchema = z.object({
   id: z.string().optional(),
   ticketId: z.string(),
@@ -37,6 +51,8 @@ export const ticketFullDetailsSchema = z.object({
   requestDetails: z.string(),
   priority: z.string(),
   dueDate: z.string().datetime(),
+  dateForwarded: z.string().datetime(),
+  dateReceived: z.nullable(z.string().datetime()),
   sender: AccountQuerySchema,
   receiver: AccountQuerySchema,
   requestee: AccountQuerySchema,
@@ -44,18 +60,5 @@ export const ticketFullDetailsSchema = z.object({
   project: projectQuerySchema.nullable(),
   transactionId: z.string().nullable(),
   attachments: z.string().nullable(),
-});
-
-export const ticketLogsSchema = z.object({
-  ticketId: z.string(),
-  status: z.string(),
-  sender: z.string(),
-  receiver: z.string(),
-  priority: z.string(),
-  dateForwarded: z.string().datetime(),
-  dateReceived: z.string().datetime(),
-  remarks: z.string().nullable(),
-  attachments: z.string().nullable(),
-  createdAt: z.string().datetime().optional(),
-  updatedAt: z.string().datetime().optional(),
+  ticketLogs: z.array(ticketLogsSchema),
 });
