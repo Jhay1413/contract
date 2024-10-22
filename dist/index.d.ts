@@ -5,7 +5,7 @@ import { companyQuerySchema } from "./schema/companies/query-schema";
 import { filesMutationSchema, transactionMutationSchema } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
 import { dashboardData } from "./schema/dashboard/dashboard-data";
-import { ticketingTableSchema, ticketFullDetailsSchema } from "./schema/ticketing/query-schema";
+import { ticketingTableSchema, ticketFullDetailsSchema, ticketLogsSchema } from "./schema/ticketing/query-schema";
 import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
 export declare const notificationContract: {
     readNotif: {
@@ -24,7 +24,7 @@ export declare const notificationContract: {
         }, {
             id: string;
         }>;
-        path: "notification/:id/read";
+        path: "/notification/:id/read";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -48,16 +48,16 @@ export declare const ticketContract: {
         method: "GET";
         query: z.ZodObject<{
             query: z.ZodString;
-            page: z.ZodNumber;
-            pageSize: z.ZodNumber;
+            page: z.ZodString;
+            pageSize: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            page: number;
+            page: string;
             query: string;
-            pageSize: number;
+            pageSize: string;
         }, {
-            page: number;
+            page: string;
             query: string;
-            pageSize: number;
+            pageSize: string;
         }>;
         path: "/tickets";
         responses: {
@@ -14055,16 +14055,16 @@ declare const contracts: {
             method: "GET";
             query: z.ZodObject<{
                 query: z.ZodString;
-                page: z.ZodNumber;
-                pageSize: z.ZodNumber;
+                page: z.ZodString;
+                pageSize: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                page: number;
+                page: string;
                 query: string;
-                pageSize: number;
+                pageSize: string;
             }, {
-                page: number;
+                page: string;
                 query: string;
-                pageSize: number;
+                pageSize: string;
             }>;
             path: "/tickets";
             responses: {
@@ -15047,7 +15047,7 @@ declare const contracts: {
             }, {
                 id: string;
             }>;
-            path: "notification/:id/read";
+            path: "/notification/:id/read";
             responses: {
                 200: z.ZodObject<{
                     message: z.ZodString;
@@ -15067,4 +15067,4 @@ declare const contracts: {
         };
     };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, };

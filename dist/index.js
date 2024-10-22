@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
+exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
 const core_1 = require("@ts-rest/core");
 const zod_1 = require("zod");
 const company_schema_1 = require("./schema/company-schema");
@@ -22,6 +22,7 @@ Object.defineProperty(exports, "dashboardData", { enumerable: true, get: functio
 const query_schema_4 = require("./schema/ticketing/query-schema");
 Object.defineProperty(exports, "ticketingTableSchema", { enumerable: true, get: function () { return query_schema_4.ticketingTableSchema; } });
 Object.defineProperty(exports, "ticketFullDetailsSchema", { enumerable: true, get: function () { return query_schema_4.ticketFullDetailsSchema; } });
+Object.defineProperty(exports, "ticketLogsSchema", { enumerable: true, get: function () { return query_schema_4.ticketLogsSchema; } });
 const mutation_schema_2 = require("./schema/ticketing/mutation-schema");
 Object.defineProperty(exports, "ticketingMutationSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketingMutationSchema; } });
 Object.defineProperty(exports, "ticketEditSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketEditSchema; } });
@@ -29,7 +30,7 @@ const contract = (0, core_1.initContract)();
 exports.notificationContract = contract.router({
     readNotif: {
         method: "PUT",
-        path: "notification/:id/read",
+        path: "/notification/:id/read",
         pathParams: zod_1.z.object({
             id: zod_1.z.string(),
         }),
@@ -52,8 +53,8 @@ exports.ticketContract = contract.router({
         path: "/tickets",
         query: zod_1.z.object({
             query: zod_1.z.string(),
-            page: zod_1.z.number(),
-            pageSize: zod_1.z.number(),
+            page: zod_1.z.string(),
+            pageSize: zod_1.z.string(),
         }),
         responses: {
             200: zod_1.z.array(query_schema_4.ticketingTableSchema),

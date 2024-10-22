@@ -30,7 +30,7 @@ const contract = initContract();
 export const notificationContract = contract.router({
   readNotif: {
     method: "PUT",
-    path: "notification/:id/read",
+    path: "/notification/:id/read",
     pathParams: z.object({
       id: z.string(),
     }),
@@ -481,5 +481,5 @@ export {
   ticketingTableSchema,
   ticketEditSchema,
   ticketFullDetailsSchema,
-  ticketLogsSchema
+  ticketLogsSchema,
 };
