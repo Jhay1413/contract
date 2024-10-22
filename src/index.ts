@@ -50,7 +50,7 @@ export const ticketContract = contract.router({
       id: z.string(),
     }),
     responses: {
-      200: z.array(ticketFullDetailsSchema),
+      200: ticketFullDetailsSchema,
       500: z.object({
         error: z.string(),
       }),
