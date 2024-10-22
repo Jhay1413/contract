@@ -11,87 +11,17 @@ export declare const ticketContract: {
     getTickets: {
         method: "GET";
         query: z.ZodObject<{
-            id: z.ZodString;
-            ticketId: z.ZodString;
-            subject: z.ZodString;
-            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
-            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
-            dueDate: z.ZodString;
-            createdAt: z.ZodOptional<z.ZodString>;
-            updatedAt: z.ZodOptional<z.ZodString>;
-            receiver: z.ZodObject<{
-                firstName: z.ZodString;
-                lastName: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                firstName: string;
-                lastName: string;
-            }, {
-                firstName: string;
-                lastName: string;
-            }>;
-            sender: z.ZodObject<{
-                firstName: z.ZodString;
-                lastName: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                firstName: string;
-                lastName: string;
-            }, {
-                firstName: string;
-                lastName: string;
-            }>;
-            project: z.ZodNullable<z.ZodObject<{
-                projectName: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                projectName: string;
-            }, {
-                projectName: string;
-            }>>;
-            transactionId: z.ZodNullable<z.ZodString>;
-            remarks: z.ZodNullable<z.ZodString>;
+            query: z.ZodString;
+            page: z.ZodString;
+            pageSize: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            id: string;
-            priority: "LOW" | "IMPORTANT" | "URGENT";
-            receiver: {
-                firstName: string;
-                lastName: string;
-            };
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
-            remarks: string | null;
-            transactionId: string | null;
-            subject: string;
-            dueDate: string;
-            project: {
-                projectName: string;
-            } | null;
-            ticketId: string;
-            sender: {
-                firstName: string;
-                lastName: string;
-            };
-            createdAt?: string | undefined;
-            updatedAt?: string | undefined;
+            page: string;
+            query: string;
+            pageSize: string;
         }, {
-            id: string;
-            priority: "LOW" | "IMPORTANT" | "URGENT";
-            receiver: {
-                firstName: string;
-                lastName: string;
-            };
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
-            remarks: string | null;
-            transactionId: string | null;
-            subject: string;
-            dueDate: string;
-            project: {
-                projectName: string;
-            } | null;
-            ticketId: string;
-            sender: {
-                firstName: string;
-                lastName: string;
-            };
-            createdAt?: string | undefined;
-            updatedAt?: string | undefined;
+            page: string;
+            query: string;
+            pageSize: string;
         }>;
         path: "/tickets";
         responses: {
@@ -99,8 +29,8 @@ export declare const ticketContract: {
                 id: z.ZodString;
                 ticketId: z.ZodString;
                 subject: z.ZodString;
-                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
-                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                status: z.ZodString;
+                priority: z.ZodString;
                 dueDate: z.ZodString;
                 createdAt: z.ZodOptional<z.ZodString>;
                 updatedAt: z.ZodOptional<z.ZodString>;
@@ -135,12 +65,12 @@ export declare const ticketContract: {
                 remarks: z.ZodNullable<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
                 id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 receiver: {
                     firstName: string;
                     lastName: string;
                 };
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 remarks: string | null;
                 transactionId: string | null;
                 subject: string;
@@ -157,12 +87,12 @@ export declare const ticketContract: {
                 updatedAt?: string | undefined;
             }, {
                 id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 receiver: {
                     firstName: string;
                     lastName: string;
                 };
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 remarks: string | null;
                 transactionId: string | null;
                 subject: string;
@@ -194,10 +124,10 @@ export declare const ticketContract: {
             subject: z.ZodString;
             section: z.ZodString;
             division: z.ZodString;
-            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+            status: z.ZodString;
             requestType: z.ZodString;
             requestDetails: z.ZodString;
-            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+            priority: z.ZodString;
             dueDate: z.ZodString;
             senderId: z.ZodString;
             receiverId: z.ZodString;
@@ -207,9 +137,9 @@ export declare const ticketContract: {
             transactionId: z.ZodNullable<z.ZodString>;
             attachments: z.ZodNullable<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            priority: "LOW" | "IMPORTANT" | "URGENT";
+            priority: string;
             section: string;
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            status: string;
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
@@ -225,9 +155,9 @@ export declare const ticketContract: {
             requesteeId: string;
             id?: string | undefined;
         }, {
-            priority: "LOW" | "IMPORTANT" | "URGENT";
+            priority: string;
             section: string;
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            status: string;
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
@@ -269,10 +199,10 @@ export declare const ticketContract: {
             subject: z.ZodString;
             section: z.ZodString;
             division: z.ZodString;
-            status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+            status: z.ZodString;
             requestType: z.ZodString;
             requestDetails: z.ZodString;
-            priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+            priority: z.ZodString;
             dueDate: z.ZodString;
             senderId: z.ZodString;
             receiverId: z.ZodString;
@@ -285,9 +215,9 @@ export declare const ticketContract: {
             id: z.ZodString;
         }>, "strip", z.ZodTypeAny, {
             id: string;
-            priority: "LOW" | "IMPORTANT" | "URGENT";
+            priority: string;
             section: string;
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            status: string;
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
@@ -303,9 +233,9 @@ export declare const ticketContract: {
             requesteeId: string;
         }, {
             id: string;
-            priority: "LOW" | "IMPORTANT" | "URGENT";
+            priority: string;
             section: string;
-            status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+            status: string;
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
@@ -13371,87 +13301,17 @@ declare const contracts: {
         getTickets: {
             method: "GET";
             query: z.ZodObject<{
-                id: z.ZodString;
-                ticketId: z.ZodString;
-                subject: z.ZodString;
-                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
-                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
-                dueDate: z.ZodString;
-                createdAt: z.ZodOptional<z.ZodString>;
-                updatedAt: z.ZodOptional<z.ZodString>;
-                receiver: z.ZodObject<{
-                    firstName: z.ZodString;
-                    lastName: z.ZodString;
-                }, "strip", z.ZodTypeAny, {
-                    firstName: string;
-                    lastName: string;
-                }, {
-                    firstName: string;
-                    lastName: string;
-                }>;
-                sender: z.ZodObject<{
-                    firstName: z.ZodString;
-                    lastName: z.ZodString;
-                }, "strip", z.ZodTypeAny, {
-                    firstName: string;
-                    lastName: string;
-                }, {
-                    firstName: string;
-                    lastName: string;
-                }>;
-                project: z.ZodNullable<z.ZodObject<{
-                    projectName: z.ZodString;
-                }, "strip", z.ZodTypeAny, {
-                    projectName: string;
-                }, {
-                    projectName: string;
-                }>>;
-                transactionId: z.ZodNullable<z.ZodString>;
-                remarks: z.ZodNullable<z.ZodString>;
+                query: z.ZodString;
+                page: z.ZodString;
+                pageSize: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
-                receiver: {
-                    firstName: string;
-                    lastName: string;
-                };
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
-                remarks: string | null;
-                transactionId: string | null;
-                subject: string;
-                dueDate: string;
-                project: {
-                    projectName: string;
-                } | null;
-                ticketId: string;
-                sender: {
-                    firstName: string;
-                    lastName: string;
-                };
-                createdAt?: string | undefined;
-                updatedAt?: string | undefined;
+                page: string;
+                query: string;
+                pageSize: string;
             }, {
-                id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
-                receiver: {
-                    firstName: string;
-                    lastName: string;
-                };
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
-                remarks: string | null;
-                transactionId: string | null;
-                subject: string;
-                dueDate: string;
-                project: {
-                    projectName: string;
-                } | null;
-                ticketId: string;
-                sender: {
-                    firstName: string;
-                    lastName: string;
-                };
-                createdAt?: string | undefined;
-                updatedAt?: string | undefined;
+                page: string;
+                query: string;
+                pageSize: string;
             }>;
             path: "/tickets";
             responses: {
@@ -13459,8 +13319,8 @@ declare const contracts: {
                     id: z.ZodString;
                     ticketId: z.ZodString;
                     subject: z.ZodString;
-                    status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
-                    priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                    status: z.ZodString;
+                    priority: z.ZodString;
                     dueDate: z.ZodString;
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
@@ -13495,12 +13355,12 @@ declare const contracts: {
                     remarks: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
                     id: string;
-                    priority: "LOW" | "IMPORTANT" | "URGENT";
+                    priority: string;
                     receiver: {
                         firstName: string;
                         lastName: string;
                     };
-                    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                    status: string;
                     remarks: string | null;
                     transactionId: string | null;
                     subject: string;
@@ -13517,12 +13377,12 @@ declare const contracts: {
                     updatedAt?: string | undefined;
                 }, {
                     id: string;
-                    priority: "LOW" | "IMPORTANT" | "URGENT";
+                    priority: string;
                     receiver: {
                         firstName: string;
                         lastName: string;
                     };
-                    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                    status: string;
                     remarks: string | null;
                     transactionId: string | null;
                     subject: string;
@@ -13554,10 +13414,10 @@ declare const contracts: {
                 subject: z.ZodString;
                 section: z.ZodString;
                 division: z.ZodString;
-                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                status: z.ZodString;
                 requestType: z.ZodString;
                 requestDetails: z.ZodString;
-                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                priority: z.ZodString;
                 dueDate: z.ZodString;
                 senderId: z.ZodString;
                 receiverId: z.ZodString;
@@ -13567,9 +13427,9 @@ declare const contracts: {
                 transactionId: z.ZodNullable<z.ZodString>;
                 attachments: z.ZodNullable<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 section: string;
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
@@ -13585,9 +13445,9 @@ declare const contracts: {
                 requesteeId: string;
                 id?: string | undefined;
             }, {
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 section: string;
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
@@ -13629,10 +13489,10 @@ declare const contracts: {
                 subject: z.ZodString;
                 section: z.ZodString;
                 division: z.ZodString;
-                status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+                status: z.ZodString;
                 requestType: z.ZodString;
                 requestDetails: z.ZodString;
-                priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+                priority: z.ZodString;
                 dueDate: z.ZodString;
                 senderId: z.ZodString;
                 receiverId: z.ZodString;
@@ -13645,9 +13505,9 @@ declare const contracts: {
                 id: z.ZodString;
             }>, "strip", z.ZodTypeAny, {
                 id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 section: string;
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
@@ -13663,9 +13523,9 @@ declare const contracts: {
                 requesteeId: string;
             }, {
                 id: string;
-                priority: "LOW" | "IMPORTANT" | "URGENT";
+                priority: string;
                 section: string;
-                status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+                status: string;
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;

@@ -30,7 +30,11 @@ exports.ticketContract = contract.router({
     getTickets: {
         method: "GET",
         path: "/tickets",
-        query: query_schema_4.ticketingTableSchema,
+        query: zod_1.z.object({
+            query: zod_1.z.string(),
+            page: zod_1.z.string(),
+            pageSize: zod_1.z.string(),
+        }),
         responses: {
             200: zod_1.z.array(query_schema_4.ticketingTableSchema),
             500: zod_1.z.object({

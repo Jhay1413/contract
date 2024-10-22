@@ -5,10 +5,10 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     subject: z.ZodString;
     section: z.ZodString;
     division: z.ZodString;
-    status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+    status: z.ZodString;
     requestType: z.ZodString;
     requestDetails: z.ZodString;
-    priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+    priority: z.ZodString;
     dueDate: z.ZodString;
     senderId: z.ZodString;
     receiverId: z.ZodString;
@@ -18,9 +18,9 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     transactionId: z.ZodNullable<z.ZodString>;
     attachments: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    priority: "LOW" | "IMPORTANT" | "URGENT";
+    priority: string;
     section: string;
-    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+    status: string;
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
@@ -36,9 +36,9 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     requesteeId: string;
     id?: string | undefined;
 }, {
-    priority: "LOW" | "IMPORTANT" | "URGENT";
+    priority: string;
     section: string;
-    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+    status: string;
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
@@ -60,10 +60,10 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     subject: z.ZodString;
     section: z.ZodString;
     division: z.ZodString;
-    status: z.ZodEnum<["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]>;
+    status: z.ZodString;
     requestType: z.ZodString;
     requestDetails: z.ZodString;
-    priority: z.ZodEnum<["LOW", "IMPORTANT", "URGENT"]>;
+    priority: z.ZodString;
     dueDate: z.ZodString;
     senderId: z.ZodString;
     receiverId: z.ZodString;
@@ -76,9 +76,9 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     id: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
     id: string;
-    priority: "LOW" | "IMPORTANT" | "URGENT";
+    priority: string;
     section: string;
-    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+    status: string;
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
@@ -94,9 +94,9 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     requesteeId: string;
 }, {
     id: string;
-    priority: "LOW" | "IMPORTANT" | "URGENT";
+    priority: string;
     section: string;
-    status: "ON-PROCESS" | "APPROVED" | "RESOLVED" | "FOR SIGN AND SEAL" | "ARCHIVED";
+    status: string;
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
