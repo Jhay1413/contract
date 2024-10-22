@@ -11,6 +11,8 @@ export const ticketingMutationSchema = z.object({
     requestDetails: z.string(),
     priority: z.string(),
     dueDate: z.string().datetime(),
+    dateForwarded: z.string().datetime(),
+    dateReceived: z.nullable(z.string().datetime()),
     senderId: z.string(),
     receiverId: z.string(),
 	requesteeId: z.string(),
