@@ -6,10 +6,10 @@ export const ticketingMutationSchema = z.object({
     subject: z.string(),
     section: z.string(),
 	division: z.string(),
-    status: z.enum(["ON-PROCESS", "APPROVED", "RESOLVED", "FOR SIGN AND SEAL", "ARCHIVED"]),
+    status: z.string(),
 	requestType: z.string(),
     requestDetails: z.string(),
-    priority: z.enum(["LOW", "IMPORTANT", "URGENT"]),
+    priority: z.string(),
     dueDate: z.string().datetime(),
     senderId: z.string(),
     receiverId: z.string(),
@@ -21,4 +21,4 @@ export const ticketingMutationSchema = z.object({
 });
 export const ticketEditSchema = ticketingMutationSchema.extend({
     id:z.string()
-})
+});
