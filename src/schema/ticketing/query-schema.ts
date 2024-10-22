@@ -45,3 +45,17 @@ export const ticketFullDetailsSchema = z.object({
   transactionId: z.string().nullable(),
   attachments: z.string().nullable(),
 });
+
+export const ticketLogsSchema = z.object({
+  ticketId: z.string(),
+  status: z.string(),
+  sender: z.string(),
+  receiver: z.string(),
+  priority: z.string(),
+  dateForwarded: z.string().datetime(),
+  dateReceived: z.string().datetime(),
+  remarks: z.string().nullable(),
+  attachments: z.string().nullable(),
+  createdAt: z.string().datetime().optional(),
+  updatedAt: z.string().datetime().optional(),
+});
