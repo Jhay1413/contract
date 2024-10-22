@@ -26,13 +26,32 @@ import {
   ticketEditSchema,
 } from "./schema/ticketing/mutation-schema";
 const contract = initContract();
-
+export const notificationContract = contract.router({
+  readNotif: {
+    method: "PUT",
+    path: "notification/:id/read",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      dateRead: z.string().datetime(),
+    }),
+    responses: {
+      200: z.object({
+        message: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+});
 export const ticketContract = contract.router({
   getTickets: {
     method: "GET",
     path: "/tickets",
     query: z.object({
-      query: z.string(), 
+      query: z.string(),
       page: z.number(),
       pageSize: z.number(),
     }),
@@ -443,6 +462,7 @@ const contracts = contract.router({
   awsContract: awsContract,
   dashboardContract: dashboardContract,
   ticketing: ticketContract,
+  notificationContract: notificationContract,
 });
 export {
   companyFormData,

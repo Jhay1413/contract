@@ -82,6 +82,43 @@ export declare const ticketingTableSchema: z.ZodObject<{
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
 }>;
+export declare const ticketLogsSchema: z.ZodObject<{
+    ticketId: z.ZodString;
+    status: z.ZodString;
+    sender: z.ZodString;
+    receiver: z.ZodString;
+    priority: z.ZodString;
+    dateForwarded: z.ZodString;
+    dateReceived: z.ZodNullable<z.ZodString>;
+    remarks: z.ZodNullable<z.ZodString>;
+    attachments: z.ZodNullable<z.ZodString>;
+    createdAt: z.ZodOptional<z.ZodString>;
+    updatedAt: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    priority: string;
+    receiver: string;
+    status: string;
+    remarks: string | null;
+    dateForwarded: string;
+    dateReceived: string | null;
+    attachments: string | null;
+    ticketId: string;
+    sender: string;
+    createdAt?: string | undefined;
+    updatedAt?: string | undefined;
+}, {
+    priority: string;
+    receiver: string;
+    status: string;
+    remarks: string | null;
+    dateForwarded: string;
+    dateReceived: string | null;
+    attachments: string | null;
+    ticketId: string;
+    sender: string;
+    createdAt?: string | undefined;
+    updatedAt?: string | undefined;
+}>;
 export declare const ticketFullDetailsSchema: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
     ticketId: z.ZodString;
@@ -93,6 +130,8 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
     requestDetails: z.ZodString;
     priority: z.ZodString;
     dueDate: z.ZodString;
+    dateForwarded: z.ZodString;
+    dateReceived: z.ZodNullable<z.ZodString>;
     sender: z.ZodObject<{
         id: z.ZodString;
         email: z.ZodString;
@@ -416,6 +455,43 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
     }>>;
     transactionId: z.ZodNullable<z.ZodString>;
     attachments: z.ZodNullable<z.ZodString>;
+    ticketLogs: z.ZodArray<z.ZodObject<{
+        ticketId: z.ZodString;
+        status: z.ZodString;
+        sender: z.ZodString;
+        receiver: z.ZodString;
+        priority: z.ZodString;
+        dateForwarded: z.ZodString;
+        dateReceived: z.ZodNullable<z.ZodString>;
+        remarks: z.ZodNullable<z.ZodString>;
+        attachments: z.ZodNullable<z.ZodString>;
+        createdAt: z.ZodOptional<z.ZodString>;
+        updatedAt: z.ZodOptional<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        priority: string;
+        receiver: string;
+        status: string;
+        remarks: string | null;
+        dateForwarded: string;
+        dateReceived: string | null;
+        attachments: string | null;
+        ticketId: string;
+        sender: string;
+        createdAt?: string | undefined;
+        updatedAt?: string | undefined;
+    }, {
+        priority: string;
+        receiver: string;
+        status: string;
+        remarks: string | null;
+        dateForwarded: string;
+        dateReceived: string | null;
+        attachments: string | null;
+        ticketId: string;
+        sender: string;
+        createdAt?: string | undefined;
+        updatedAt?: string | undefined;
+    }>, "many">;
 }, "strip", z.ZodTypeAny, {
     priority: string;
     receiver: {
@@ -460,6 +536,8 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             id?: string | undefined;
         } | null | undefined;
     } | null;
+    dateForwarded: string;
+    dateReceived: string | null;
     attachments: string | null;
     ticketId: string;
     sender: {
@@ -507,6 +585,19 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
+    ticketLogs: {
+        priority: string;
+        receiver: string;
+        status: string;
+        remarks: string | null;
+        dateForwarded: string;
+        dateReceived: string | null;
+        attachments: string | null;
+        ticketId: string;
+        sender: string;
+        createdAt?: string | undefined;
+        updatedAt?: string | undefined;
+    }[];
     id?: string | undefined;
 }, {
     priority: string;
@@ -552,6 +643,8 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             id?: string | undefined;
         } | null | undefined;
     } | null;
+    dateForwarded: string;
+    dateReceived: string | null;
     attachments: string | null;
     ticketId: string;
     sender: {
@@ -599,5 +692,18 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
+    ticketLogs: {
+        priority: string;
+        receiver: string;
+        status: string;
+        remarks: string | null;
+        dateForwarded: string;
+        dateReceived: string | null;
+        attachments: string | null;
+        ticketId: string;
+        sender: string;
+        createdAt?: string | undefined;
+        updatedAt?: string | undefined;
+    }[];
     id?: string | undefined;
 }>;

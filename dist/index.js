@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = void 0;
+exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
 const core_1 = require("@ts-rest/core");
 const zod_1 = require("zod");
 const company_schema_1 = require("./schema/company-schema");
@@ -26,14 +26,34 @@ const mutation_schema_2 = require("./schema/ticketing/mutation-schema");
 Object.defineProperty(exports, "ticketingMutationSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketingMutationSchema; } });
 Object.defineProperty(exports, "ticketEditSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketEditSchema; } });
 const contract = (0, core_1.initContract)();
+exports.notificationContract = contract.router({
+    readNotif: {
+        method: "PUT",
+        path: "notification/:id/read",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: zod_1.z.object({
+            dateRead: zod_1.z.string().datetime(),
+        }),
+        responses: {
+            200: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+});
 exports.ticketContract = contract.router({
     getTickets: {
         method: "GET",
         path: "/tickets",
         query: zod_1.z.object({
             query: zod_1.z.string(),
-            page: zod_1.z.string(),
-            pageSize: zod_1.z.string(),
+            page: zod_1.z.number(),
+            pageSize: zod_1.z.number(),
         }),
         responses: {
             200: zod_1.z.array(query_schema_4.ticketingTableSchema),
@@ -42,9 +62,22 @@ exports.ticketContract = contract.router({
             }),
         },
     },
+    getTicketsById: {
+        method: "GET",
+        path: "/tickets/:id",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        responses: {
+            200: query_schema_4.ticketFullDetailsSchema,
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
     createTickets: {
         method: "POST",
-        path: "/tickets/create",
+        path: "/tickets",
         body: mutation_schema_2.ticketingMutationSchema,
         responses: {
             200: zod_1.z.object({
@@ -57,7 +90,26 @@ exports.ticketContract = contract.router({
     },
     editTickets: {
         method: "PUT",
-        path: "/tickets/edit/:ticketId",
+        path: "/tickets/:id",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: mutation_schema_2.ticketEditSchema,
+        responses: {
+            200: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+    forwardTickets: {
+        method: "PUT",
+        path: "/tickets/:id/forward",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
         body: mutation_schema_2.ticketEditSchema,
         responses: {
             200: zod_1.z.object({
@@ -397,5 +449,6 @@ const contracts = contract.router({
     awsContract: exports.awsContract,
     dashboardContract: exports.dashboardContract,
     ticketing: exports.ticketContract,
+    notificationContract: exports.notificationContract,
 });
 exports.contracts = contracts;
