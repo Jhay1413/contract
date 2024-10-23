@@ -311,7 +311,7 @@ export const companyContract = contract.router({
       }),
     },
   },
-  fetchCompanyProjects: {
+  fetchCompanyProjectsBySearch: {
     method: "GET",
     path: "/company/projects",
     query: z.object({
@@ -319,7 +319,7 @@ export const companyContract = contract.router({
     }),
     responses: {
       200: z.array(z.object({
-        projectId: z.string(), 
+        id: z.string(), 
         projectName: z.string()
       })),
       500: z.object({
