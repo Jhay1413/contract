@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
+exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
 const core_1 = require("@ts-rest/core");
 const zod_1 = require("zod");
 const company_schema_1 = require("./schema/company-schema");
@@ -28,6 +28,8 @@ Object.defineProperty(exports, "ticketingMutationSchema", { enumerable: true, ge
 Object.defineProperty(exports, "ticketEditSchema", { enumerable: true, get: function () { return mutation_schema_2.ticketEditSchema; } });
 const query_schema_5 = require("./schema/notification/query-schema");
 Object.defineProperty(exports, "notification", { enumerable: true, get: function () { return query_schema_5.notification; } });
+const query_schema_6 = require("./schema/aws/query-schema");
+Object.defineProperty(exports, "getViewSignedUrlsSchema", { enumerable: true, get: function () { return query_schema_6.getViewSignedUrlsSchema; } });
 const contract = (0, core_1.initContract)();
 exports.notificationContract = contract.router({
     readNotif: {
@@ -150,6 +152,19 @@ exports.dashboardContract = contract.router({
     },
 });
 exports.awsContract = contract.router({
+    getViewSignedUrl: {
+        method: "GET",
+        path: "/aws/getViewSignedUrl",
+        query: zod_1.z.object({
+            data: zod_1.z.array(query_schema_6.getViewSignedUrlsSchema),
+        }),
+        responses: {
+            200: zod_1.z.array(query_schema_6.getViewSignedUrlsSchema),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
     getSignedUrl: {
         method: "GET",
         path: "/aws/getSignedUrl",
@@ -310,13 +325,13 @@ exports.companyContract = contract.router({
         responses: {
             200: zod_1.z.array(zod_1.z.object({
                 id: zod_1.z.string(),
-                projectName: zod_1.z.string()
+                projectName: zod_1.z.string(),
             })),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
             }),
         },
-    }
+    },
 });
 exports.transactionContract = contract.router({
     archivedTransation: {

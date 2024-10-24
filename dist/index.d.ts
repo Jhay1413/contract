@@ -8,6 +8,7 @@ import { dashboardData } from "./schema/dashboard/dashboard-data";
 import { ticketingTableSchema, ticketFullDetailsSchema, ticketLogsSchema } from "./schema/ticketing/query-schema";
 import { ticketingMutationSchema, ticketEditSchema } from "./schema/ticketing/mutation-schema";
 import { notification } from "./schema/notification/query-schema";
+import { getViewSignedUrlsSchema } from "./schema/aws/query-schema";
 export declare const notificationContract: {
     readNotif: {
         body: z.ZodObject<{
@@ -1197,6 +1198,59 @@ export declare const dashboardContract: {
     };
 };
 export declare const awsContract: {
+    getViewSignedUrl: {
+        method: "GET";
+        query: z.ZodObject<{
+            data: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                signedUrl: z.ZodOptional<z.ZodString>;
+                fileUrl: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }, {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }>, "many">;
+        }, "strip", z.ZodTypeAny, {
+            data: {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }[];
+        }, {
+            data: {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }[];
+        }>;
+        path: "/aws/getViewSignedUrl";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                signedUrl: z.ZodOptional<z.ZodString>;
+                fileUrl: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }, {
+                id: string;
+                fileUrl: string;
+                signedUrl?: string | undefined;
+            }>, "many">;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
     getSignedUrl: {
         method: "GET";
         query: z.ZodObject<{
@@ -14010,6 +14064,59 @@ declare const contracts: {
         };
     };
     awsContract: {
+        getViewSignedUrl: {
+            method: "GET";
+            query: z.ZodObject<{
+                data: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    signedUrl: z.ZodOptional<z.ZodString>;
+                    fileUrl: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }, {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                data: {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }[];
+            }, {
+                data: {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }[];
+            }>;
+            path: "/aws/getViewSignedUrl";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    signedUrl: z.ZodOptional<z.ZodString>;
+                    fileUrl: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }, {
+                    id: string;
+                    fileUrl: string;
+                    signedUrl?: string | undefined;
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
         getSignedUrl: {
             method: "GET";
             query: z.ZodObject<{
@@ -15272,4 +15379,4 @@ declare const contracts: {
         };
     };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, getViewSignedUrlsSchema, };
