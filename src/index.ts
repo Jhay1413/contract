@@ -206,6 +206,42 @@ export const awsContract = contract.router({
   },
 });
 export const userAccountsContract = contract.router({
+  getUsersForTickets: {
+    method: "GET",
+    path: "/user/forward-to",
+    query: z.object({
+      division:z.string(),
+      section: z.string(),
+      role: z.string(),
+      mode: z.string(),
+    }),
+    responses: {
+      200: z.array(
+        z.object({
+          id: z.string(),
+          userInfo: z.object({
+            firstName: z.string(),
+            lastName: z.string(),
+          }),
+          accountRole: z.enum([
+              "SUPERADMIN",
+              "ADMIN",
+              "TL",
+              "CH",
+              "GUEST",
+              "RECORDS",
+              "MANAGER",
+              "QA",
+              "DMS",
+              "FINANCE",
+            ]),
+        })
+      ),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   getUserInfoForSelect: {
     method: "GET",
     path: "/user/user-info",
