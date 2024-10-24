@@ -114,11 +114,16 @@ export declare const ticketContract: {
                 id: z.ZodString;
                 ticketId: z.ZodString;
                 subject: z.ZodString;
+                section: z.ZodString;
+                division: z.ZodString;
                 status: z.ZodString;
                 priority: z.ZodString;
+                requestDetails: z.ZodString;
                 dueDate: z.ZodString;
                 createdAt: z.ZodOptional<z.ZodString>;
                 updatedAt: z.ZodOptional<z.ZodString>;
+                dateForwarded: z.ZodString;
+                dateReceived: z.ZodNullable<z.ZodString>;
                 receiver: z.ZodObject<{
                     firstName: z.ZodString;
                     lastName: z.ZodString;
@@ -155,6 +160,7 @@ export declare const ticketContract: {
                     firstName: string;
                     lastName: string;
                 };
+                section: string;
                 status: string;
                 remarks: string | null;
                 transactionId: string | null;
@@ -163,7 +169,11 @@ export declare const ticketContract: {
                 project: {
                     projectName: string;
                 } | null;
+                dateForwarded: string;
+                dateReceived: string | null;
                 ticketId: string;
+                division: string;
+                requestDetails: string;
                 sender: {
                     firstName: string;
                     lastName: string;
@@ -177,6 +187,7 @@ export declare const ticketContract: {
                     firstName: string;
                     lastName: string;
                 };
+                section: string;
                 status: string;
                 remarks: string | null;
                 transactionId: string | null;
@@ -185,7 +196,11 @@ export declare const ticketContract: {
                 project: {
                     projectName: string;
                 } | null;
+                dateForwarded: string;
+                dateReceived: string | null;
                 ticketId: string;
+                division: string;
+                requestDetails: string;
                 sender: {
                     firstName: string;
                     lastName: string;
@@ -634,6 +649,8 @@ export declare const ticketContract: {
                 dateReceived: string | null;
                 attachments: string | null;
                 ticketId: string;
+                division: string;
+                requestDetails: string;
                 sender: {
                     id: string;
                     email: string;
@@ -655,9 +672,7 @@ export declare const ticketContract: {
                         accountId?: string | null | undefined;
                     } | null | undefined;
                 };
-                division: string;
                 requestType: string;
-                requestDetails: string;
                 requestee: {
                     id: string;
                     email: string;
@@ -741,6 +756,8 @@ export declare const ticketContract: {
                 dateReceived: string | null;
                 attachments: string | null;
                 ticketId: string;
+                division: string;
+                requestDetails: string;
                 sender: {
                     id: string;
                     email: string;
@@ -762,9 +779,7 @@ export declare const ticketContract: {
                         accountId?: string | null | undefined;
                     } | null | undefined;
                 };
-                division: string;
                 requestType: string;
-                requestDetails: string;
                 requestee: {
                     id: string;
                     email: string;
@@ -831,6 +846,7 @@ export declare const ticketContract: {
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
             attachments: z.ZodNullable<z.ZodString>;
+            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
         }, "strip", z.ZodTypeAny, {
             priority: string;
             section: string;
@@ -846,11 +862,12 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
             id?: string | undefined;
+            file?: FileList | undefined;
         }, {
             priority: string;
             section: string;
@@ -866,11 +883,12 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
             id?: string | undefined;
+            file?: FileList | undefined;
         }>;
         method: "POST";
         path: "/tickets";
@@ -912,6 +930,7 @@ export declare const ticketContract: {
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
             attachments: z.ZodNullable<z.ZodString>;
+            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
         }, {
             id: z.ZodString;
         }>, "strip", z.ZodTypeAny, {
@@ -930,10 +949,11 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
+            file?: FileList | undefined;
         }, {
             id: string;
             priority: string;
@@ -950,10 +970,11 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
+            file?: FileList | undefined;
         }>;
         method: "PUT";
         pathParams: z.ZodObject<{
@@ -1002,6 +1023,7 @@ export declare const ticketContract: {
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
             attachments: z.ZodNullable<z.ZodString>;
+            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
         }, {
             id: z.ZodString;
         }>, "strip", z.ZodTypeAny, {
@@ -1020,10 +1042,11 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
+            file?: FileList | undefined;
         }, {
             id: string;
             priority: string;
@@ -1040,10 +1063,11 @@ export declare const ticketContract: {
             receiverId: string;
             ticketId: string;
             division: string;
-            requestType: string;
             requestDetails: string;
+            requestType: string;
             senderId: string;
             requesteeId: string;
+            file?: FileList | undefined;
         }>;
         method: "PUT";
         pathParams: z.ZodObject<{
@@ -2195,6 +2219,36 @@ export declare const companyContract: {
                     } | null | undefined;
                 }[] | null | undefined;
             }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+    fetchCompanyProjectsBySearch: {
+        method: "GET";
+        query: z.ZodObject<{
+            projectName: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            projectName: string;
+        }, {
+            projectName: string;
+        }>;
+        path: "/company/projects";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                projectName: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                projectName: string;
+            }, {
+                id: string;
+                projectName: string;
+            }>, "many">;
             500: z.ZodObject<{
                 error: z.ZodString;
             }, "strip", z.ZodTypeAny, {
@@ -8460,6 +8514,36 @@ declare const contracts: {
                 }>;
             };
         };
+        fetchCompanyProjectsBySearch: {
+            method: "GET";
+            query: z.ZodObject<{
+                projectName: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                projectName: string;
+            }, {
+                projectName: string;
+            }>;
+            path: "/company/projects";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    projectName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    projectName: string;
+                }, {
+                    id: string;
+                    projectName: string;
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
     };
     transaction: {
         archivedTransation: {
@@ -14121,11 +14205,16 @@ declare const contracts: {
                     id: z.ZodString;
                     ticketId: z.ZodString;
                     subject: z.ZodString;
+                    section: z.ZodString;
+                    division: z.ZodString;
                     status: z.ZodString;
                     priority: z.ZodString;
+                    requestDetails: z.ZodString;
                     dueDate: z.ZodString;
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
+                    dateForwarded: z.ZodString;
+                    dateReceived: z.ZodNullable<z.ZodString>;
                     receiver: z.ZodObject<{
                         firstName: z.ZodString;
                         lastName: z.ZodString;
@@ -14162,6 +14251,7 @@ declare const contracts: {
                         firstName: string;
                         lastName: string;
                     };
+                    section: string;
                     status: string;
                     remarks: string | null;
                     transactionId: string | null;
@@ -14170,7 +14260,11 @@ declare const contracts: {
                     project: {
                         projectName: string;
                     } | null;
+                    dateForwarded: string;
+                    dateReceived: string | null;
                     ticketId: string;
+                    division: string;
+                    requestDetails: string;
                     sender: {
                         firstName: string;
                         lastName: string;
@@ -14184,6 +14278,7 @@ declare const contracts: {
                         firstName: string;
                         lastName: string;
                     };
+                    section: string;
                     status: string;
                     remarks: string | null;
                     transactionId: string | null;
@@ -14192,7 +14287,11 @@ declare const contracts: {
                     project: {
                         projectName: string;
                     } | null;
+                    dateForwarded: string;
+                    dateReceived: string | null;
                     ticketId: string;
+                    division: string;
+                    requestDetails: string;
                     sender: {
                         firstName: string;
                         lastName: string;
@@ -14641,6 +14740,8 @@ declare const contracts: {
                     dateReceived: string | null;
                     attachments: string | null;
                     ticketId: string;
+                    division: string;
+                    requestDetails: string;
                     sender: {
                         id: string;
                         email: string;
@@ -14662,9 +14763,7 @@ declare const contracts: {
                             accountId?: string | null | undefined;
                         } | null | undefined;
                     };
-                    division: string;
                     requestType: string;
-                    requestDetails: string;
                     requestee: {
                         id: string;
                         email: string;
@@ -14748,6 +14847,8 @@ declare const contracts: {
                     dateReceived: string | null;
                     attachments: string | null;
                     ticketId: string;
+                    division: string;
+                    requestDetails: string;
                     sender: {
                         id: string;
                         email: string;
@@ -14769,9 +14870,7 @@ declare const contracts: {
                             accountId?: string | null | undefined;
                         } | null | undefined;
                     };
-                    division: string;
                     requestType: string;
-                    requestDetails: string;
                     requestee: {
                         id: string;
                         email: string;
@@ -14838,6 +14937,7 @@ declare const contracts: {
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
                 attachments: z.ZodNullable<z.ZodString>;
+                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
             }, "strip", z.ZodTypeAny, {
                 priority: string;
                 section: string;
@@ -14853,11 +14953,12 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
                 id?: string | undefined;
+                file?: FileList | undefined;
             }, {
                 priority: string;
                 section: string;
@@ -14873,11 +14974,12 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
                 id?: string | undefined;
+                file?: FileList | undefined;
             }>;
             method: "POST";
             path: "/tickets";
@@ -14919,6 +15021,7 @@ declare const contracts: {
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
                 attachments: z.ZodNullable<z.ZodString>;
+                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
             }, {
                 id: z.ZodString;
             }>, "strip", z.ZodTypeAny, {
@@ -14937,10 +15040,11 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
+                file?: FileList | undefined;
             }, {
                 id: string;
                 priority: string;
@@ -14957,10 +15061,11 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
+                file?: FileList | undefined;
             }>;
             method: "PUT";
             pathParams: z.ZodObject<{
@@ -15009,6 +15114,7 @@ declare const contracts: {
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
                 attachments: z.ZodNullable<z.ZodString>;
+                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
             }, {
                 id: z.ZodString;
             }>, "strip", z.ZodTypeAny, {
@@ -15027,10 +15133,11 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
+                file?: FileList | undefined;
             }, {
                 id: string;
                 priority: string;
@@ -15047,10 +15154,11 @@ declare const contracts: {
                 receiverId: string;
                 ticketId: string;
                 division: string;
-                requestType: string;
                 requestDetails: string;
+                requestType: string;
                 senderId: string;
                 requesteeId: string;
+                file?: FileList | undefined;
             }>;
             method: "PUT";
             pathParams: z.ZodObject<{

@@ -1,4 +1,7 @@
 import { z } from "zod";
+export declare const MAX_FILE_SIZE_50MB = 50;
+export declare const MAX_FILE_SIZE_10MB = 10;
+export declare const sizeInMB: (sizeInBytes: number, decimalsNum?: number) => number;
 export declare const ticketingMutationSchema: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
     ticketId: z.ZodString;
@@ -19,6 +22,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
     attachments: z.ZodNullable<z.ZodString>;
+    file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
 }, "strip", z.ZodTypeAny, {
     priority: string;
     section: string;
@@ -34,11 +38,12 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     receiverId: string;
     ticketId: string;
     division: string;
-    requestType: string;
     requestDetails: string;
+    requestType: string;
     senderId: string;
     requesteeId: string;
     id?: string | undefined;
+    file?: FileList | undefined;
 }, {
     priority: string;
     section: string;
@@ -54,11 +59,12 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     receiverId: string;
     ticketId: string;
     division: string;
-    requestType: string;
     requestDetails: string;
+    requestType: string;
     senderId: string;
     requesteeId: string;
     id?: string | undefined;
+    file?: FileList | undefined;
 }>;
 export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     id: z.ZodOptional<z.ZodString>;
@@ -80,6 +86,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
     attachments: z.ZodNullable<z.ZodString>;
+    file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
 }, {
     id: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
@@ -98,10 +105,11 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     receiverId: string;
     ticketId: string;
     division: string;
-    requestType: string;
     requestDetails: string;
+    requestType: string;
     senderId: string;
     requesteeId: string;
+    file?: FileList | undefined;
 }, {
     id: string;
     priority: string;
@@ -118,8 +126,9 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     receiverId: string;
     ticketId: string;
     division: string;
-    requestType: string;
     requestDetails: string;
+    requestType: string;
     senderId: string;
     requesteeId: string;
+    file?: FileList | undefined;
 }>;

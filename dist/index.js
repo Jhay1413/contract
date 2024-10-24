@@ -301,6 +301,22 @@ exports.companyContract = contract.router({
             }),
         },
     },
+    fetchCompanyProjectsBySearch: {
+        method: "GET",
+        path: "/company/projects",
+        query: zod_1.z.object({
+            projectName: zod_1.z.string(),
+        }),
+        responses: {
+            200: zod_1.z.array(zod_1.z.object({
+                id: zod_1.z.string(),
+                projectName: zod_1.z.string()
+            })),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    }
 });
 exports.transactionContract = contract.router({
     archivedTransation: {

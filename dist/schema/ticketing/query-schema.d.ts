@@ -3,11 +3,16 @@ export declare const ticketingTableSchema: z.ZodObject<{
     id: z.ZodString;
     ticketId: z.ZodString;
     subject: z.ZodString;
+    section: z.ZodString;
+    division: z.ZodString;
     status: z.ZodString;
     priority: z.ZodString;
+    requestDetails: z.ZodString;
     dueDate: z.ZodString;
     createdAt: z.ZodOptional<z.ZodString>;
     updatedAt: z.ZodOptional<z.ZodString>;
+    dateForwarded: z.ZodString;
+    dateReceived: z.ZodNullable<z.ZodString>;
     receiver: z.ZodObject<{
         firstName: z.ZodString;
         lastName: z.ZodString;
@@ -44,6 +49,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
         firstName: string;
         lastName: string;
     };
+    section: string;
     status: string;
     remarks: string | null;
     transactionId: string | null;
@@ -52,7 +58,11 @@ export declare const ticketingTableSchema: z.ZodObject<{
     project: {
         projectName: string;
     } | null;
+    dateForwarded: string;
+    dateReceived: string | null;
     ticketId: string;
+    division: string;
+    requestDetails: string;
     sender: {
         firstName: string;
         lastName: string;
@@ -66,6 +76,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
         firstName: string;
         lastName: string;
     };
+    section: string;
     status: string;
     remarks: string | null;
     transactionId: string | null;
@@ -74,7 +85,11 @@ export declare const ticketingTableSchema: z.ZodObject<{
     project: {
         projectName: string;
     } | null;
+    dateForwarded: string;
+    dateReceived: string | null;
     ticketId: string;
+    division: string;
+    requestDetails: string;
     sender: {
         firstName: string;
         lastName: string;
@@ -540,6 +555,8 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
     dateReceived: string | null;
     attachments: string | null;
     ticketId: string;
+    division: string;
+    requestDetails: string;
     sender: {
         id: string;
         email: string;
@@ -561,9 +578,7 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
-    division: string;
     requestType: string;
-    requestDetails: string;
     requestee: {
         id: string;
         email: string;
@@ -647,6 +662,8 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
     dateReceived: string | null;
     attachments: string | null;
     ticketId: string;
+    division: string;
+    requestDetails: string;
     sender: {
         id: string;
         email: string;
@@ -668,9 +685,7 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
-    division: string;
     requestType: string;
-    requestDetails: string;
     requestee: {
         id: string;
         email: string;

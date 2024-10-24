@@ -27,6 +27,7 @@ import {
   ticketEditSchema,
 } from "./schema/ticketing/mutation-schema";
 import { notification } from "./schema/notification/query-schema";
+import { getViewSignedUrlsSchema } from "./schema/aws/query-schema";
 const contract = initContract();
 export const notificationContract = contract.router({
   readNotif: {
@@ -150,6 +151,19 @@ export const dashboardContract = contract.router({
   },
 });
 export const awsContract = contract.router({
+  getViewSignedUrl: {
+    method: "GET",
+    path: "/aws/getViewSignedUrl",
+    query: z.object({
+      data: z.array(getViewSignedUrlsSchema),
+    }),
+    responses: {
+      200: z.array(getViewSignedUrlsSchema),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   getSignedUrl: {
     method: "GET",
     path: "/aws/getSignedUrl",
@@ -318,15 +332,17 @@ export const companyContract = contract.router({
       projectName: z.string(),
     }),
     responses: {
-      200: z.array(z.object({
-        id: z.string(), 
-        projectName: z.string()
-      })),
+      200: z.array(
+        z.object({
+          id: z.string(),
+          projectName: z.string(),
+        })
+      ),
       500: z.object({
         error: z.string(),
       }),
     },
-  }
+  },
 });
 
 export const transactionContract = contract.router({
@@ -513,4 +529,5 @@ export {
   ticketFullDetailsSchema,
   ticketLogsSchema,
   notification,
+  getViewSignedUrlsSchema,
 };
