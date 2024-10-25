@@ -82,5 +82,5 @@ export const completeStaffWorkMutationSchema = z.object({
     // }, "File type is not supported")
     .optional(),
   attachmentUrl: z.nullable(z.string().optional()),
-  attachments: z.array(z.string()),
+  attachments: z.array(z.string()).optional(),
 });
