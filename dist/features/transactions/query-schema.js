@@ -22,7 +22,6 @@ exports.completeStaffWorkQuerySchema = zod_1.z.object({
     createdAt: zod_1.z.string().datetime().optional(),
     updatedAt: zod_1.z.string().datetime().optional(),
     transactionId: zod_1.z.string().optional(),
-    attachmentUrl: zod_1.z.nullable(zod_1.z.string()).optional(),
     attachments: zod_1.z.array(zod_1.z.string()),
 });
 exports.transactionLogsData = zod_1.z.object({

@@ -26,7 +26,6 @@ export const completeStaffWorkQuerySchema = z.object({
   createdAt: z.string().datetime().optional(),
   updatedAt: z.string().datetime().optional(),
   transactionId: z.string().optional(),
-  attachmentUrl: z.nullable(z.string()).optional(),
   attachments: z.array(z.string()),
 });
 
