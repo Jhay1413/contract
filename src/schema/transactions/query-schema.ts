@@ -27,6 +27,7 @@ export const completeStaffWorkQuerySchema = z.object({
   updatedAt: z.string().datetime().optional(),
   transactionId: z.string().optional(),
   attachmentUrl: z.nullable(z.string()).optional(),
+  attachments: z.array(z.string()),
 });
 
 export const transactionLogsData = z.object({

@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
+exports.completeStaffWorkQuerySchema = exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = exports.transactionContract = exports.companyContract = exports.userAccountsContract = exports.awsContract = exports.dashboardContract = exports.ticketContract = exports.notificationContract = void 0;
 const core_1 = require("@ts-rest/core");
 const zod_1 = require("zod");
 const company_schema_1 = require("./schema/company-schema");
 Object.defineProperty(exports, "companyFormData", { enumerable: true, get: function () { return company_schema_1.companyFormData; } });
 const query_schema_1 = require("./schema/transactions/query-schema");
+Object.defineProperty(exports, "completeStaffWorkQuerySchema", { enumerable: true, get: function () { return query_schema_1.completeStaffWorkQuerySchema; } });
 Object.defineProperty(exports, "filesQuerySchema", { enumerable: true, get: function () { return query_schema_1.filesQuerySchema; } });
 Object.defineProperty(exports, "transactionLogsData", { enumerable: true, get: function () { return query_schema_1.transactionLogsData; } });
 Object.defineProperty(exports, "transactionQueryData", { enumerable: true, get: function () { return query_schema_1.transactionQueryData; } });

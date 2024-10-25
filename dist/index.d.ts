@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { companyFormData } from "./schema/company-schema";
-import { filesQuerySchema, transactionLogsData, transactionQueryData, transactionTable } from "./schema/transactions/query-schema";
+import { completeStaffWorkQuerySchema, filesQuerySchema, transactionLogsData, transactionQueryData, transactionTable } from "./schema/transactions/query-schema";
 import { companyQuerySchema } from "./schema/companies/query-schema";
 import { filesMutationSchema, transactionMutationSchema } from "./schema/transactions/mutation-schema";
 import { userInfoQuerySchema } from "./schema/users/query-schema";
@@ -15499,4 +15499,4 @@ declare const contracts: {
         };
     };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, getViewSignedUrlsSchema, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, getViewSignedUrlsSchema, completeStaffWorkQuerySchema, };
