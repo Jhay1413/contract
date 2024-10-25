@@ -202,6 +202,40 @@ exports.awsContract = contract.router({
     },
 });
 exports.userAccountsContract = contract.router({
+    getUsersForTickets: {
+        method: "GET",
+        path: "/user/forward-to",
+        query: zod_1.z.object({
+            division: zod_1.z.string(),
+            section: zod_1.z.string(),
+            role: zod_1.z.string(),
+            mode: zod_1.z.string(),
+        }),
+        responses: {
+            200: zod_1.z.array(zod_1.z.object({
+                id: zod_1.z.string(),
+                userInfo: zod_1.z.object({
+                    firstName: zod_1.z.string(),
+                    lastName: zod_1.z.string(),
+                }),
+                accountRole: zod_1.z.enum([
+                    "SUPERADMIN",
+                    "ADMIN",
+                    "TL",
+                    "CH",
+                    "GUEST",
+                    "RECORDS",
+                    "MANAGER",
+                    "QA",
+                    "DMS",
+                    "FINANCE",
+                ]),
+            })),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
     getUserInfoForSelect: {
         method: "GET",
         path: "/user/user-info",

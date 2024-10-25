@@ -1325,6 +1325,63 @@ export declare const awsContract: {
     };
 };
 export declare const userAccountsContract: {
+    getUsersForTickets: {
+        method: "GET";
+        query: z.ZodObject<{
+            division: z.ZodString;
+            section: z.ZodString;
+            role: z.ZodString;
+            mode: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            section: string;
+            role: string;
+            mode: string;
+            division: string;
+        }, {
+            section: string;
+            role: string;
+            mode: string;
+            division: string;
+        }>;
+        path: "/user/forward-to";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                userInfo: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                accountRole: z.ZodEnum<["SUPERADMIN", "ADMIN", "TL", "CH", "GUEST", "RECORDS", "MANAGER", "QA", "DMS", "FINANCE"]>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                accountRole: "SUPERADMIN" | "ADMIN" | "TL" | "CH" | "GUEST" | "RECORDS" | "MANAGER" | "QA" | "DMS" | "FINANCE";
+                userInfo: {
+                    firstName: string;
+                    lastName: string;
+                };
+            }, {
+                id: string;
+                accountRole: "SUPERADMIN" | "ADMIN" | "TL" | "CH" | "GUEST" | "RECORDS" | "MANAGER" | "QA" | "DMS" | "FINANCE";
+                userInfo: {
+                    firstName: string;
+                    lastName: string;
+                };
+            }>, "many">;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
     getUserInfoForSelect: {
         method: "GET";
         query: z.ZodObject<{
@@ -6778,9 +6835,11 @@ export declare const transactionContract: {
             transactionId: z.ZodOptional<z.ZodString>;
             attachmentFile: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<File, z.ZodTypeDef, File>, File, File>, File, File>>;
             attachmentUrl: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+            attachments: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
             date: string;
             remarks: string;
+            attachments: string[];
             id?: string | undefined;
             createdAt?: string | undefined;
             updatedAt?: string | undefined;
@@ -6790,6 +6849,7 @@ export declare const transactionContract: {
         }, {
             date: string;
             remarks: string;
+            attachments: string[];
             id?: string | undefined;
             createdAt?: string | undefined;
             updatedAt?: string | undefined;
@@ -13064,9 +13124,11 @@ declare const contracts: {
                 transactionId: z.ZodOptional<z.ZodString>;
                 attachmentFile: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<File, z.ZodTypeDef, File>, File, File>, File, File>>;
                 attachmentUrl: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+                attachments: z.ZodArray<z.ZodString, "many">;
             }, "strip", z.ZodTypeAny, {
                 date: string;
                 remarks: string;
+                attachments: string[];
                 id?: string | undefined;
                 createdAt?: string | undefined;
                 updatedAt?: string | undefined;
@@ -13076,6 +13138,7 @@ declare const contracts: {
             }, {
                 date: string;
                 remarks: string;
+                attachments: string[];
                 id?: string | undefined;
                 createdAt?: string | undefined;
                 updatedAt?: string | undefined;
@@ -13980,6 +14043,63 @@ declare const contracts: {
         };
     };
     userAccounts: {
+        getUsersForTickets: {
+            method: "GET";
+            query: z.ZodObject<{
+                division: z.ZodString;
+                section: z.ZodString;
+                role: z.ZodString;
+                mode: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                section: string;
+                role: string;
+                mode: string;
+                division: string;
+            }, {
+                section: string;
+                role: string;
+                mode: string;
+                division: string;
+            }>;
+            path: "/user/forward-to";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    userInfo: z.ZodObject<{
+                        firstName: z.ZodString;
+                        lastName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        firstName: string;
+                        lastName: string;
+                    }, {
+                        firstName: string;
+                        lastName: string;
+                    }>;
+                    accountRole: z.ZodEnum<["SUPERADMIN", "ADMIN", "TL", "CH", "GUEST", "RECORDS", "MANAGER", "QA", "DMS", "FINANCE"]>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    accountRole: "SUPERADMIN" | "ADMIN" | "TL" | "CH" | "GUEST" | "RECORDS" | "MANAGER" | "QA" | "DMS" | "FINANCE";
+                    userInfo: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                }, {
+                    id: string;
+                    accountRole: "SUPERADMIN" | "ADMIN" | "TL" | "CH" | "GUEST" | "RECORDS" | "MANAGER" | "QA" | "DMS" | "FINANCE";
+                    userInfo: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
         getUserInfoForSelect: {
             method: "GET";
             query: z.ZodObject<{

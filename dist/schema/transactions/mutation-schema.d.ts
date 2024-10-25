@@ -159,9 +159,11 @@ export declare const completeStaffWorkMutationSchema: z.ZodObject<{
     transactionId: z.ZodOptional<z.ZodString>;
     attachmentFile: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<File, z.ZodTypeDef, File>, File, File>, File, File>>;
     attachmentUrl: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    attachments: z.ZodArray<z.ZodString, "many">;
 }, "strip", z.ZodTypeAny, {
     date: string;
     remarks: string;
+    attachments: string[];
     id?: string | undefined;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
@@ -171,6 +173,7 @@ export declare const completeStaffWorkMutationSchema: z.ZodObject<{
 }, {
     date: string;
     remarks: string;
+    attachments: string[];
     id?: string | undefined;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;

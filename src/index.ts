@@ -210,7 +210,7 @@ export const userAccountsContract = contract.router({
     method: "GET",
     path: "/user/forward-to",
     query: z.object({
-      division:z.string(),
+      division: z.string(),
       section: z.string(),
       role: z.string(),
       mode: z.string(),
@@ -224,17 +224,17 @@ export const userAccountsContract = contract.router({
             lastName: z.string(),
           }),
           accountRole: z.enum([
-              "SUPERADMIN",
-              "ADMIN",
-              "TL",
-              "CH",
-              "GUEST",
-              "RECORDS",
-              "MANAGER",
-              "QA",
-              "DMS",
-              "FINANCE",
-            ]),
+            "SUPERADMIN",
+            "ADMIN",
+            "TL",
+            "CH",
+            "GUEST",
+            "RECORDS",
+            "MANAGER",
+            "QA",
+            "DMS",
+            "FINANCE",
+          ]),
         })
       ),
       500: z.object({
@@ -566,4 +566,5 @@ export {
   ticketLogsSchema,
   notification,
   getViewSignedUrlsSchema,
+  completeStaffWorkQuerySchema,
 };
