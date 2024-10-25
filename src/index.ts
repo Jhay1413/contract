@@ -66,4 +66,5 @@ export {
   notification,
   getViewSignedUrlsSchema,
   completeStaffWorkQuerySchema,
+  completeStaffWorkMutationSchema,
 };

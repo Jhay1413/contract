@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.completeStaffWorkQuerySchema = exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = void 0;
+exports.completeStaffWorkMutationSchema = exports.completeStaffWorkQuerySchema = exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = void 0;
 const core_1 = require("@ts-rest/core");
 const company_schema_1 = require("./features/company-schema");
 Object.defineProperty(exports, "companyFormData", { enumerable: true, get: function () { return company_schema_1.companyFormData; } });
@@ -13,6 +13,7 @@ Object.defineProperty(exports, "transactionTable", { enumerable: true, get: func
 const query_schema_2 = require("./features/companies/query-schema");
 Object.defineProperty(exports, "companyQuerySchema", { enumerable: true, get: function () { return query_schema_2.companyQuerySchema; } });
 const mutation_schema_1 = require("./features/transactions/mutation-schema");
+Object.defineProperty(exports, "completeStaffWorkMutationSchema", { enumerable: true, get: function () { return mutation_schema_1.completeStaffWorkMutationSchema; } });
 Object.defineProperty(exports, "filesMutationSchema", { enumerable: true, get: function () { return mutation_schema_1.filesMutationSchema; } });
 Object.defineProperty(exports, "transactionMutationSchema", { enumerable: true, get: function () { return mutation_schema_1.transactionMutationSchema; } });
 const query_schema_3 = require("./features/users/query-schema");
