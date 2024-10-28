@@ -1,9 +1,25 @@
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
-import { getViewSignedUrlsSchema } from "./query-schema";
+import {
+  getMultipleSignedUrlSchema,
+  getViewSignedUrlsSchema,
+} from "./query-schema";
 
 const contract = initContract();
 export const awsContract = contract.router({
+  getMultipleSignedUrl: {
+    method: "GET",
+    path: "/aws/getMultipleSignedUrl",
+    query: z.object({
+      data: z.array(getMultipleSignedUrlSchema),
+    }),
+    responses: {
+      200: z.array(getMultipleSignedUrlSchema),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   getViewSignedUrl: {
     method: "GET",
     path: "/aws/getViewSignedUrl",

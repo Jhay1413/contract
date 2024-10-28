@@ -27,7 +27,10 @@ import {
   ticketEditSchema,
 } from "./features/ticketing/mutation-schema";
 import { notification } from "./features/notification/query-schema";
-import { getViewSignedUrlsSchema } from "./features/aws/query-schema";
+import {
+  getMultipleSignedUrlSchema,
+  getViewSignedUrlsSchema,
+} from "./features/aws/query-schema";
 import { awsContract } from "./features/aws/contract";
 import { transactionContract } from "./features/transactions/contract";
 import { companyContract } from "./features/companies/contract";
@@ -67,4 +70,5 @@ export {
   getViewSignedUrlsSchema,
   completeStaffWorkQuerySchema,
   completeStaffWorkMutationSchema,
+  getMultipleSignedUrlSchema,
 };

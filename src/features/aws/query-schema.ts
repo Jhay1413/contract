@@ -6,4 +6,13 @@ const getViewSignedUrlsSchema = z.object({
   fileUrl: z.string(),
 });
 
-export { getViewSignedUrlsSchema };
+const getMultipleSignedUrlSchema = z.object({
+  id: z.string(),
+  data: z.array(
+    z.object({
+      url: z.string(),
+      signedUrl: z.string().optional(),
+    })
+  ),
+});
+export { getViewSignedUrlsSchema, getMultipleSignedUrlSchema };
