@@ -7516,23 +7516,27 @@ declare const contracts: {
         };
         getTicketsForUserByStatus: {
             method: "GET";
+            pathParams: z.ZodObject<{
+                id: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+            }, {
+                id: string;
+            }>;
             query: z.ZodObject<{
-                userId: z.ZodString;
                 status: z.ZodString;
                 page: z.ZodString;
                 pageSize: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 page: string;
                 status: string;
-                userId: string;
                 pageSize: string;
             }, {
                 page: string;
                 status: string;
-                userId: string;
                 pageSize: string;
             }>;
-            path: "/tickets/incoming";
+            path: "/tickets/:id/list";
             responses: {
                 200: z.ZodArray<z.ZodObject<{
                     id: z.ZodString;
