@@ -86,10 +86,7 @@ export const transactionContract = contract.router({
       200: z.object({
         id: z.string(),
         transactionId:  z.string(),
-        transaction:
-          z.object({
-            documentSubType: z.string(),
-          }),
+        documentSubType:z.string()
       }),
       500:  z.object({
         error: z.string()
