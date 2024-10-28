@@ -78,6 +78,24 @@ export const transactionContract = contract.router({
   //     }),
   //   },
   // },
+  searchTransactionById: {
+    method: "GET",
+    path: "/transactions/search",
+    query: z.string(),
+    responses: {
+      200: z.object({
+        id: z.string(),
+        transactionId:  z.string(),
+        transaction:
+          z.object({
+            documentSubType: z.string(),
+          }),
+      }),
+      500:  z.object({
+        error: z.string()
+      })
+    }
+  },
   fetchTransactionById: {
     method: "GET",
     path: "/transactions/:id",

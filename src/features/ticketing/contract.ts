@@ -33,6 +33,22 @@ export const ticketContract = contract.router({
       }),
     },
   },
+  getTicketsForUserByStatus: {
+    method: "GET",
+    path: "/tickets/incoming",
+    query: z.object({
+      userId: z.string(),
+      status: z.string(), // Incoming or Inbox
+      page: z.string(),
+      pageSize: z.string(),
+    }),
+    responses: {
+      200: z.array(ticketingTableSchema),
+      500:  z.object({
+        error: z.string()
+      }),
+    },
+  },
   createTickets: {
     method: "POST",
     path: "/tickets",

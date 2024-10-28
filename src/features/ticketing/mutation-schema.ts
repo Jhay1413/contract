@@ -26,23 +26,7 @@ export const ticketingMutationSchema = z.object({
   remarks: z.string().nullable(),
   projectId: z.string().nullable(),
   transactionId: z.string().nullable(),
-  attachments: z.string().nullable(),
-  file: z
-    .custom<FileList>()
-    .refine((files) => {
-      return Array.from(files ?? []).length !== 0;
-    }, "Image is required")
-    .refine((files) => {
-      return Array.from(files ?? []).every(
-        (file) => sizeInMB(file.size) <= MAX_FILE_SIZE_50MB
-      );
-    }, `The maximum image size is ${MAX_FILE_SIZE_50MB}MB`)
-    // .refine((files) => {
-    //   return Array.from(files ?? []).every((file) =>
-    //     ACCEPTED_FILE_TYPES.includes(file.type)
-    //   );
-    // }, "File type is not supported")
-    .optional(),
+  attachments: z.array(z.string().nullable()),
 });
 export const ticketEditSchema = ticketingMutationSchema.extend({
   id: z.string(),
