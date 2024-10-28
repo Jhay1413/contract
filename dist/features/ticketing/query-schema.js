@@ -41,7 +41,7 @@ exports.ticketLogsSchema = zod_1.z.object({
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
     remarks: zod_1.z.string().nullable(),
-    attachments: zod_1.z.string().nullable(),
+    attachments: zod_1.z.array(zod_1.z.string().nullable()),
     createdAt: zod_1.z.string().datetime().optional(),
     updatedAt: zod_1.z.string().datetime().optional(),
 });
@@ -64,6 +64,6 @@ exports.ticketFullDetailsSchema = zod_1.z.object({
     remarks: zod_1.z.string().nullable(),
     project: query_schema_2.projectQuerySchema.nullable(),
     transactionId: zod_1.z.string().nullable(),
-    attachments: zod_1.z.string().nullable(),
+    attachments: zod_1.z.array(zod_1.z.string().nullable()),
     ticketLogs: zod_1.z.array(exports.ticketLogsSchema),
 });

@@ -21,8 +21,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
-    attachments: z.ZodNullable<z.ZodString>;
-    file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
 }, "strip", z.ZodTypeAny, {
     priority: string;
     section: string;
@@ -30,7 +29,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: string | null;
+    attachments: (string | null)[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -43,7 +42,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     senderId: string;
     requesteeId: string;
     id?: string | undefined;
-    file?: FileList | undefined;
 }, {
     priority: string;
     section: string;
@@ -51,7 +49,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: string | null;
+    attachments: (string | null)[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -64,7 +62,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     senderId: string;
     requesteeId: string;
     id?: string | undefined;
-    file?: FileList | undefined;
 }>;
 export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     id: z.ZodOptional<z.ZodString>;
@@ -85,8 +82,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
-    attachments: z.ZodNullable<z.ZodString>;
-    file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
 }, {
     id: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
@@ -97,7 +93,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: string | null;
+    attachments: (string | null)[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -109,7 +105,6 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     requestType: string;
     senderId: string;
     requesteeId: string;
-    file?: FileList | undefined;
 }, {
     id: string;
     priority: string;
@@ -118,7 +113,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: string | null;
+    attachments: (string | null)[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -130,5 +125,4 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     requestType: string;
     senderId: string;
     requesteeId: string;
-    file?: FileList | undefined;
 }>;

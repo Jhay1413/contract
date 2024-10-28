@@ -8,7 +8,7 @@ import { dashboardData } from "./features/dashboard/dashboard-data";
 import { ticketingTableSchema, ticketFullDetailsSchema, ticketLogsSchema } from "./features/ticketing/query-schema";
 import { ticketingMutationSchema, ticketEditSchema } from "./features/ticketing/mutation-schema";
 import { notification } from "./features/notification/query-schema";
-import { getViewSignedUrlsSchema } from "./features/aws/query-schema";
+import { getMultipleSignedUrlSchema, getViewSignedUrlsSchema } from "./features/aws/query-schema";
 declare const contracts: {
     company: {
         insertCompany: {
@@ -2325,6 +2325,43 @@ declare const contracts: {
                     }[];
                     numOfTransactions: number;
                     totalPages: number;
+                }>;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+        searchTransactionById: {
+            method: "GET";
+            query: z.ZodString;
+            path: "/transactions/search";
+            responses: {
+                200: z.ZodObject<{
+                    id: z.ZodString;
+                    transactionId: z.ZodString;
+                    transaction: z.ZodObject<{
+                        documentSubType: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        documentSubType: string;
+                    }, {
+                        documentSubType: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    transactionId: string;
+                    transaction: {
+                        documentSubType: string;
+                    };
+                }, {
+                    id: string;
+                    transactionId: string;
+                    transaction: {
+                        documentSubType: string;
+                    };
                 }>;
                 500: z.ZodObject<{
                     error: z.ZodString;
@@ -6437,6 +6474,87 @@ declare const contracts: {
         };
     };
     awsContract: {
+        getMultipleSignedUrl: {
+            method: "GET";
+            query: z.ZodObject<{
+                data: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    data: z.ZodArray<z.ZodObject<{
+                        url: z.ZodString;
+                        signedUrl: z.ZodOptional<z.ZodString>;
+                    }, "strip", z.ZodTypeAny, {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }, {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }>, "many">;
+                }, "strip", z.ZodTypeAny, {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }, {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                data: {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }[];
+            }, {
+                data: {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }[];
+            }>;
+            path: "/aws/getMultipleSignedUrl";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    data: z.ZodArray<z.ZodObject<{
+                        url: z.ZodString;
+                        signedUrl: z.ZodOptional<z.ZodString>;
+                    }, "strip", z.ZodTypeAny, {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }, {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }>, "many">;
+                }, "strip", z.ZodTypeAny, {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }, {
+                    data: {
+                        url: string;
+                        signedUrl?: string | undefined;
+                    }[];
+                    id: string;
+                }>, "many">;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
         getViewSignedUrl: {
             method: "GET";
             query: z.ZodObject<{
@@ -7134,7 +7252,7 @@ declare const contracts: {
                         } | null | undefined;
                     }>>;
                     transactionId: z.ZodNullable<z.ZodString>;
-                    attachments: z.ZodNullable<z.ZodString>;
+                    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
                     ticketLogs: z.ZodArray<z.ZodObject<{
                         ticketId: z.ZodString;
                         status: z.ZodString;
@@ -7144,7 +7262,7 @@ declare const contracts: {
                         dateForwarded: z.ZodString;
                         dateReceived: z.ZodNullable<z.ZodString>;
                         remarks: z.ZodNullable<z.ZodString>;
-                        attachments: z.ZodNullable<z.ZodString>;
+                        attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
                         createdAt: z.ZodOptional<z.ZodString>;
                         updatedAt: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
@@ -7152,7 +7270,7 @@ declare const contracts: {
                         receiver: string;
                         status: string;
                         remarks: string | null;
-                        attachments: string | null;
+                        attachments: (string | null)[];
                         dateForwarded: string;
                         dateReceived: string | null;
                         ticketId: string;
@@ -7164,7 +7282,7 @@ declare const contracts: {
                         receiver: string;
                         status: string;
                         remarks: string | null;
-                        attachments: string | null;
+                        attachments: (string | null)[];
                         dateForwarded: string;
                         dateReceived: string | null;
                         ticketId: string;
@@ -7199,7 +7317,7 @@ declare const contracts: {
                     status: string;
                     remarks: string | null;
                     transactionId: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     subject: string;
                     dueDate: string;
                     project: {
@@ -7270,7 +7388,7 @@ declare const contracts: {
                         receiver: string;
                         status: string;
                         remarks: string | null;
-                        attachments: string | null;
+                        attachments: (string | null)[];
                         dateForwarded: string;
                         dateReceived: string | null;
                         ticketId: string;
@@ -7306,7 +7424,7 @@ declare const contracts: {
                     status: string;
                     remarks: string | null;
                     transactionId: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     subject: string;
                     dueDate: string;
                     project: {
@@ -7377,7 +7495,7 @@ declare const contracts: {
                         receiver: string;
                         status: string;
                         remarks: string | null;
-                        attachments: string | null;
+                        attachments: (string | null)[];
                         dateForwarded: string;
                         dateReceived: string | null;
                         ticketId: string;
@@ -7387,6 +7505,133 @@ declare const contracts: {
                     }[];
                     id?: string | undefined;
                 }>;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+        getTicketsForUserByStatus: {
+            method: "GET";
+            query: z.ZodObject<{
+                userId: z.ZodString;
+                status: z.ZodString;
+                page: z.ZodString;
+                pageSize: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                page: string;
+                status: string;
+                userId: string;
+                pageSize: string;
+            }, {
+                page: string;
+                status: string;
+                userId: string;
+                pageSize: string;
+            }>;
+            path: "/tickets/incoming";
+            responses: {
+                200: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    ticketId: z.ZodString;
+                    subject: z.ZodString;
+                    section: z.ZodString;
+                    division: z.ZodString;
+                    status: z.ZodString;
+                    priority: z.ZodString;
+                    requestDetails: z.ZodString;
+                    dueDate: z.ZodString;
+                    createdAt: z.ZodOptional<z.ZodString>;
+                    updatedAt: z.ZodOptional<z.ZodString>;
+                    dateForwarded: z.ZodString;
+                    dateReceived: z.ZodNullable<z.ZodString>;
+                    receiver: z.ZodObject<{
+                        firstName: z.ZodString;
+                        lastName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        firstName: string;
+                        lastName: string;
+                    }, {
+                        firstName: string;
+                        lastName: string;
+                    }>;
+                    sender: z.ZodObject<{
+                        firstName: z.ZodString;
+                        lastName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        firstName: string;
+                        lastName: string;
+                    }, {
+                        firstName: string;
+                        lastName: string;
+                    }>;
+                    project: z.ZodNullable<z.ZodObject<{
+                        projectName: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        projectName: string;
+                    }, {
+                        projectName: string;
+                    }>>;
+                    transactionId: z.ZodNullable<z.ZodString>;
+                    remarks: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    priority: string;
+                    receiver: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    section: string;
+                    status: string;
+                    remarks: string | null;
+                    transactionId: string | null;
+                    subject: string;
+                    dueDate: string;
+                    project: {
+                        projectName: string;
+                    } | null;
+                    dateForwarded: string;
+                    dateReceived: string | null;
+                    ticketId: string;
+                    division: string;
+                    requestDetails: string;
+                    sender: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    createdAt?: string | undefined;
+                    updatedAt?: string | undefined;
+                }, {
+                    id: string;
+                    priority: string;
+                    receiver: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    section: string;
+                    status: string;
+                    remarks: string | null;
+                    transactionId: string | null;
+                    subject: string;
+                    dueDate: string;
+                    project: {
+                        projectName: string;
+                    } | null;
+                    dateForwarded: string;
+                    dateReceived: string | null;
+                    ticketId: string;
+                    division: string;
+                    requestDetails: string;
+                    sender: {
+                        firstName: string;
+                        lastName: string;
+                    };
+                    createdAt?: string | undefined;
+                    updatedAt?: string | undefined;
+                }>, "many">;
                 500: z.ZodObject<{
                     error: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
@@ -7416,8 +7661,7 @@ declare const contracts: {
                 remarks: z.ZodNullable<z.ZodString>;
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
-                attachments: z.ZodNullable<z.ZodString>;
-                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+                attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
             }, "strip", z.ZodTypeAny, {
                 priority: string;
                 section: string;
@@ -7425,7 +7669,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7438,7 +7682,6 @@ declare const contracts: {
                 senderId: string;
                 requesteeId: string;
                 id?: string | undefined;
-                file?: FileList | undefined;
             }, {
                 priority: string;
                 section: string;
@@ -7446,7 +7689,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7459,7 +7702,6 @@ declare const contracts: {
                 senderId: string;
                 requesteeId: string;
                 id?: string | undefined;
-                file?: FileList | undefined;
             }>;
             method: "POST";
             path: "/tickets";
@@ -7500,8 +7742,7 @@ declare const contracts: {
                 remarks: z.ZodNullable<z.ZodString>;
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
-                attachments: z.ZodNullable<z.ZodString>;
-                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+                attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
             }, {
                 id: z.ZodString;
             }>, "strip", z.ZodTypeAny, {
@@ -7512,7 +7753,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7524,7 +7765,6 @@ declare const contracts: {
                 requestType: string;
                 senderId: string;
                 requesteeId: string;
-                file?: FileList | undefined;
             }, {
                 id: string;
                 priority: string;
@@ -7533,7 +7773,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7545,7 +7785,6 @@ declare const contracts: {
                 requestType: string;
                 senderId: string;
                 requesteeId: string;
-                file?: FileList | undefined;
             }>;
             method: "PUT";
             pathParams: z.ZodObject<{
@@ -7593,8 +7832,7 @@ declare const contracts: {
                 remarks: z.ZodNullable<z.ZodString>;
                 projectId: z.ZodNullable<z.ZodString>;
                 transactionId: z.ZodNullable<z.ZodString>;
-                attachments: z.ZodNullable<z.ZodString>;
-                file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+                attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
             }, {
                 id: z.ZodString;
             }>, "strip", z.ZodTypeAny, {
@@ -7605,7 +7843,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7617,7 +7855,6 @@ declare const contracts: {
                 requestType: string;
                 senderId: string;
                 requesteeId: string;
-                file?: FileList | undefined;
             }, {
                 id: string;
                 priority: string;
@@ -7626,7 +7863,7 @@ declare const contracts: {
                 projectId: string | null;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 dateForwarded: string;
@@ -7638,7 +7875,6 @@ declare const contracts: {
                 requestType: string;
                 senderId: string;
                 requesteeId: string;
-                file?: FileList | undefined;
             }>;
             method: "PUT";
             pathParams: z.ZodObject<{
@@ -7752,4 +7988,4 @@ declare const contracts: {
         };
     };
 };
-export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, getViewSignedUrlsSchema, completeStaffWorkQuerySchema, completeStaffWorkMutationSchema, };
+export { companyFormData, transactionQueryData, companyQuerySchema, transactionMutationSchema, transactionLogsData, contracts, filesQuerySchema, filesMutationSchema, userInfoQuerySchema, transactionTable, dashboardData, ticketingMutationSchema, ticketingTableSchema, ticketEditSchema, ticketFullDetailsSchema, ticketLogsSchema, notification, getViewSignedUrlsSchema, completeStaffWorkQuerySchema, completeStaffWorkMutationSchema, getMultipleSignedUrlSchema, };

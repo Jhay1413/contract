@@ -28,21 +28,7 @@ exports.ticketingMutationSchema = zod_1.z.object({
     remarks: zod_1.z.string().nullable(),
     projectId: zod_1.z.string().nullable(),
     transactionId: zod_1.z.string().nullable(),
-    attachments: zod_1.z.string().nullable(),
-    file: zod_1.z
-        .custom()
-        .refine((files) => {
-        return Array.from(files !== null && files !== void 0 ? files : []).length !== 0;
-    }, "Image is required")
-        .refine((files) => {
-        return Array.from(files !== null && files !== void 0 ? files : []).every((file) => (0, exports.sizeInMB)(file.size) <= exports.MAX_FILE_SIZE_50MB);
-    }, `The maximum image size is ${exports.MAX_FILE_SIZE_50MB}MB`)
-        // .refine((files) => {
-        //   return Array.from(files ?? []).every((file) =>
-        //     ACCEPTED_FILE_TYPES.includes(file.type)
-        //   );
-        // }, "File type is not supported")
-        .optional(),
+    attachments: zod_1.z.array(zod_1.z.string().nullable()),
 });
 exports.ticketEditSchema = exports.ticketingMutationSchema.extend({
     id: zod_1.z.string(),

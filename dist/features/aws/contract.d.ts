@@ -1,5 +1,86 @@
 import { z } from "zod";
 export declare const awsContract: {
+    getMultipleSignedUrl: {
+        method: "GET";
+        query: z.ZodObject<{
+            data: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                data: z.ZodArray<z.ZodObject<{
+                    url: z.ZodString;
+                    signedUrl: z.ZodOptional<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }, {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }, {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }>, "many">;
+        }, "strip", z.ZodTypeAny, {
+            data: {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }[];
+        }, {
+            data: {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }[];
+        }>;
+        path: "/aws/getMultipleSignedUrl";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                data: z.ZodArray<z.ZodObject<{
+                    url: z.ZodString;
+                    signedUrl: z.ZodOptional<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }, {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }, {
+                data: {
+                    url: string;
+                    signedUrl?: string | undefined;
+                }[];
+                id: string;
+            }>, "many">;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
     getViewSignedUrl: {
         method: "GET";
         query: z.ZodObject<{

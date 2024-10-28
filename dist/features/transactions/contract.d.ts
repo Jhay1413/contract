@@ -1419,6 +1419,43 @@ export declare const transactionContract: {
             }>;
         };
     };
+    searchTransactionById: {
+        method: "GET";
+        query: z.ZodString;
+        path: "/transactions/search";
+        responses: {
+            200: z.ZodObject<{
+                id: z.ZodString;
+                transactionId: z.ZodString;
+                transaction: z.ZodObject<{
+                    documentSubType: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    documentSubType: string;
+                }, {
+                    documentSubType: string;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                transactionId: string;
+                transaction: {
+                    documentSubType: string;
+                };
+            }, {
+                id: string;
+                transactionId: string;
+                transaction: {
+                    documentSubType: string;
+                };
+            }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
     fetchTransactionById: {
         method: "GET";
         pathParams: z.ZodObject<{

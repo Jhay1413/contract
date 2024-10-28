@@ -470,7 +470,7 @@ export declare const ticketContract: {
                     } | null | undefined;
                 }>>;
                 transactionId: z.ZodNullable<z.ZodString>;
-                attachments: z.ZodNullable<z.ZodString>;
+                attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
                 ticketLogs: z.ZodArray<z.ZodObject<{
                     ticketId: z.ZodString;
                     status: z.ZodString;
@@ -480,7 +480,7 @@ export declare const ticketContract: {
                     dateForwarded: z.ZodString;
                     dateReceived: z.ZodNullable<z.ZodString>;
                     remarks: z.ZodNullable<z.ZodString>;
-                    attachments: z.ZodNullable<z.ZodString>;
+                    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
                     createdAt: z.ZodOptional<z.ZodString>;
                     updatedAt: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
@@ -488,7 +488,7 @@ export declare const ticketContract: {
                     receiver: string;
                     status: string;
                     remarks: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     dateForwarded: string;
                     dateReceived: string | null;
                     ticketId: string;
@@ -500,7 +500,7 @@ export declare const ticketContract: {
                     receiver: string;
                     status: string;
                     remarks: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     dateForwarded: string;
                     dateReceived: string | null;
                     ticketId: string;
@@ -535,7 +535,7 @@ export declare const ticketContract: {
                 status: string;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 project: {
@@ -606,7 +606,7 @@ export declare const ticketContract: {
                     receiver: string;
                     status: string;
                     remarks: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     dateForwarded: string;
                     dateReceived: string | null;
                     ticketId: string;
@@ -642,7 +642,7 @@ export declare const ticketContract: {
                 status: string;
                 remarks: string | null;
                 transactionId: string | null;
-                attachments: string | null;
+                attachments: (string | null)[];
                 subject: string;
                 dueDate: string;
                 project: {
@@ -713,7 +713,7 @@ export declare const ticketContract: {
                     receiver: string;
                     status: string;
                     remarks: string | null;
-                    attachments: string | null;
+                    attachments: (string | null)[];
                     dateForwarded: string;
                     dateReceived: string | null;
                     ticketId: string;
@@ -723,6 +723,133 @@ export declare const ticketContract: {
                 }[];
                 id?: string | undefined;
             }>;
+            500: z.ZodObject<{
+                error: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                error: string;
+            }, {
+                error: string;
+            }>;
+        };
+    };
+    getTicketsForUserByStatus: {
+        method: "GET";
+        query: z.ZodObject<{
+            userId: z.ZodString;
+            status: z.ZodString;
+            page: z.ZodString;
+            pageSize: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            page: string;
+            status: string;
+            userId: string;
+            pageSize: string;
+        }, {
+            page: string;
+            status: string;
+            userId: string;
+            pageSize: string;
+        }>;
+        path: "/tickets/incoming";
+        responses: {
+            200: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                ticketId: z.ZodString;
+                subject: z.ZodString;
+                section: z.ZodString;
+                division: z.ZodString;
+                status: z.ZodString;
+                priority: z.ZodString;
+                requestDetails: z.ZodString;
+                dueDate: z.ZodString;
+                createdAt: z.ZodOptional<z.ZodString>;
+                updatedAt: z.ZodOptional<z.ZodString>;
+                dateForwarded: z.ZodString;
+                dateReceived: z.ZodNullable<z.ZodString>;
+                receiver: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                sender: z.ZodObject<{
+                    firstName: z.ZodString;
+                    lastName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    firstName: string;
+                    lastName: string;
+                }, {
+                    firstName: string;
+                    lastName: string;
+                }>;
+                project: z.ZodNullable<z.ZodObject<{
+                    projectName: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    projectName: string;
+                }, {
+                    projectName: string;
+                }>>;
+                transactionId: z.ZodNullable<z.ZodString>;
+                remarks: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                priority: string;
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                section: string;
+                status: string;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                dateForwarded: string;
+                dateReceived: string | null;
+                ticketId: string;
+                division: string;
+                requestDetails: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }, {
+                id: string;
+                priority: string;
+                receiver: {
+                    firstName: string;
+                    lastName: string;
+                };
+                section: string;
+                status: string;
+                remarks: string | null;
+                transactionId: string | null;
+                subject: string;
+                dueDate: string;
+                project: {
+                    projectName: string;
+                } | null;
+                dateForwarded: string;
+                dateReceived: string | null;
+                ticketId: string;
+                division: string;
+                requestDetails: string;
+                sender: {
+                    firstName: string;
+                    lastName: string;
+                };
+                createdAt?: string | undefined;
+                updatedAt?: string | undefined;
+            }>, "many">;
             500: z.ZodObject<{
                 error: z.ZodString;
             }, "strip", z.ZodTypeAny, {
@@ -752,8 +879,7 @@ export declare const ticketContract: {
             remarks: z.ZodNullable<z.ZodString>;
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
-            attachments: z.ZodNullable<z.ZodString>;
-            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+            attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
         }, "strip", z.ZodTypeAny, {
             priority: string;
             section: string;
@@ -761,7 +887,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -774,7 +900,6 @@ export declare const ticketContract: {
             senderId: string;
             requesteeId: string;
             id?: string | undefined;
-            file?: FileList | undefined;
         }, {
             priority: string;
             section: string;
@@ -782,7 +907,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -795,7 +920,6 @@ export declare const ticketContract: {
             senderId: string;
             requesteeId: string;
             id?: string | undefined;
-            file?: FileList | undefined;
         }>;
         method: "POST";
         path: "/tickets";
@@ -836,8 +960,7 @@ export declare const ticketContract: {
             remarks: z.ZodNullable<z.ZodString>;
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
-            attachments: z.ZodNullable<z.ZodString>;
-            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+            attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
         }, {
             id: z.ZodString;
         }>, "strip", z.ZodTypeAny, {
@@ -848,7 +971,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -860,7 +983,6 @@ export declare const ticketContract: {
             requestType: string;
             senderId: string;
             requesteeId: string;
-            file?: FileList | undefined;
         }, {
             id: string;
             priority: string;
@@ -869,7 +991,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -881,7 +1003,6 @@ export declare const ticketContract: {
             requestType: string;
             senderId: string;
             requesteeId: string;
-            file?: FileList | undefined;
         }>;
         method: "PUT";
         pathParams: z.ZodObject<{
@@ -929,8 +1050,7 @@ export declare const ticketContract: {
             remarks: z.ZodNullable<z.ZodString>;
             projectId: z.ZodNullable<z.ZodString>;
             transactionId: z.ZodNullable<z.ZodString>;
-            attachments: z.ZodNullable<z.ZodString>;
-            file: z.ZodOptional<z.ZodEffects<z.ZodEffects<z.ZodType<FileList, z.ZodTypeDef, FileList>, FileList, FileList>, FileList, FileList>>;
+            attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
         }, {
             id: z.ZodString;
         }>, "strip", z.ZodTypeAny, {
@@ -941,7 +1061,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -953,7 +1073,6 @@ export declare const ticketContract: {
             requestType: string;
             senderId: string;
             requesteeId: string;
-            file?: FileList | undefined;
         }, {
             id: string;
             priority: string;
@@ -962,7 +1081,7 @@ export declare const ticketContract: {
             projectId: string | null;
             remarks: string | null;
             transactionId: string | null;
-            attachments: string | null;
+            attachments: (string | null)[];
             subject: string;
             dueDate: string;
             dateForwarded: string;
@@ -974,7 +1093,6 @@ export declare const ticketContract: {
             requestType: string;
             senderId: string;
             requesteeId: string;
-            file?: FileList | undefined;
         }>;
         method: "PUT";
         pathParams: z.ZodObject<{

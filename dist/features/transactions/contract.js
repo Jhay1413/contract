@@ -77,6 +77,23 @@ exports.transactionContract = contract.router({
     //     }),
     //   },
     // },
+    searchTransactionById: {
+        method: "GET",
+        path: "/transactions/search",
+        query: zod_1.z.string(),
+        responses: {
+            200: zod_1.z.object({
+                id: zod_1.z.string(),
+                transactionId: zod_1.z.string(),
+                transaction: zod_1.z.object({
+                    documentSubType: zod_1.z.string(),
+                }),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string()
+            })
+        }
+    },
     fetchTransactionById: {
         method: "GET",
         path: "/transactions/:id",

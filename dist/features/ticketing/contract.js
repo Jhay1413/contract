@@ -35,6 +35,22 @@ exports.ticketContract = contract.router({
             }),
         },
     },
+    getTicketsForUserByStatus: {
+        method: "GET",
+        path: "/tickets/incoming",
+        query: zod_1.z.object({
+            userId: zod_1.z.string(),
+            status: zod_1.z.string(), // Incoming or Inbox
+            page: zod_1.z.string(),
+            pageSize: zod_1.z.string(),
+        }),
+        responses: {
+            200: zod_1.z.array(query_schema_1.ticketingTableSchema),
+            500: zod_1.z.object({
+                error: zod_1.z.string()
+            }),
+        },
+    },
     createTickets: {
         method: "POST",
         path: "/tickets",

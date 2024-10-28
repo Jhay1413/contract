@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.completeStaffWorkMutationSchema = exports.completeStaffWorkQuerySchema = exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = void 0;
+exports.getMultipleSignedUrlSchema = exports.completeStaffWorkMutationSchema = exports.completeStaffWorkQuerySchema = exports.getViewSignedUrlsSchema = exports.notification = exports.ticketLogsSchema = exports.ticketFullDetailsSchema = exports.ticketEditSchema = exports.ticketingTableSchema = exports.ticketingMutationSchema = exports.dashboardData = exports.transactionTable = exports.userInfoQuerySchema = exports.filesMutationSchema = exports.filesQuerySchema = exports.contracts = exports.transactionLogsData = exports.transactionMutationSchema = exports.companyQuerySchema = exports.transactionQueryData = exports.companyFormData = void 0;
 const core_1 = require("@ts-rest/core");
 const company_schema_1 = require("./features/company-schema");
 Object.defineProperty(exports, "companyFormData", { enumerable: true, get: function () { return company_schema_1.companyFormData; } });
@@ -30,6 +30,7 @@ Object.defineProperty(exports, "ticketEditSchema", { enumerable: true, get: func
 const query_schema_5 = require("./features/notification/query-schema");
 Object.defineProperty(exports, "notification", { enumerable: true, get: function () { return query_schema_5.notification; } });
 const query_schema_6 = require("./features/aws/query-schema");
+Object.defineProperty(exports, "getMultipleSignedUrlSchema", { enumerable: true, get: function () { return query_schema_6.getMultipleSignedUrlSchema; } });
 Object.defineProperty(exports, "getViewSignedUrlsSchema", { enumerable: true, get: function () { return query_schema_6.getViewSignedUrlsSchema; } });
 const contract_1 = require("./features/aws/contract");
 const contract_2 = require("./features/transactions/contract");
