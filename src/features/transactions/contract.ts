@@ -83,11 +83,11 @@ export const transactionContract = contract.router({
     path: "/transactions/search",
     query: z.string(),
     responses: {
-      200: z.object({
+      200: z.array(z.object({
         id: z.string(),
         transactionId:  z.string(),
         documentSubType:z.string()
-      }),
+      })),
       500:  z.object({
         error: z.string()
       })
