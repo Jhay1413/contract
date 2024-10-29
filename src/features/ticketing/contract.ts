@@ -81,6 +81,24 @@ export const ticketContract = contract.router({
       }),
     },
   },
+  receiveTickets: {
+    method: "PUT",
+    path: "/tickets/:id/receive",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      dateReceived: z.string().datetime(),
+    }),
+    responses: {
+      201: z.object({
+        message: z.string()
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   forwardTickets: {
     method: "PUT",
     path: "/tickets/:id/forward",
