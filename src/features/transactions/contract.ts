@@ -47,27 +47,7 @@ export const transactionContract = contract.router({
       }),
     },
   },
-  fetchTransactions: {
-    method: "GET",
-    path: "/transactions/search",
-    query: z.object({
-      query: z.string(),
-      status: z.string().optional(),
-      page: z.string(),
-      pageSize: z.string(),
-      userId: z.string().optional(),
-    }),
-    responses: {
-      201: z.object({
-        data: z.array(transactionQueryData),
-        numOfTransactions: z.number(),
-        totalPages: z.number(),
-      }),
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
+
   // fetchTransactions: {
   //   method: "GET",
   //   path: "/transactions",
