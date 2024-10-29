@@ -40,7 +40,7 @@ export const ticketContract = contract.router({
       id: z.string(),
     }),
     query: z.object({
-      status: z.string(),
+      status: z.string(), // Incoming or Inbox
       page: z.string(),
       pageSize: z.string(),
     }),
