@@ -42,7 +42,7 @@ exports.ticketContract = contract.router({
             id: zod_1.z.string(),
         }),
         query: zod_1.z.object({
-            status: zod_1.z.string(), // Incoming or Inbox
+            status: zod_1.z.string(),
             page: zod_1.z.string(),
             pageSize: zod_1.z.string(),
         }),

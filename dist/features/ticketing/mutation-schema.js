@@ -28,7 +28,7 @@ exports.ticketingMutationSchema = zod_1.z.object({
     remarks: zod_1.z.string().nullable(),
     projectId: zod_1.z.string().nullable(),
     transactionId: zod_1.z.string().nullable(),
-    attachments: zod_1.z.array(zod_1.z.string().nullable()),
+    attachments: zod_1.z.array(zod_1.z.string()),
 });
 exports.ticketEditSchema = exports.ticketingMutationSchema.extend({
     id: zod_1.z.string(),

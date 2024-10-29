@@ -46,27 +46,6 @@ exports.transactionContract = contract.router({
             }),
         },
     },
-    fetchTransactions: {
-        method: "GET",
-        path: "/transactions/search",
-        query: zod_1.z.object({
-            query: zod_1.z.string(),
-            status: zod_1.z.string().optional(),
-            page: zod_1.z.string(),
-            pageSize: zod_1.z.string(),
-            userId: zod_1.z.string().optional(),
-        }),
-        responses: {
-            201: zod_1.z.object({
-                data: zod_1.z.array(query_schema_1.transactionQueryData),
-                numOfTransactions: zod_1.z.number(),
-                totalPages: zod_1.z.number(),
-            }),
-            500: zod_1.z.object({
-                error: zod_1.z.string(),
-            }),
-        },
-    },
     // fetchTransactions: {
     //   method: "GET",
     //   path: "/transactions",
@@ -79,16 +58,16 @@ exports.transactionContract = contract.router({
     // },
     searchTransactionById: {
         method: "GET",
-        path: "/transactions/search",
-        query: zod_1.z.string(),
+        path: "/transactions/searchById",
+        query: zod_1.z.object({
+            transactionId: zod_1.z.string()
+        }),
         responses: {
-            200: zod_1.z.object({
+            200: zod_1.z.array(zod_1.z.object({
                 id: zod_1.z.string(),
                 transactionId: zod_1.z.string(),
-                transaction: zod_1.z.object({
-                    documentSubType: zod_1.z.string(),
-                }),
-            }),
+                documentSubType: zod_1.z.string()
+            })),
             500: zod_1.z.object({
                 error: zod_1.z.string()
             })
