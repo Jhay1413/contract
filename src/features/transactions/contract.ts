@@ -80,8 +80,10 @@ export const transactionContract = contract.router({
   // },
   searchTransactionById: {
     method: "GET",
-    path: "/transactions/search",
-    query: z.string(),
+    path: "/transactions/searchById",
+    query:z.object({
+        transactionId: z.string()
+    }),
     responses: {
       200: z.array(z.object({
         id: z.string(),
