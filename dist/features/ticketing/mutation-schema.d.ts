@@ -21,7 +21,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
-    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
+    attachments: z.ZodArray<z.ZodString, "many">;
 }, "strip", z.ZodTypeAny, {
     priority: string;
     section: string;
@@ -29,7 +29,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: (string | null)[];
+    attachments: string[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -49,7 +49,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: (string | null)[];
+    attachments: string[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -82,7 +82,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
     transactionId: z.ZodNullable<z.ZodString>;
-    attachments: z.ZodArray<z.ZodNullable<z.ZodString>, "many">;
+    attachments: z.ZodArray<z.ZodString, "many">;
 }, {
     id: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
@@ -93,7 +93,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: (string | null)[];
+    attachments: string[];
     subject: string;
     dueDate: string;
     dateForwarded: string;
@@ -113,7 +113,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     projectId: string | null;
     remarks: string | null;
     transactionId: string | null;
-    attachments: (string | null)[];
+    attachments: string[];
     subject: string;
     dueDate: string;
     dateForwarded: string;

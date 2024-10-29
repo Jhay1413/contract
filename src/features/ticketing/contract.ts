@@ -36,18 +36,19 @@ export const ticketContract = contract.router({
   getTicketsForUserByStatus: {
     method: "GET",
     path: "/tickets/:id/list",
-    pathParams:z.object({
+    pathParams: z.object({
       id: z.string(),
     }),
     query: z.object({
-      status: z.string(), // Incoming or Inbox
+      query: z.string(),
+      status: z.string(),
       page: z.string(),
       pageSize: z.string(),
     }),
     responses: {
       200: z.array(ticketingTableSchema),
-      500:  z.object({
-        error: z.string()
+      500: z.object({
+        error: z.string(),
       }),
     },
   },
