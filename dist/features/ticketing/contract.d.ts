@@ -742,16 +742,19 @@ export declare const ticketContract: {
             id: string;
         }>;
         query: z.ZodObject<{
+            query: z.ZodString;
             status: z.ZodString;
             page: z.ZodString;
             pageSize: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             page: string;
             status: string;
+            query: string;
             pageSize: string;
         }, {
             page: string;
             status: string;
+            query: string;
             pageSize: string;
         }>;
         path: "/tickets/:id/list";

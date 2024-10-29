@@ -8,7 +8,52 @@ import {
 
 const contract = initContract();
 export const transactionContract = contract.router({
-  archivedTransation: {
+  // Transaction Management
+  insertTransactions: {
+    method: "POST",
+    path: "/transactions",
+    body: transactionMutationSchema,
+    responses: {
+      201: z.array(transactionQueryData),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+
+  updateTransaction: {
+    method: "PUT",
+    path: "/transactions/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: transactionMutationSchema,
+    responses: {
+      200: z.object({
+        success: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+
+  fetchTransactionById: {
+    method: "GET",
+    path: "/transactions/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    responses: {
+      200: transactionQueryData.nullable(),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+
+  // Transaction Actions
+  archivedTransaction: {
     method: "PUT",
     path: "/transactions/archived/:id",
     pathParams: z.object({
@@ -26,6 +71,40 @@ export const transactionContract = contract.router({
       }),
     },
   },
+
+  receivedTransaction: {
+    method: "PUT",
+    path: "/transactions/received/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      dateReceived: z.string().datetime(),
+    }),
+    responses: {
+      201: transactionTable,
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+
+  addCompleteStaffWork: {
+    method: "PUT",
+    path: "/transactions/addCsw/:id",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: completeStaffWorkMutationSchema,
+    responses: {
+      201: transactionQueryData,
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+
+  // Transaction Queries
   fetchTransactionsV2: {
     method: "GET",
     path: "/transactions/list",
@@ -48,89 +127,6 @@ export const transactionContract = contract.router({
     },
   },
 
-  // fetchTransactions: {
-  //   method: "GET",
-  //   path: "/transactions",
-  //   responses: {
-  //     200: z.array(transactionQueryData),
-  //     500: z.object({
-  //       error: z.string(),
-  //     }),
-  //   },
-  // },
-  searchTransactionById: {
-    method: "GET",
-    path: "/transactions/searchById",
-    query:z.object({
-        transactionId: z.string()
-    }),
-    responses: {
-      200: z.array(z.object({
-        id: z.string(),
-        transactionId:  z.string(),
-        documentSubType:z.string()
-      })),
-      500:  z.object({
-        error: z.string()
-      })
-    }
-  },
-  fetchTransactionById: {
-    method: "GET",
-    path: "/transactions/:id",
-    pathParams: z.object({
-      id: z.string(),
-    }),
-    responses: {
-      200: transactionQueryData.nullable(),
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
-  updateTransaction: {
-    method: "PUT",
-    path: "/transactions/:id",
-    pathParams: z.object({
-      id: z.string(),
-    }),
-    body: transactionMutationSchema,
-    responses: {
-      200: z.object({
-        success: z.string(),
-      }),
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
-  insertTransacitons: {
-    method: "POST",
-    path: "/transactions",
-    body: transactionMutationSchema,
-    responses: {
-      201: z.array(transactionQueryData),
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
-  receivedTransaction: {
-    method: "PUT",
-    path: "/transactions/received/:id",
-    pathParams: z.object({
-      id: z.string(),
-    }),
-    body: z.object({
-      dateReceived: z.string().datetime(),
-    }),
-    responses: {
-      201: transactionTable,
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
   getTransactionByParams: {
     method: "GET",
     path: "/transactions/",
@@ -145,15 +141,21 @@ export const transactionContract = contract.router({
       }),
     },
   },
-  addCompleteStaffWork: {
-    method: "PUT",
-    path: "/transactions/addCsw/:id",
-    pathParams: z.object({
-      id: z.string(),
+
+  searchTransactionById: {
+    method: "GET",
+    path: "/transactions/transaction/search",
+    query: z.object({
+      transactionId: z.string(),
     }),
-    body: completeStaffWorkMutationSchema,
     responses: {
-      201: transactionQueryData,
+      200: z.array(
+        z.object({
+          id: z.string(),
+          transactionId: z.string(),
+          documentSubType: z.string(),
+        })
+      ),
       500: z.object({
         error: z.string(),
       }),
