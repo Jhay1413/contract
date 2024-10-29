@@ -26,7 +26,7 @@ export const ticketingMutationSchema = z.object({
   remarks: z.string().nullable(),
   projectId: z.string().nullable(),
   transactionId: z.string().nullable(),
-  attachments: z.array(z.string().nullable()),
+  attachments: z.array(z.string()),
 });
 export const ticketEditSchema = ticketingMutationSchema.extend({
   id: z.string(),
