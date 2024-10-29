@@ -40,7 +40,7 @@ export const ticketLogsSchema = z.object({
   dateForwarded: z.string().datetime(),
   dateReceived: z.nullable(z.string().datetime()),
   remarks: z.string().nullable(),
-  attachments: z.array(z.string().nullable()),
+  attachments: z.array(z.string()),
   createdAt: z.string().datetime().optional(),
   updatedAt: z.string().datetime().optional(),
 });
@@ -64,6 +64,6 @@ export const ticketFullDetailsSchema = z.object({
   remarks: z.string().nullable(),
   project: projectQuerySchema.nullable(),
   transactionId: z.string().nullable(),
-  attachments: z.array(z.string().nullable()),
+  attachments: z.array(z.string()),
   ticketLogs: z.array(ticketLogsSchema),
 });
