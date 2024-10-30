@@ -65,7 +65,14 @@ export const ticketFullDetailsSchema = z.object({
   requestee: AccountQuerySchema,
   remarks: z.string().nullable(),
   project: projectQuerySchema.nullable(),
-  transactionId: z.string().nullable(),
   attachments: z.array(z.string()),
+  transactionId: z.string().nullable(),
+  transaction: z.optional(z.object({
+    transactionId: z.string(),
+    documentSubType: z.string(),
+    status: z.string(),
+    priority: z.string(),
+    dueDate: z.string().datetime(),
+  })),
   ticketLogs: z.array(ticketLogsSchema),
 });
