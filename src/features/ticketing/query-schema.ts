@@ -20,10 +20,10 @@ export const ticketingTableSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
   })).optional(),
-  sender: z.nullable(z.object({
+  sender: z.object({
     firstName: z.string(),
     lastName: z.string(),
-  })).optional(),
+  }),
   project: z
     .object({
       projectName: z.string(),
