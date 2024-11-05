@@ -38,8 +38,8 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     ticketId: string;
     division: string;
     requestDetails: string;
-    requestType: string;
     senderId: string;
+    requestType: string;
     requesteeId: string;
     id?: string | undefined;
 }, {
@@ -58,8 +58,8 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     ticketId: string;
     division: string;
     requestDetails: string;
-    requestType: string;
     senderId: string;
+    requestType: string;
     requesteeId: string;
     id?: string | undefined;
 }>;
@@ -102,8 +102,8 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     ticketId: string;
     division: string;
     requestDetails: string;
-    requestType: string;
     senderId: string;
+    requestType: string;
     requesteeId: string;
 }, {
     id: string;
@@ -122,7 +122,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     ticketId: string;
     division: string;
     requestDetails: string;
-    requestType: string;
     senderId: string;
+    requestType: string;
     requesteeId: string;
 }>;

@@ -13,6 +13,8 @@ exports.userAccountsContract = contract.router({
             section: zod_1.z.string(),
             role: zod_1.z.string(),
             mode: zod_1.z.string(),
+            requesteedId: zod_1.z.string().optional(),
+            type: zod_1.z.string().optional(),
         }),
         responses: {
             200: zod_1.z.array(zod_1.z.object({

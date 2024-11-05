@@ -7,11 +7,9 @@ const query_schema_1 = require("./query-schema");
 const contract = (0, core_1.initContract)();
 exports.awsContract = contract.router({
     getMultipleSignedUrl: {
-        method: "GET",
+        method: "POST",
         path: "/aws/getMultipleSignedUrl",
-        query: zod_1.z.object({
-            data: zod_1.z.array(query_schema_1.getMultipleSignedUrlSchema),
-        }),
+        body: zod_1.z.array(query_schema_1.getMultipleSignedUrlSchema),
         responses: {
             200: zod_1.z.array(query_schema_1.getMultipleSignedUrlSchema),
             500: zod_1.z.object({

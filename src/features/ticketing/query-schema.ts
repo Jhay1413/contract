@@ -24,9 +24,11 @@ export const ticketingTableSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
   }),
-  project: z.object({
-    projectName: z.string(),
-  }).nullable(),
+  project: z
+    .object({
+      projectName: z.string(),
+    })
+    .nullable(),
   transactionId: z.string().nullable(),
   remarks: z.string().nullable(),
 });
@@ -67,12 +69,16 @@ export const ticketFullDetailsSchema = z.object({
   project: projectQuerySchema.nullable(),
   attachments: z.array(z.string()),
   transactionId: z.string().nullable(),
-  transaction: z.optional(z.object({
-    transactionId: z.string(),
-    documentSubType: z.string(),
-    status: z.string(),
-    priority: z.string(),
-    dueDate: z.string().datetime(),
-  })),
+  transaction: z
+    .nullable(
+      z.object({
+        transactionId: z.string(),
+        documentSubType: z.string(),
+        status: z.string(),
+        priority: z.string(),
+        dueDate: z.string().datetime(),
+      })
+    )
+    .optional(),
   ticketLogs: z.array(ticketLogsSchema),
 });

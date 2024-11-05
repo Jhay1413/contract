@@ -7,16 +7,22 @@ export declare const userAccountsContract: {
             section: z.ZodString;
             role: z.ZodString;
             mode: z.ZodString;
+            requesteedId: z.ZodOptional<z.ZodString>;
+            type: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             section: string;
             role: string;
             mode: string;
             division: string;
+            type?: string | undefined;
+            requesteedId?: string | undefined;
         }, {
             section: string;
             role: string;
             mode: string;
             division: string;
+            type?: string | undefined;
+            requesteedId?: string | undefined;
         }>;
         path: "/user/forward-to";
         responses: {

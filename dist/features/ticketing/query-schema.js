@@ -26,9 +26,11 @@ exports.ticketingTableSchema = zod_1.z.object({
         firstName: zod_1.z.string(),
         lastName: zod_1.z.string(),
     }),
-    project: zod_1.z.object({
+    project: zod_1.z
+        .object({
         projectName: zod_1.z.string(),
-    }).nullable(),
+    })
+        .nullable(),
     transactionId: zod_1.z.string().nullable(),
     remarks: zod_1.z.string().nullable(),
 });
@@ -37,6 +39,8 @@ exports.ticketLogsSchema = zod_1.z.object({
     status: zod_1.z.string(),
     sender: zod_1.z.string(),
     receiver: zod_1.z.string(),
+    senderId: zod_1.z.string(),
+    receiverId: zod_1.z.string(),
     priority: zod_1.z.string(),
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
@@ -63,7 +67,16 @@ exports.ticketFullDetailsSchema = zod_1.z.object({
     requestee: query_schema_1.AccountQuerySchema,
     remarks: zod_1.z.string().nullable(),
     project: query_schema_2.projectQuerySchema.nullable(),
-    transactionId: zod_1.z.string().nullable(),
     attachments: zod_1.z.array(zod_1.z.string()),
+    transactionId: zod_1.z.string().nullable(),
+    transaction: zod_1.z
+        .nullable(zod_1.z.object({
+        transactionId: zod_1.z.string(),
+        documentSubType: zod_1.z.string(),
+        status: zod_1.z.string(),
+        priority: zod_1.z.string(),
+        dueDate: zod_1.z.string().datetime(),
+    }))
+        .optional(),
     ticketLogs: zod_1.z.array(exports.ticketLogsSchema),
 });

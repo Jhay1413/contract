@@ -4,7 +4,7 @@ exports.transactionTable = exports.transactionQueryData = exports.transactionLog
 const zod_1 = require("zod");
 const query_schema_1 = require("../companies/query-schema");
 const query_schema_2 = require("../users/query-schema");
-const FileTypeEnum = zod_1.z.enum(["INITIAL_DOC", "FOLLOWED_UP"]);
+const FileTypeEnum = zod_1.z.enum(["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]);
 exports.filesQuerySchema = zod_1.z.object({
     id: zod_1.z.string().optional(),
     remarks: zod_1.z.nullable(zod_1.z.string()),
@@ -60,6 +60,7 @@ exports.transactionQueryData = zod_1.z.object({
     priority: zod_1.z.string(),
     percentage: zod_1.z.number(),
     category: zod_1.z.string(),
+    dateExpiry: zod_1.z.string().datetime().optional(),
     originDepartment: zod_1.z.string().optional(),
     targetDepartment: zod_1.z.string().optional(),
     remarks: zod_1.z.string(),

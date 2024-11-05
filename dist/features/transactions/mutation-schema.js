@@ -14,7 +14,7 @@ const sizeInMB = (sizeInBytes, decimalsNum = 2) => {
     return +result.toFixed(decimalsNum);
 };
 exports.sizeInMB = sizeInMB;
-const FileTypeEnum = zod_1.z.enum(["INITIAL_DOC", "FOLLOWED_UP"]);
+const FileTypeEnum = zod_1.z.enum(["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]);
 exports.filesMutationSchema = zod_1.z.object({
     id: zod_1.z.string().optional(),
     remarks: zod_1.z.nullable(zod_1.z.string()),
@@ -61,6 +61,7 @@ exports.transactionMutationSchema = zod_1.z.object({
     originDepartment: zod_1.z.string(),
     targetDepartment: zod_1.z.string(),
     attachments: zod_1.z.array(exports.filesMutationSchema),
+    dateExpiry: zod_1.z.string().datetime().optional(),
 });
 exports.completeStaffWorkMutationSchema = zod_1.z.object({
     id: zod_1.z.string().optional(),

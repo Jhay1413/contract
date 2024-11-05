@@ -91,7 +91,9 @@ exports.transactionContract = contract.router({
         }),
         body: mutation_schema_1.completeStaffWorkMutationSchema,
         responses: {
-            201: query_schema_1.transactionQueryData,
+            201: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
             }),

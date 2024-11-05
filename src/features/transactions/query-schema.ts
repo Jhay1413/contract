@@ -6,7 +6,7 @@ import {
 } from "../companies/query-schema";
 import { AccountQuerySchema } from "../users/query-schema";
 
-const FileTypeEnum = z.enum(["INITIAL_DOC", "FOLLOWED_UP"]);
+const FileTypeEnum = z.enum(["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]);
 
 export const filesQuerySchema = z.object({
   id: z.string().optional(),
@@ -65,6 +65,7 @@ export const transactionQueryData = z.object({
   priority: z.string(),
   percentage: z.number(),
   category: z.string(),
+  dateExpiry: z.string().datetime().optional(),
   originDepartment: z.string().optional(),
   targetDepartment: z.string().optional(),
   remarks: z.string(),

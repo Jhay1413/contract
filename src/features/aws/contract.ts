@@ -8,12 +8,9 @@ import {
 const contract = initContract();
 export const awsContract = contract.router({
   getMultipleSignedUrl: {
-    method: "GET",
+    method: "POST",
     path: "/aws/getMultipleSignedUrl",
-
-    query: z.object({
-      data: z.array(getMultipleSignedUrlSchema),
-    }),
+    body: z.array(getMultipleSignedUrlSchema),
     responses: {
       200: z.array(getMultipleSignedUrlSchema),
       500: z.object({

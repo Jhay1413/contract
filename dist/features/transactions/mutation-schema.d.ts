@@ -6,7 +6,7 @@ export declare const filesMutationSchema: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
     remarks: z.ZodNullable<z.ZodString>;
     createdAt: z.ZodOptional<z.ZodString>;
-    fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+    fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
     fileName: z.ZodString;
     fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -18,7 +18,7 @@ export declare const filesMutationSchema: z.ZodObject<{
     id?: string | undefined;
     file?: FileList | undefined;
     createdAt?: string | undefined;
-    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
     fileStatus?: string | null | undefined;
     fileUrl?: string | null | undefined;
     fileOriginalName?: string | null | undefined;
@@ -28,7 +28,7 @@ export declare const filesMutationSchema: z.ZodObject<{
     id?: string | undefined;
     file?: FileList | undefined;
     createdAt?: string | undefined;
-    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
     fileStatus?: string | null | undefined;
     fileUrl?: string | null | undefined;
     fileOriginalName?: string | null | undefined;
@@ -58,7 +58,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         remarks: z.ZodNullable<z.ZodString>;
         createdAt: z.ZodOptional<z.ZodString>;
-        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
         fileName: z.ZodString;
         fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -70,7 +70,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         id?: string | undefined;
         file?: FileList | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -80,11 +80,12 @@ export declare const transactionMutationSchema: z.ZodObject<{
         id?: string | undefined;
         file?: FileList | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
     }>, "many">;
+    dateExpiry: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     priority: string;
     status: string;
@@ -97,7 +98,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         id?: string | undefined;
         file?: FileList | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -115,6 +116,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
     id?: string | undefined;
     transactionId?: string | undefined;
     dateReceived?: string | null | undefined;
+    dateExpiry?: string | undefined;
     receiverId?: string | null | undefined;
     receivedById?: string | null | undefined;
 }, {
@@ -129,7 +131,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
         id?: string | undefined;
         file?: FileList | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -147,6 +149,7 @@ export declare const transactionMutationSchema: z.ZodObject<{
     id?: string | undefined;
     transactionId?: string | undefined;
     dateReceived?: string | null | undefined;
+    dateExpiry?: string | undefined;
     receiverId?: string | null | undefined;
     receivedById?: string | null | undefined;
 }>;

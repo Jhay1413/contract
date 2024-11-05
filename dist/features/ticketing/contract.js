@@ -83,6 +83,24 @@ exports.ticketContract = contract.router({
             }),
         },
     },
+    receiveTickets: {
+        method: "PUT",
+        path: "/tickets/:id/receive",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: zod_1.z.object({
+            dateReceived: zod_1.z.string().datetime(),
+        }),
+        responses: {
+            201: zod_1.z.object({
+                message: zod_1.z.string()
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
     forwardTickets: {
         method: "PUT",
         path: "/tickets/:id/forward",

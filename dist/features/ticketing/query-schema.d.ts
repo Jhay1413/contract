@@ -102,6 +102,8 @@ export declare const ticketLogsSchema: z.ZodObject<{
     status: z.ZodString;
     sender: z.ZodString;
     receiver: z.ZodString;
+    senderId: z.ZodString;
+    receiverId: z.ZodString;
     priority: z.ZodString;
     dateForwarded: z.ZodString;
     dateReceived: z.ZodNullable<z.ZodString>;
@@ -117,8 +119,10 @@ export declare const ticketLogsSchema: z.ZodObject<{
     attachments: string[];
     dateForwarded: string;
     dateReceived: string | null;
+    receiverId: string;
     ticketId: string;
     sender: string;
+    senderId: string;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
 }, {
@@ -129,8 +133,10 @@ export declare const ticketLogsSchema: z.ZodObject<{
     attachments: string[];
     dateForwarded: string;
     dateReceived: string | null;
+    receiverId: string;
     ticketId: string;
     sender: string;
+    senderId: string;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
 }>;
@@ -468,13 +474,34 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             id?: string | undefined;
         } | null | undefined;
     }>>;
-    transactionId: z.ZodNullable<z.ZodString>;
     attachments: z.ZodArray<z.ZodString, "many">;
+    transactionId: z.ZodNullable<z.ZodString>;
+    transaction: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+        transactionId: z.ZodString;
+        documentSubType: z.ZodString;
+        status: z.ZodString;
+        priority: z.ZodString;
+        dueDate: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        priority: string;
+        status: string;
+        transactionId: string;
+        dueDate: string;
+        documentSubType: string;
+    }, {
+        priority: string;
+        status: string;
+        transactionId: string;
+        dueDate: string;
+        documentSubType: string;
+    }>>>;
     ticketLogs: z.ZodArray<z.ZodObject<{
         ticketId: z.ZodString;
         status: z.ZodString;
         sender: z.ZodString;
         receiver: z.ZodString;
+        senderId: z.ZodString;
+        receiverId: z.ZodString;
         priority: z.ZodString;
         dateForwarded: z.ZodString;
         dateReceived: z.ZodNullable<z.ZodString>;
@@ -490,8 +517,10 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
         attachments: string[];
         dateForwarded: string;
         dateReceived: string | null;
+        receiverId: string;
         ticketId: string;
         sender: string;
+        senderId: string;
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
     }, {
@@ -502,8 +531,10 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
         attachments: string[];
         dateForwarded: string;
         dateReceived: string | null;
+        receiverId: string;
         ticketId: string;
         sender: string;
+        senderId: string;
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
     }>, "many">;
@@ -608,12 +639,21 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
         attachments: string[];
         dateForwarded: string;
         dateReceived: string | null;
+        receiverId: string;
         ticketId: string;
         sender: string;
+        senderId: string;
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
     }[];
     id?: string | undefined;
+    transaction?: {
+        priority: string;
+        status: string;
+        transactionId: string;
+        dueDate: string;
+        documentSubType: string;
+    } | null | undefined;
 }, {
     priority: string;
     receiver: {
@@ -715,10 +755,19 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
         attachments: string[];
         dateForwarded: string;
         dateReceived: string | null;
+        receiverId: string;
         ticketId: string;
         sender: string;
+        senderId: string;
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
     }[];
     id?: string | undefined;
+    transaction?: {
+        priority: string;
+        status: string;
+        transactionId: string;
+        dueDate: string;
+        documentSubType: string;
+    } | null | undefined;
 }>;

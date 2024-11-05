@@ -3,7 +3,7 @@ export declare const filesQuerySchema: z.ZodObject<{
     id: z.ZodOptional<z.ZodString>;
     remarks: z.ZodNullable<z.ZodString>;
     createdAt: z.ZodOptional<z.ZodString>;
-    fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+    fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
     fileName: z.ZodString;
     fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -13,7 +13,7 @@ export declare const filesQuerySchema: z.ZodObject<{
     fileName: string;
     id?: string | undefined;
     createdAt?: string | undefined;
-    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
     fileStatus?: string | null | undefined;
     fileUrl?: string | null | undefined;
     fileOriginalName?: string | null | undefined;
@@ -22,7 +22,7 @@ export declare const filesQuerySchema: z.ZodObject<{
     fileName: string;
     id?: string | undefined;
     createdAt?: string | undefined;
-    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+    fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
     fileStatus?: string | null | undefined;
     fileUrl?: string | null | undefined;
     fileOriginalName?: string | null | undefined;
@@ -78,7 +78,7 @@ export declare const transactionLogsData: z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         remarks: z.ZodNullable<z.ZodString>;
         createdAt: z.ZodOptional<z.ZodString>;
-        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
         fileName: z.ZodString;
         fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -88,7 +88,7 @@ export declare const transactionLogsData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -97,7 +97,7 @@ export declare const transactionLogsData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -126,7 +126,7 @@ export declare const transactionLogsData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -158,7 +158,7 @@ export declare const transactionLogsData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -179,6 +179,7 @@ export declare const transactionQueryData: z.ZodObject<{
     priority: z.ZodString;
     percentage: z.ZodNumber;
     category: z.ZodString;
+    dateExpiry: z.ZodOptional<z.ZodString>;
     originDepartment: z.ZodOptional<z.ZodString>;
     targetDepartment: z.ZodOptional<z.ZodString>;
     remarks: z.ZodString;
@@ -188,7 +189,7 @@ export declare const transactionQueryData: z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         remarks: z.ZodNullable<z.ZodString>;
         createdAt: z.ZodOptional<z.ZodString>;
-        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+        fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
         fileName: z.ZodString;
         fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -198,7 +199,7 @@ export declare const transactionQueryData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -207,7 +208,7 @@ export declare const transactionQueryData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -599,7 +600,7 @@ export declare const transactionQueryData: z.ZodObject<{
             id: z.ZodOptional<z.ZodString>;
             remarks: z.ZodNullable<z.ZodString>;
             createdAt: z.ZodOptional<z.ZodString>;
-            fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP"]>>;
+            fileType: z.ZodOptional<z.ZodEnum<["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]>>;
             fileName: z.ZodString;
             fileStatus: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             fileUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -609,7 +610,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;
@@ -618,7 +619,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;
@@ -647,7 +648,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;
@@ -679,7 +680,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;
@@ -764,7 +765,7 @@ export declare const transactionQueryData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -836,6 +837,7 @@ export declare const transactionQueryData: z.ZodObject<{
     dateReceived?: string | null | undefined;
     originDepartment?: string | undefined;
     targetDepartment?: string | undefined;
+    dateExpiry?: string | undefined;
     transactionLogs?: {
         priority: string;
         status: string;
@@ -860,7 +862,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;
@@ -925,7 +927,7 @@ export declare const transactionQueryData: z.ZodObject<{
         fileName: string;
         id?: string | undefined;
         createdAt?: string | undefined;
-        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+        fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
         fileStatus?: string | null | undefined;
         fileUrl?: string | null | undefined;
         fileOriginalName?: string | null | undefined;
@@ -997,6 +999,7 @@ export declare const transactionQueryData: z.ZodObject<{
     dateReceived?: string | null | undefined;
     originDepartment?: string | undefined;
     targetDepartment?: string | undefined;
+    dateExpiry?: string | undefined;
     transactionLogs?: {
         priority: string;
         status: string;
@@ -1021,7 +1024,7 @@ export declare const transactionQueryData: z.ZodObject<{
             fileName: string;
             id?: string | undefined;
             createdAt?: string | undefined;
-            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | undefined;
+            fileType?: "INITIAL_DOC" | "FOLLOWED_UP" | "APPROVE" | undefined;
             fileStatus?: string | null | undefined;
             fileUrl?: string | null | undefined;
             fileOriginalName?: string | null | undefined;

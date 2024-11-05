@@ -97,7 +97,9 @@ export const transactionContract = contract.router({
     }),
     body: completeStaffWorkMutationSchema,
     responses: {
-      201: transactionQueryData,
+      201: z.object({
+        message: z.string(),
+      }),
       500: z.object({
         error: z.string(),
       }),

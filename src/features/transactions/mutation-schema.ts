@@ -12,7 +12,7 @@ export const sizeInMB = (sizeInBytes: number, decimalsNum = 2) => {
   const result = sizeInBytes / (1024 * 1024);
   return +result.toFixed(decimalsNum);
 };
-const FileTypeEnum = z.enum(["INITIAL_DOC", "FOLLOWED_UP"]);
+const FileTypeEnum = z.enum(["INITIAL_DOC", "FOLLOWED_UP", "APPROVE"]);
 export const filesMutationSchema = z.object({
   id: z.string().optional(),
   remarks: z.nullable(z.string()),
@@ -61,6 +61,7 @@ export const transactionMutationSchema = z.object({
   originDepartment: z.string(),
   targetDepartment: z.string(),
   attachments: z.array(filesMutationSchema),
+  dateExpiry: z.string().datetime().optional(),
 });
 export const completeStaffWorkMutationSchema = z.object({
   id: z.string().optional(),
