@@ -37,7 +37,7 @@ export const ticketLogsSchema = z.object({
   ticketId: z.string(),
   status: z.string(),
   sender: z.string(),
-  receiver: z.string(),
+  receiver: z.nullable(z.string()).optional(),
   senderId: z.string(),
   receiverId: z.nullable(z.string()).optional(),
   priority: z.string(),
