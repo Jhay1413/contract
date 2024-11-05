@@ -115,4 +115,40 @@ export const ticketContract = contract.router({
       }),
     },
   },
+  resolveTickets: {
+    method: "PUT",
+    path: "/tickets/:id/resolve",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      userId: z.string(),
+    }),
+    responses: {
+      200: z.object({
+        message: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  reopenTickets: {
+    method: "PUT",
+    path: "/tickets/:id/reopen",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      requestee: z.string(),
+    }),
+    responses: {
+      200: z.object({
+        message: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  }
 });

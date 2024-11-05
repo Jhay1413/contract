@@ -16,10 +16,10 @@ export const ticketingTableSchema = z.object({
   updatedAt: z.string().optional(),
   dateForwarded: z.string().datetime(),
   dateReceived: z.nullable(z.string().datetime()),
-  receiver: z.object({
+  receiver: z.nullable(z.object({
     firstName: z.string(),
     lastName: z.string(),
-  }),
+  })).optional(),
   sender: z.object({
     firstName: z.string(),
     lastName: z.string(),
@@ -39,7 +39,7 @@ export const ticketLogsSchema = z.object({
   sender: z.string(),
   receiver: z.string(),
   senderId: z.string(),
-  receiverId: z.string(),
+  receiverId: z.nullable(z.string()).optional(),
   priority: z.string(),
   dateForwarded: z.string().datetime(),
   dateReceived: z.nullable(z.string().datetime()),
@@ -63,7 +63,7 @@ export const ticketFullDetailsSchema = z.object({
   dateForwarded: z.string().datetime(),
   dateReceived: z.nullable(z.string().datetime()),
   sender: AccountQuerySchema,
-  receiver: AccountQuerySchema,
+  receiver: z.nullable(AccountQuerySchema).optional(),
   requestee: AccountQuerySchema,
   remarks: z.string().nullable(),
   project: projectQuerySchema.nullable(),
