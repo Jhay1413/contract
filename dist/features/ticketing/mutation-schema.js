@@ -23,7 +23,7 @@ exports.ticketingMutationSchema = zod_1.z.object({
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
     senderId: zod_1.z.string(),
-    receiverId: zod_1.z.string(),
+    receiverId: zod_1.z.nullable(zod_1.z.string()).optional(),
     requesteeId: zod_1.z.string(),
     remarks: zod_1.z.string().nullable(),
     projectId: zod_1.z.string().nullable(),

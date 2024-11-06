@@ -18,10 +18,10 @@ exports.ticketingTableSchema = zod_1.z.object({
     updatedAt: zod_1.z.string().optional(),
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
-    receiver: zod_1.z.object({
+    receiver: zod_1.z.nullable(zod_1.z.object({
         firstName: zod_1.z.string(),
         lastName: zod_1.z.string(),
-    }),
+    })).optional(),
     sender: zod_1.z.object({
         firstName: zod_1.z.string(),
         lastName: zod_1.z.string(),
@@ -38,9 +38,9 @@ exports.ticketLogsSchema = zod_1.z.object({
     ticketId: zod_1.z.string(),
     status: zod_1.z.string(),
     sender: zod_1.z.string(),
-    receiver: zod_1.z.string(),
+    receiver: zod_1.z.nullable(zod_1.z.string()).optional(),
     senderId: zod_1.z.string(),
-    receiverId: zod_1.z.string(),
+    receiverId: zod_1.z.nullable(zod_1.z.string()).optional(),
     priority: zod_1.z.string(),
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
@@ -63,7 +63,7 @@ exports.ticketFullDetailsSchema = zod_1.z.object({
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
     sender: query_schema_1.AccountQuerySchema,
-    receiver: query_schema_1.AccountQuerySchema,
+    receiver: zod_1.z.nullable(query_schema_1.AccountQuerySchema).optional(),
     requestee: query_schema_1.AccountQuerySchema,
     remarks: zod_1.z.string().nullable(),
     project: query_schema_2.projectQuerySchema.nullable(),

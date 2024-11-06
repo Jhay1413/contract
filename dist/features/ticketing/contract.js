@@ -94,7 +94,7 @@ exports.ticketContract = contract.router({
         }),
         responses: {
             201: zod_1.z.object({
-                message: zod_1.z.string()
+                message: zod_1.z.string(),
             }),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
@@ -107,7 +107,43 @@ exports.ticketContract = contract.router({
         pathParams: zod_1.z.object({
             id: zod_1.z.string(),
         }),
-        body: mutation_schema_1.ticketEditSchema,
+        body: mutation_schema_1.ticketingMutationSchema,
+        responses: {
+            200: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+    resolveTickets: {
+        method: "PUT",
+        path: "/tickets/:id/resolve",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: zod_1.z.object({
+            userId: zod_1.z.string(),
+        }),
+        responses: {
+            200: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+    reopenTickets: {
+        method: "PUT",
+        path: "/tickets/:id/reopen",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: zod_1.z.object({
+            requestee: zod_1.z.string(),
+        }),
         responses: {
             200: zod_1.z.object({
                 message: zod_1.z.string(),

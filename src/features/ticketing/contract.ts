@@ -92,7 +92,7 @@ export const ticketContract = contract.router({
     }),
     responses: {
       201: z.object({
-        message: z.string()
+        message: z.string(),
       }),
       500: z.object({
         error: z.string(),
@@ -105,7 +105,7 @@ export const ticketContract = contract.router({
     pathParams: z.object({
       id: z.string(),
     }),
-    body: ticketEditSchema,
+    body: ticketingMutationSchema,
     responses: {
       200: z.object({
         message: z.string(),
@@ -150,5 +150,5 @@ export const ticketContract = contract.router({
         error: z.string(),
       }),
     },
-  }
+  },
 });

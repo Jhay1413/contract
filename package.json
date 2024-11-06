@@ -1,6 +1,6 @@
 {
   "name": "shared-contract",
-  "version": "1.2.36",
+  "version": "1.2.38",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

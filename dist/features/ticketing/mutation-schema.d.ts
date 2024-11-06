@@ -16,7 +16,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     dateForwarded: z.ZodString;
     dateReceived: z.ZodNullable<z.ZodString>;
     senderId: z.ZodString;
-    receiverId: z.ZodString;
+    receiverId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     requesteeId: z.ZodString;
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
@@ -34,7 +34,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     dueDate: string;
     dateForwarded: string;
     dateReceived: string | null;
-    receiverId: string;
     ticketId: string;
     division: string;
     requestDetails: string;
@@ -42,6 +41,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     requestType: string;
     requesteeId: string;
     id?: string | undefined;
+    receiverId?: string | null | undefined;
 }, {
     priority: string;
     section: string;
@@ -54,7 +54,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     dueDate: string;
     dateForwarded: string;
     dateReceived: string | null;
-    receiverId: string;
     ticketId: string;
     division: string;
     requestDetails: string;
@@ -62,6 +61,7 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     requestType: string;
     requesteeId: string;
     id?: string | undefined;
+    receiverId?: string | null | undefined;
 }>;
 export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     id: z.ZodOptional<z.ZodString>;
@@ -77,7 +77,7 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     dateForwarded: z.ZodString;
     dateReceived: z.ZodNullable<z.ZodString>;
     senderId: z.ZodString;
-    receiverId: z.ZodString;
+    receiverId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     requesteeId: z.ZodString;
     remarks: z.ZodNullable<z.ZodString>;
     projectId: z.ZodNullable<z.ZodString>;
@@ -98,13 +98,13 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     dueDate: string;
     dateForwarded: string;
     dateReceived: string | null;
-    receiverId: string;
     ticketId: string;
     division: string;
     requestDetails: string;
     senderId: string;
     requestType: string;
     requesteeId: string;
+    receiverId?: string | null | undefined;
 }, {
     id: string;
     priority: string;
@@ -118,11 +118,11 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     dueDate: string;
     dateForwarded: string;
     dateReceived: string | null;
-    receiverId: string;
     ticketId: string;
     division: string;
     requestDetails: string;
     senderId: string;
     requestType: string;
     requesteeId: string;
+    receiverId?: string | null | undefined;
 }>;
