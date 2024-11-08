@@ -10,11 +10,17 @@ export const ticketContract = contract.router({
     path: "/tickets",
     query: z.object({
       query: z.string(),
+      status: z.string().optional(),
       page: z.string(),
       pageSize: z.string(),
+      userId: z.string().optional(),
     }),
     responses: {
-      200: z.array(ticketingTableSchema),
+      200: z.object({
+        data: z.array(ticketingTableSchema),
+        numOfTickets: z.number(),
+        totalPages: z.number(),
+      }),
       500: z.object({
         error: z.string(),
       }),
@@ -28,25 +34,6 @@ export const ticketContract = contract.router({
     }),
     responses: {
       200: ticketFullDetailsSchema,
-      500: z.object({
-        error: z.string(),
-      }),
-    },
-  },
-  getTicketsForUserByStatus: {
-    method: "GET",
-    path: "/tickets/:id/list",
-    pathParams: z.object({
-      id: z.string(),
-    }),
-    query: z.object({
-      query: z.string(),
-      status: z.string(),
-      page: z.string(),
-      pageSize: z.string(),
-    }),
-    responses: {
-      200: z.array(ticketingTableSchema),
       500: z.object({
         error: z.string(),
       }),
