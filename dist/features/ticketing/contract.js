@@ -31,10 +31,15 @@ exports.ticketContract = contract.router({
         path: "/tickets",
         query: zod_1.z.object({
             query: zod_1.z.string(),
+            priority: zod_1.z.string().optional(),
             status: zod_1.z.string().optional(),
             page: zod_1.z.string(),
             pageSize: zod_1.z.string(),
             userId: zod_1.z.string().optional(),
+            sortOrder: zod_1.z.string(),
+            projectId: zod_1.z.string().optional(),
+            transactionId: zod_1.z.string().optional(),
+            senderId: zod_1.z.string().optional(),
         }),
         responses: {
             200: zod_1.z.object({

@@ -4711,21 +4711,36 @@ declare const contracts: {
             method: "GET";
             query: z.ZodObject<{
                 query: z.ZodString;
+                priority: z.ZodOptional<z.ZodString>;
                 status: z.ZodOptional<z.ZodString>;
                 page: z.ZodString;
                 pageSize: z.ZodString;
                 userId: z.ZodOptional<z.ZodString>;
+                sortOrder: z.ZodString;
+                projectId: z.ZodOptional<z.ZodString>;
+                transactionId: z.ZodOptional<z.ZodString>;
+                senderId: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
                 page: string;
                 query: string;
                 pageSize: string;
+                sortOrder: string;
+                priority?: string | undefined;
                 status?: string | undefined;
+                projectId?: string | undefined;
+                transactionId?: string | undefined;
+                senderId?: string | undefined;
                 userId?: string | undefined;
             }, {
                 page: string;
                 query: string;
                 pageSize: string;
+                sortOrder: string;
+                priority?: string | undefined;
                 status?: string | undefined;
+                projectId?: string | undefined;
+                transactionId?: string | undefined;
+                senderId?: string | undefined;
                 userId?: string | undefined;
             }>;
             path: "/tickets";

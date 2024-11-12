@@ -16,10 +16,14 @@ export const ticketingTableSchema = z.object({
   updatedAt: z.string().optional(),
   dateForwarded: z.string().datetime(),
   dateReceived: z.nullable(z.string().datetime()),
-  receiver: z.nullable(z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-  })).optional(),
+  receiver: z
+    .nullable(
+      z.object({
+        firstName: z.string(),
+        lastName: z.string(),
+      })
+    )
+    .optional(),
   sender: z.object({
     firstName: z.string(),
     lastName: z.string(),
@@ -31,10 +35,12 @@ export const ticketingTableSchema = z.object({
     })
     .nullable(),
   transactionId: z.string().nullable(),
-  transaction: z.object({
-    transactionId: z.string(),
-    projectId: z.string(),
-  }).optional(),
+  transaction: z
+    .object({
+      transactionId: z.string(),
+      projectId: z.string(),
+    })
+    .optional(),
   remarks: z.string().nullable(),
 });
 
