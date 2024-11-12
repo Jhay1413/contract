@@ -36,10 +36,12 @@ export const ticketingTableSchema = z.object({
     .nullable(),
   transactionId: z.string().nullable(),
   transaction: z
-    .object({
-      transactionId: z.string(),
-      projectId: z.string(),
-    })
+    .nullable(
+      z.object({
+        transactionId: z.string(),
+        projectId: z.string(),
+      })
+    )
     .optional(),
   remarks: z.string().nullable(),
 });
