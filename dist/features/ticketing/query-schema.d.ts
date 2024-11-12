@@ -34,13 +34,26 @@ export declare const ticketingTableSchema: z.ZodObject<{
         lastName: string;
     }>;
     project: z.ZodNullable<z.ZodObject<{
+        projectId: z.ZodString;
         projectName: z.ZodString;
     }, "strip", z.ZodTypeAny, {
+        projectId: string;
         projectName: string;
     }, {
+        projectId: string;
         projectName: string;
     }>>;
     transactionId: z.ZodNullable<z.ZodString>;
+    transaction: z.ZodOptional<z.ZodObject<{
+        transactionId: z.ZodString;
+        projectId: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        projectId: string;
+        transactionId: string;
+    }, {
+        projectId: string;
+        transactionId: string;
+    }>>;
     remarks: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -52,6 +65,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
     subject: string;
     dueDate: string;
     project: {
+        projectId: string;
         projectName: string;
     } | null;
     dateForwarded: string;
@@ -69,6 +83,10 @@ export declare const ticketingTableSchema: z.ZodObject<{
     } | null | undefined;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
+    transaction?: {
+        projectId: string;
+        transactionId: string;
+    } | undefined;
 }, {
     id: string;
     priority: string;
@@ -79,6 +97,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
     subject: string;
     dueDate: string;
     project: {
+        projectId: string;
         projectName: string;
     } | null;
     dateForwarded: string;
@@ -96,6 +115,10 @@ export declare const ticketingTableSchema: z.ZodObject<{
     } | null | undefined;
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
+    transaction?: {
+        projectId: string;
+        transactionId: string;
+    } | undefined;
 }>;
 export declare const ticketLogsSchema: z.ZodObject<{
     ticketId: z.ZodString;

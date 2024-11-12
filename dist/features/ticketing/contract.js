@@ -7,16 +7,41 @@ const query_schema_1 = require("./query-schema");
 const mutation_schema_1 = require("./mutation-schema");
 const contract = (0, core_1.initContract)();
 exports.ticketContract = contract.router({
+    updateTicketOnInboxRoutes: {
+        method: "PUT",
+        path: "/tickets/:id/updateOnInbox",
+        pathParams: zod_1.z.object({
+            id: zod_1.z.string(),
+        }),
+        body: zod_1.z.object({
+            status: zod_1.z.string(),
+            remarks: zod_1.z.string(),
+        }),
+        responses: {
+            201: zod_1.z.object({
+                message: zod_1.z.string(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
     getTickets: {
         method: "GET",
         path: "/tickets",
         query: zod_1.z.object({
             query: zod_1.z.string(),
+            status: zod_1.z.string().optional(),
             page: zod_1.z.string(),
             pageSize: zod_1.z.string(),
+            userId: zod_1.z.string().optional(),
         }),
         responses: {
-            200: zod_1.z.array(query_schema_1.ticketingTableSchema),
+            200: zod_1.z.object({
+                data: zod_1.z.array(query_schema_1.ticketingTableSchema),
+                numOfTickets: zod_1.z.number(),
+                totalPages: zod_1.z.number(),
+            }),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
             }),
@@ -30,25 +55,6 @@ exports.ticketContract = contract.router({
         }),
         responses: {
             200: query_schema_1.ticketFullDetailsSchema,
-            500: zod_1.z.object({
-                error: zod_1.z.string(),
-            }),
-        },
-    },
-    getTicketsForUserByStatus: {
-        method: "GET",
-        path: "/tickets/:id/list",
-        pathParams: zod_1.z.object({
-            id: zod_1.z.string(),
-        }),
-        query: zod_1.z.object({
-            query: zod_1.z.string(),
-            status: zod_1.z.string(),
-            page: zod_1.z.string(),
-            pageSize: zod_1.z.string(),
-        }),
-        responses: {
-            200: zod_1.z.array(query_schema_1.ticketingTableSchema),
             500: zod_1.z.object({
                 error: zod_1.z.string(),
             }),

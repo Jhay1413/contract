@@ -5,6 +5,25 @@ import { ticketEditSchema, ticketingMutationSchema } from "./mutation-schema";
 
 const contract = initContract();
 export const ticketContract = contract.router({
+  updateTicketOnInboxRoutes: {
+    method: "PUT",
+    path: "/tickets/:id/updateOnInbox",
+    pathParams: z.object({
+      id: z.string(),
+    }),
+    body: z.object({
+      status: z.string(),
+      remarks: z.string(),
+    }),
+    responses: {
+      201: z.object({
+        message: z.string(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
   getTickets: {
     method: "GET",
     path: "/tickets",

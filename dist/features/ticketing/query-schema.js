@@ -28,10 +28,15 @@ exports.ticketingTableSchema = zod_1.z.object({
     }),
     project: zod_1.z
         .object({
+        projectId: zod_1.z.string(),
         projectName: zod_1.z.string(),
     })
         .nullable(),
     transactionId: zod_1.z.string().nullable(),
+    transaction: zod_1.z.object({
+        transactionId: zod_1.z.string(),
+        projectId: zod_1.z.string(),
+    }).optional(),
     remarks: zod_1.z.string().nullable(),
 });
 exports.ticketLogsSchema = zod_1.z.object({
