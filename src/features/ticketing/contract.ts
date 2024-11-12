@@ -10,10 +10,15 @@ export const ticketContract = contract.router({
     path: "/tickets",
     query: z.object({
       query: z.string(),
+      priority: z.string().optional(),
       status: z.string().optional(),
       page: z.string(),
       pageSize: z.string(),
       userId: z.string().optional(),
+      sortOrder: z.string(),
+      projectId: z.string().optional(),
+      transactionId: z.string().optional(),
+      senderId: z.string().optional(),
     }),
     responses: {
       200: z.object({
