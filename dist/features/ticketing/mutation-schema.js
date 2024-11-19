@@ -16,7 +16,6 @@ exports.ticketingMutationSchema = zod_1.z.object({
     section: zod_1.z.string(),
     division: zod_1.z.string(),
     status: zod_1.z.string(),
-    requestType: zod_1.z.string(),
     requestDetails: zod_1.z.string(),
     priority: zod_1.z.string(),
     dueDate: zod_1.z.string().datetime(),

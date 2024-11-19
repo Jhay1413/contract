@@ -5219,7 +5219,6 @@ declare const contracts: {
                     section: z.ZodString;
                     division: z.ZodString;
                     status: z.ZodString;
-                    requestType: z.ZodString;
                     requestDetails: z.ZodString;
                     priority: z.ZodString;
                     dueDate: z.ZodString;
@@ -5660,7 +5659,6 @@ declare const contracts: {
                             accountId?: string | null | undefined;
                         } | null | undefined;
                     };
-                    requestType: string;
                     requestee: {
                         id: string;
                         email: string;
@@ -5776,7 +5774,6 @@ declare const contracts: {
                             accountId?: string | null | undefined;
                         } | null | undefined;
                     };
-                    requestType: string;
                     requestee: {
                         id: string;
                         email: string;
@@ -5860,7 +5857,6 @@ declare const contracts: {
                 section: z.ZodString;
                 division: z.ZodString;
                 status: z.ZodString;
-                requestType: z.ZodString;
                 requestDetails: z.ZodString;
                 priority: z.ZodString;
                 dueDate: z.ZodString;
@@ -5889,7 +5885,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 id?: string | undefined;
                 receiverId?: string | null | undefined;
@@ -5909,7 +5904,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 id?: string | undefined;
                 receiverId?: string | null | undefined;
@@ -5941,7 +5935,6 @@ declare const contracts: {
                 section: z.ZodString;
                 division: z.ZodString;
                 status: z.ZodString;
-                requestType: z.ZodString;
                 requestDetails: z.ZodString;
                 priority: z.ZodString;
                 dueDate: z.ZodString;
@@ -5973,7 +5966,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 receiverId?: string | null | undefined;
             }, {
@@ -5993,7 +5985,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 receiverId?: string | null | undefined;
             }>;
@@ -6065,7 +6056,6 @@ declare const contracts: {
                 section: z.ZodString;
                 division: z.ZodString;
                 status: z.ZodString;
-                requestType: z.ZodString;
                 requestDetails: z.ZodString;
                 priority: z.ZodString;
                 dueDate: z.ZodString;
@@ -6094,7 +6084,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 id?: string | undefined;
                 receiverId?: string | null | undefined;
@@ -6114,7 +6103,6 @@ declare const contracts: {
                 division: string;
                 requestDetails: string;
                 senderId: string;
-                requestType: string;
                 requesteeId: string;
                 id?: string | undefined;
                 receiverId?: string | null | undefined;

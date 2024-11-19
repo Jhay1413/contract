@@ -9,7 +9,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     section: z.ZodString;
     division: z.ZodString;
     status: z.ZodString;
-    requestType: z.ZodString;
     requestDetails: z.ZodString;
     priority: z.ZodString;
     dueDate: z.ZodString;
@@ -38,7 +37,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     division: string;
     requestDetails: string;
     senderId: string;
-    requestType: string;
     requesteeId: string;
     id?: string | undefined;
     receiverId?: string | null | undefined;
@@ -58,7 +56,6 @@ export declare const ticketingMutationSchema: z.ZodObject<{
     division: string;
     requestDetails: string;
     senderId: string;
-    requestType: string;
     requesteeId: string;
     id?: string | undefined;
     receiverId?: string | null | undefined;
@@ -70,7 +67,6 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     section: z.ZodString;
     division: z.ZodString;
     status: z.ZodString;
-    requestType: z.ZodString;
     requestDetails: z.ZodString;
     priority: z.ZodString;
     dueDate: z.ZodString;
@@ -102,7 +98,6 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     division: string;
     requestDetails: string;
     senderId: string;
-    requestType: string;
     requesteeId: string;
     receiverId?: string | null | undefined;
 }, {
@@ -122,7 +117,6 @@ export declare const ticketEditSchema: z.ZodObject<z.objectUtil.extendShape<{
     division: string;
     requestDetails: string;
     senderId: string;
-    requestType: string;
     requesteeId: string;
     receiverId?: string | null | undefined;
 }>;

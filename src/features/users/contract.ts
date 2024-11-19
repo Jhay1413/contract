@@ -12,7 +12,6 @@ export const userAccountsContract = contract.router({
       role: z.string(),
       mode: z.string(),
       requesteedId: z.string().optional(),
-      type: z.string().optional(),
     }),
     responses: {
       200: z.array(

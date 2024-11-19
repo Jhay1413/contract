@@ -549,7 +549,6 @@ export declare const ticketContract: {
                 section: z.ZodString;
                 division: z.ZodString;
                 status: z.ZodString;
-                requestType: z.ZodString;
                 requestDetails: z.ZodString;
                 priority: z.ZodString;
                 dueDate: z.ZodString;
@@ -990,7 +989,6 @@ export declare const ticketContract: {
                         accountId?: string | null | undefined;
                     } | null | undefined;
                 };
-                requestType: string;
                 requestee: {
                     id: string;
                     email: string;
@@ -1106,7 +1104,6 @@ export declare const ticketContract: {
                         accountId?: string | null | undefined;
                     } | null | undefined;
                 };
-                requestType: string;
                 requestee: {
                     id: string;
                     email: string;
@@ -1190,7 +1187,6 @@ export declare const ticketContract: {
             section: z.ZodString;
             division: z.ZodString;
             status: z.ZodString;
-            requestType: z.ZodString;
             requestDetails: z.ZodString;
             priority: z.ZodString;
             dueDate: z.ZodString;
@@ -1219,7 +1215,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             id?: string | undefined;
             receiverId?: string | null | undefined;
@@ -1239,7 +1234,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             id?: string | undefined;
             receiverId?: string | null | undefined;
@@ -1271,7 +1265,6 @@ export declare const ticketContract: {
             section: z.ZodString;
             division: z.ZodString;
             status: z.ZodString;
-            requestType: z.ZodString;
             requestDetails: z.ZodString;
             priority: z.ZodString;
             dueDate: z.ZodString;
@@ -1303,7 +1296,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             receiverId?: string | null | undefined;
         }, {
@@ -1323,7 +1315,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             receiverId?: string | null | undefined;
         }>;
@@ -1395,7 +1386,6 @@ export declare const ticketContract: {
             section: z.ZodString;
             division: z.ZodString;
             status: z.ZodString;
-            requestType: z.ZodString;
             requestDetails: z.ZodString;
             priority: z.ZodString;
             dueDate: z.ZodString;
@@ -1424,7 +1414,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             id?: string | undefined;
             receiverId?: string | null | undefined;
@@ -1444,7 +1433,6 @@ export declare const ticketContract: {
             division: string;
             requestDetails: string;
             senderId: string;
-            requestType: string;
             requesteeId: string;
             id?: string | undefined;
             receiverId?: string | null | undefined;

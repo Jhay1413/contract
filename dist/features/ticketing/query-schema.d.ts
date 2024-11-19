@@ -170,7 +170,6 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
     section: z.ZodString;
     division: z.ZodString;
     status: z.ZodString;
-    requestType: z.ZodString;
     requestDetails: z.ZodString;
     priority: z.ZodString;
     dueDate: z.ZodString;
@@ -611,7 +610,6 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
-    requestType: string;
     requestee: {
         id: string;
         email: string;
@@ -727,7 +725,6 @@ export declare const ticketFullDetailsSchema: z.ZodObject<{
             accountId?: string | null | undefined;
         } | null | undefined;
     };
-    requestType: string;
     requestee: {
         id: string;
         email: string;
