@@ -44,7 +44,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
         projectName: string;
     }>>;
     transactionId: z.ZodNullable<z.ZodString>;
-    transaction: z.ZodOptional<z.ZodObject<{
+    transaction: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         transactionId: z.ZodString;
         projectId: z.ZodString;
     }, "strip", z.ZodTypeAny, {
@@ -53,7 +53,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
     }, {
         projectId: string;
         transactionId: string;
-    }>>;
+    }>>>;
     remarks: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -86,7 +86,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
     transaction?: {
         projectId: string;
         transactionId: string;
-    } | undefined;
+    } | null | undefined;
 }, {
     id: string;
     priority: string;
@@ -118,7 +118,7 @@ export declare const ticketingTableSchema: z.ZodObject<{
     transaction?: {
         projectId: string;
         transactionId: string;
-    } | undefined;
+    } | null | undefined;
 }>;
 export declare const ticketLogsSchema: z.ZodObject<{
     ticketId: z.ZodString;

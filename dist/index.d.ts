@@ -4707,12 +4707,12 @@ declare const contracts: {
                 }>;
             };
         };
-        getTickets: {
+        fetchPendingRequesteeTicketRoutes: {
             method: "GET";
             query: z.ZodObject<{
                 query: z.ZodString;
                 priority: z.ZodOptional<z.ZodString>;
-                status: z.ZodOptional<z.ZodString>;
+                state: z.ZodOptional<z.ZodString>;
                 page: z.ZodString;
                 pageSize: z.ZodString;
                 userId: z.ZodOptional<z.ZodString>;
@@ -4720,11 +4720,13 @@ declare const contracts: {
                 projectId: z.ZodOptional<z.ZodString>;
                 transactionId: z.ZodOptional<z.ZodString>;
                 senderId: z.ZodOptional<z.ZodString>;
+                status: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
                 page: string;
                 query: string;
                 pageSize: string;
                 sortOrder: string;
+                state?: string | undefined;
                 priority?: string | undefined;
                 status?: string | undefined;
                 projectId?: string | undefined;
@@ -4736,6 +4738,254 @@ declare const contracts: {
                 query: string;
                 pageSize: string;
                 sortOrder: string;
+                state?: string | undefined;
+                priority?: string | undefined;
+                status?: string | undefined;
+                projectId?: string | undefined;
+                transactionId?: string | undefined;
+                senderId?: string | undefined;
+                userId?: string | undefined;
+            }>;
+            path: "/tickets/pendingTickets";
+            responses: {
+                200: z.ZodObject<{
+                    data: z.ZodArray<z.ZodObject<{
+                        id: z.ZodString;
+                        ticketId: z.ZodString;
+                        subject: z.ZodString;
+                        section: z.ZodString;
+                        division: z.ZodString;
+                        status: z.ZodString;
+                        priority: z.ZodString;
+                        requestDetails: z.ZodString;
+                        dueDate: z.ZodString;
+                        createdAt: z.ZodOptional<z.ZodString>;
+                        updatedAt: z.ZodOptional<z.ZodString>;
+                        dateForwarded: z.ZodString;
+                        dateReceived: z.ZodNullable<z.ZodString>;
+                        receiver: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                            firstName: z.ZodString;
+                            lastName: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            firstName: string;
+                            lastName: string;
+                        }, {
+                            firstName: string;
+                            lastName: string;
+                        }>>>;
+                        sender: z.ZodObject<{
+                            firstName: z.ZodString;
+                            lastName: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            firstName: string;
+                            lastName: string;
+                        }, {
+                            firstName: string;
+                            lastName: string;
+                        }>;
+                        project: z.ZodNullable<z.ZodObject<{
+                            projectId: z.ZodString;
+                            projectName: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            projectId: string;
+                            projectName: string;
+                        }, {
+                            projectId: string;
+                            projectName: string;
+                        }>>;
+                        transactionId: z.ZodNullable<z.ZodString>;
+                        transaction: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                            transactionId: z.ZodString;
+                            projectId: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            projectId: string;
+                            transactionId: string;
+                        }, {
+                            projectId: string;
+                            transactionId: string;
+                        }>>>;
+                        remarks: z.ZodNullable<z.ZodString>;
+                    }, "strip", z.ZodTypeAny, {
+                        id: string;
+                        priority: string;
+                        section: string;
+                        status: string;
+                        remarks: string | null;
+                        transactionId: string | null;
+                        subject: string;
+                        dueDate: string;
+                        project: {
+                            projectId: string;
+                            projectName: string;
+                        } | null;
+                        dateForwarded: string;
+                        dateReceived: string | null;
+                        ticketId: string;
+                        division: string;
+                        requestDetails: string;
+                        sender: {
+                            firstName: string;
+                            lastName: string;
+                        };
+                        receiver?: {
+                            firstName: string;
+                            lastName: string;
+                        } | null | undefined;
+                        createdAt?: string | undefined;
+                        updatedAt?: string | undefined;
+                        transaction?: {
+                            projectId: string;
+                            transactionId: string;
+                        } | null | undefined;
+                    }, {
+                        id: string;
+                        priority: string;
+                        section: string;
+                        status: string;
+                        remarks: string | null;
+                        transactionId: string | null;
+                        subject: string;
+                        dueDate: string;
+                        project: {
+                            projectId: string;
+                            projectName: string;
+                        } | null;
+                        dateForwarded: string;
+                        dateReceived: string | null;
+                        ticketId: string;
+                        division: string;
+                        requestDetails: string;
+                        sender: {
+                            firstName: string;
+                            lastName: string;
+                        };
+                        receiver?: {
+                            firstName: string;
+                            lastName: string;
+                        } | null | undefined;
+                        createdAt?: string | undefined;
+                        updatedAt?: string | undefined;
+                        transaction?: {
+                            projectId: string;
+                            transactionId: string;
+                        } | null | undefined;
+                    }>, "many">;
+                    numOfTickets: z.ZodNumber;
+                    totalPages: z.ZodNumber;
+                }, "strip", z.ZodTypeAny, {
+                    data: {
+                        id: string;
+                        priority: string;
+                        section: string;
+                        status: string;
+                        remarks: string | null;
+                        transactionId: string | null;
+                        subject: string;
+                        dueDate: string;
+                        project: {
+                            projectId: string;
+                            projectName: string;
+                        } | null;
+                        dateForwarded: string;
+                        dateReceived: string | null;
+                        ticketId: string;
+                        division: string;
+                        requestDetails: string;
+                        sender: {
+                            firstName: string;
+                            lastName: string;
+                        };
+                        receiver?: {
+                            firstName: string;
+                            lastName: string;
+                        } | null | undefined;
+                        createdAt?: string | undefined;
+                        updatedAt?: string | undefined;
+                        transaction?: {
+                            projectId: string;
+                            transactionId: string;
+                        } | null | undefined;
+                    }[];
+                    totalPages: number;
+                    numOfTickets: number;
+                }, {
+                    data: {
+                        id: string;
+                        priority: string;
+                        section: string;
+                        status: string;
+                        remarks: string | null;
+                        transactionId: string | null;
+                        subject: string;
+                        dueDate: string;
+                        project: {
+                            projectId: string;
+                            projectName: string;
+                        } | null;
+                        dateForwarded: string;
+                        dateReceived: string | null;
+                        ticketId: string;
+                        division: string;
+                        requestDetails: string;
+                        sender: {
+                            firstName: string;
+                            lastName: string;
+                        };
+                        receiver?: {
+                            firstName: string;
+                            lastName: string;
+                        } | null | undefined;
+                        createdAt?: string | undefined;
+                        updatedAt?: string | undefined;
+                        transaction?: {
+                            projectId: string;
+                            transactionId: string;
+                        } | null | undefined;
+                    }[];
+                    totalPages: number;
+                    numOfTickets: number;
+                }>;
+                500: z.ZodObject<{
+                    error: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    error: string;
+                }, {
+                    error: string;
+                }>;
+            };
+        };
+        getTickets: {
+            method: "GET";
+            query: z.ZodObject<{
+                query: z.ZodString;
+                priority: z.ZodOptional<z.ZodString>;
+                state: z.ZodOptional<z.ZodString>;
+                page: z.ZodString;
+                pageSize: z.ZodString;
+                userId: z.ZodOptional<z.ZodString>;
+                sortOrder: z.ZodString;
+                projectId: z.ZodOptional<z.ZodString>;
+                transactionId: z.ZodOptional<z.ZodString>;
+                senderId: z.ZodOptional<z.ZodString>;
+                status: z.ZodOptional<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                page: string;
+                query: string;
+                pageSize: string;
+                sortOrder: string;
+                state?: string | undefined;
+                priority?: string | undefined;
+                status?: string | undefined;
+                projectId?: string | undefined;
+                transactionId?: string | undefined;
+                senderId?: string | undefined;
+                userId?: string | undefined;
+            }, {
+                page: string;
+                query: string;
+                pageSize: string;
+                sortOrder: string;
+                state?: string | undefined;
                 priority?: string | undefined;
                 status?: string | undefined;
                 projectId?: string | undefined;
@@ -4791,7 +5041,7 @@ declare const contracts: {
                             projectName: string;
                         }>>;
                         transactionId: z.ZodNullable<z.ZodString>;
-                        transaction: z.ZodOptional<z.ZodObject<{
+                        transaction: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                             transactionId: z.ZodString;
                             projectId: z.ZodString;
                         }, "strip", z.ZodTypeAny, {
@@ -4800,7 +5050,7 @@ declare const contracts: {
                         }, {
                             projectId: string;
                             transactionId: string;
-                        }>>;
+                        }>>>;
                         remarks: z.ZodNullable<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
                         id: string;
@@ -4833,7 +5083,7 @@ declare const contracts: {
                         transaction?: {
                             projectId: string;
                             transactionId: string;
-                        } | undefined;
+                        } | null | undefined;
                     }, {
                         id: string;
                         priority: string;
@@ -4865,7 +5115,7 @@ declare const contracts: {
                         transaction?: {
                             projectId: string;
                             transactionId: string;
-                        } | undefined;
+                        } | null | undefined;
                     }>, "many">;
                     numOfTickets: z.ZodNumber;
                     totalPages: z.ZodNumber;
@@ -4901,7 +5151,7 @@ declare const contracts: {
                         transaction?: {
                             projectId: string;
                             transactionId: string;
-                        } | undefined;
+                        } | null | undefined;
                     }[];
                     totalPages: number;
                     numOfTickets: number;
@@ -4937,7 +5187,7 @@ declare const contracts: {
                         transaction?: {
                             projectId: string;
                             transactionId: string;
-                        } | undefined;
+                        } | null | undefined;
                     }[];
                     totalPages: number;
                     numOfTickets: number;

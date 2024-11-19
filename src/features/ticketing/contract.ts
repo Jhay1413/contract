@@ -24,13 +24,13 @@ export const ticketContract = contract.router({
       }),
     },
   },
-  getTickets: {
+  fetchPendingRequesteeTicketRoutes: {
     method: "GET",
-    path: "/tickets",
+    path: "/tickets/pendingTickets",
     query: z.object({
       query: z.string(),
       priority: z.string().optional(),
-      status: z.string().optional(),
+      state: z.string().optional(),
       page: z.string(),
       pageSize: z.string(),
       userId: z.string().optional(),
@@ -38,6 +38,35 @@ export const ticketContract = contract.router({
       projectId: z.string().optional(),
       transactionId: z.string().optional(),
       senderId: z.string().optional(),
+      status: z.string().optional(),
+    }),
+
+    responses: {
+      200: z.object({
+        data: z.array(ticketingTableSchema),
+        numOfTickets: z.number(),
+        totalPages: z.number(),
+      }),
+      500: z.object({
+        error: z.string(),
+      }),
+    },
+  },
+  getTickets: {
+    method: "GET",
+    path: "/tickets",
+    query: z.object({
+      query: z.string(),
+      priority: z.string().optional(),
+      state: z.string().optional(),
+      page: z.string(),
+      pageSize: z.string(),
+      userId: z.string().optional(),
+      sortOrder: z.string(),
+      projectId: z.string().optional(),
+      transactionId: z.string().optional(),
+      senderId: z.string().optional(),
+      status: z.string().optional(),
     }),
     responses: {
       200: z.object({

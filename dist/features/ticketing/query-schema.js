@@ -18,10 +18,12 @@ exports.ticketingTableSchema = zod_1.z.object({
     updatedAt: zod_1.z.string().optional(),
     dateForwarded: zod_1.z.string().datetime(),
     dateReceived: zod_1.z.nullable(zod_1.z.string().datetime()),
-    receiver: zod_1.z.nullable(zod_1.z.object({
+    receiver: zod_1.z
+        .nullable(zod_1.z.object({
         firstName: zod_1.z.string(),
         lastName: zod_1.z.string(),
-    })).optional(),
+    }))
+        .optional(),
     sender: zod_1.z.object({
         firstName: zod_1.z.string(),
         lastName: zod_1.z.string(),
@@ -33,10 +35,12 @@ exports.ticketingTableSchema = zod_1.z.object({
     })
         .nullable(),
     transactionId: zod_1.z.string().nullable(),
-    transaction: zod_1.z.object({
+    transaction: zod_1.z
+        .nullable(zod_1.z.object({
         transactionId: zod_1.z.string(),
         projectId: zod_1.z.string(),
-    }).optional(),
+    }))
+        .optional(),
     remarks: zod_1.z.string().nullable(),
 });
 exports.ticketLogsSchema = zod_1.z.object({

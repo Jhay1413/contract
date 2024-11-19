@@ -26,13 +26,13 @@ exports.ticketContract = contract.router({
             }),
         },
     },
-    getTickets: {
+    fetchPendingRequesteeTicketRoutes: {
         method: "GET",
-        path: "/tickets",
+        path: "/tickets/pendingTickets",
         query: zod_1.z.object({
             query: zod_1.z.string(),
             priority: zod_1.z.string().optional(),
-            status: zod_1.z.string().optional(),
+            state: zod_1.z.string().optional(),
             page: zod_1.z.string(),
             pageSize: zod_1.z.string(),
             userId: zod_1.z.string().optional(),
@@ -40,6 +40,34 @@ exports.ticketContract = contract.router({
             projectId: zod_1.z.string().optional(),
             transactionId: zod_1.z.string().optional(),
             senderId: zod_1.z.string().optional(),
+            status: zod_1.z.string().optional(),
+        }),
+        responses: {
+            200: zod_1.z.object({
+                data: zod_1.z.array(query_schema_1.ticketingTableSchema),
+                numOfTickets: zod_1.z.number(),
+                totalPages: zod_1.z.number(),
+            }),
+            500: zod_1.z.object({
+                error: zod_1.z.string(),
+            }),
+        },
+    },
+    getTickets: {
+        method: "GET",
+        path: "/tickets",
+        query: zod_1.z.object({
+            query: zod_1.z.string(),
+            priority: zod_1.z.string().optional(),
+            state: zod_1.z.string().optional(),
+            page: zod_1.z.string(),
+            pageSize: zod_1.z.string(),
+            userId: zod_1.z.string().optional(),
+            sortOrder: zod_1.z.string(),
+            projectId: zod_1.z.string().optional(),
+            transactionId: zod_1.z.string().optional(),
+            senderId: zod_1.z.string().optional(),
+            status: zod_1.z.string().optional(),
         }),
         responses: {
             200: zod_1.z.object({
