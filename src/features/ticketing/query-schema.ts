@@ -69,7 +69,6 @@ export const ticketFullDetailsSchema = z.object({
   section: z.string(),
   division: z.string(),
   status: z.string(),
-  requestType: z.string(),
   requestDetails: z.string(),
   priority: z.string(),
   dueDate: z.string().datetime(),
